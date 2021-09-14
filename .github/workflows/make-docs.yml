@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: apt update && apt upgrade && apt install latex-beamer pandoc
+    - run: sudo apt update && sudo apt upgrade && sudo apt install latex-beamer pandoc
 
     - run: cd docs && make
 
