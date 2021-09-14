@@ -1,0 +1,18 @@
+name: Make Docs
+on: push
+
+jobs
+make_docs:
+  runs-on: ubuntu-latest
+  name: Make and upload All Docs
+  steps:
+  - uses: actions/checkout@v2
+
+  - run: apt update && apt upgrade && apt install latex-beamer pandoc
+
+  - run: cd docs && make
+
+  - uses: actions/upload-artifact@v2
+    with:
+      name: PDF Docs
+      path: docs/_build/pdf/*.pdf
