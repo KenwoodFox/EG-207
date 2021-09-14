@@ -4,7 +4,7 @@ on: push
 jobs:
   make_docs:
     runs-on: ubuntu-latest
-    name: Make and upload All Docs
+    name: Build Docs and Presentations
     steps:
     - uses: actions/checkout@v2
 
@@ -14,5 +14,5 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: PDF Docs
+        name: Docs (.pdf)
         path: docs/_build/pdf/*.pdf
