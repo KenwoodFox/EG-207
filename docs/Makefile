@@ -29,4 +29,4 @@ generate_pres:
 	find $(builddir)/temp -type f -name '*.md' -execdir pandoc {} -t beamer -o $(builddir)/pdf/{}.pdf \;
 
 	# Clean presentaiton names 
-	cd $(builddir)/pdf/ && prename '.md.pdf' '.pdf' *.md.pdf
+	cd $(builddir)/pdf/ && rename 's/.md.pdf$$/.pdf/' *.md.pdf
