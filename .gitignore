@@ -1,0 +1,9 @@
+# Ignore build dirs and build artifacts
+*.*~
+_build
+
+# Ignore special artifacts
+version.h
+
+# Ignore IDE
+.vscode
