@@ -26,4 +26,7 @@ generate_pres:
 	find $(builddir)/temp -type f -name '*.md' -execdir sed -i "s/&hash/$(hash)/" {} \;
 
 	# Convert all presentations to pdf
-	find $(builddir)/temp -type f -name '*.md' -execdir pandoc {} -t beamer -o $(builddir)/pdf/changeme.pdf \;
+	find $(builddir)/temp -type f -name '*.md' -execdir pandoc {} -t beamer -o $(builddir)/pdf/{}.pdf \;
+
+	# Clean presentaiton names 
+	cd $(builddir)/pdf/ && rename .md.pdf .pdf *.md.pdf
