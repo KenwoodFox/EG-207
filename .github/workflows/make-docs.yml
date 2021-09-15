@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: sudo apt update && sudo apt upgrade && sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc rename
+    - run: sudo apt update && sudo apt upgrade && sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc file-rename
 
     - run: cd docs && make
 
