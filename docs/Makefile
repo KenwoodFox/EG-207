@@ -11,7 +11,7 @@ pwd = $(shell pwd)
 builddir = $(pwd)/_build
 
 # Do everything
-all: generate_pres
+all: generate_pres clean_filenames
 
 # Generate artifacts and output binaries
 generate_pres:
@@ -28,5 +28,6 @@ generate_pres:
 	# Convert all presentations to pdf
 	find $(builddir)/temp -type f -name '*.md' -execdir pandoc {} -t beamer -o $(builddir)/pdf/{}.pdf \;
 
+clean_filenames:
 	# Clean presentaiton names 
 	cd $(builddir)/pdf/ && rename 's/.md.pdf$$/.pdf/' *.md.pdf
