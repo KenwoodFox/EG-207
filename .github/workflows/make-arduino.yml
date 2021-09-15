@@ -1,0 +1,19 @@
+name: Make Arduino
+on: push
+
+jobs:
+  make_bin:
+    runs-on: ubuntu-latest
+    name: Test building a binary
+    steps:
+    - uses: actions/checkout@v2
+
+    - run: cd climate-sensor && make
+  
+  make_lint:
+    runs-on: ubuntu-latest
+    name: De-lint the source code
+    steps:
+    - uses: actions/checkout@v2
+
+    - run: cd climate-sensor && make lint
