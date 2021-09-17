@@ -50,6 +50,16 @@ The sensor package should operate in the following modes:
  - A safe mode, or safe operation flag where if an error or other circumstance arises, the sensor package makes itself 'safe' and in a known state.
 
 
+# Use
+
+The Sensor package should capable of operating 24/7 in normal conditions  
+but during testing it should be expected to operate 1.5 hours at a time  
+with frequent power cycling, re-connections and enable/disable states.
+
+
 # Impact Considerations
+
+
+
 
 # Risks and Potential Issues
