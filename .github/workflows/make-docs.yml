@@ -1,6 +1,8 @@
 name: Make Docs
-on: push
-
+on:
+  push:
+    paths:
+      - 'climate-sensor/**'
 jobs:
   make_docs:
     runs-on: ubuntu-latest
