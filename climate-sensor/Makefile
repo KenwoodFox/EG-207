@@ -96,7 +96,7 @@ requirements:
 	else echo "---> MISSING requirements.txt file"; \
 	fi
 
-lint:
+lint: tools
 	$(BINDIR)/arduino-lint --compliance strict
 
 # Fetches all the tools required
