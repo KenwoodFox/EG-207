@@ -1,5 +1,8 @@
 name: Make Arduino
-on: push
+on:
+  push:
+    paths:
+      - 'climate-sensor/**'
 
 jobs:
   make_bin:
