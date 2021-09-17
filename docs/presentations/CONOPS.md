@@ -18,32 +18,14 @@ aspectratio: 1610
 logo: resources/logo.png
 ---
 
-# Goals and Objectives
+# System Description
 
-Fill me out
+# Physical Environment
 
+# Support Environment
 
-# Strategies and Constraints
+# Operating Modes
 
-Fill me out
+# Impact Considerations
 
-
-# Organizations and Interactions
-
-Fill me out
-
-
-# Responibilitis
-
-Fill me out
-
-
-# Operating Process
-
-Fill me out
-
-
-# Initiating, Developing, and Retiring
-
-Fill me out
-
+# Risks and Potential Issues
