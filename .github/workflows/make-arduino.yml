@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: cd climate-sensor && make binary
+    - run: cd climate-sensor && make bin
 
     - uses: actions/upload-artifact@v2
       with:
