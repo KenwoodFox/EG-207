@@ -21,10 +21,10 @@ logo: resources/logo.png
 
 # System Description
 
-Our sensor package consisting of an  
+Our sensor package consisting of an:  
 
  - Arduino Mega 2560 (AVR) with hardware sensors
- - A student Laptop Running Labview
+ - A student Laptop Running LabView
 
 
 # Physical Environment
@@ -36,10 +36,19 @@ uv and visible light exposure.
 
 # Support Environment
 
-WIP
+All resources used to build our sensor and sensor package  
+will be released at the end of the course under GNUv3  
+or similar.
 
 
 # Operating Modes
+
+The sensor package should operate in the following modes:  
+
+ - A standard mode, where the sensor data is displayed normally and graphed/logged.
+ - A calibration/debug mode where the sensors on board can be characterized, or calibrated
+ - A safe mode, or safe operation flag where if an error or other circumstance arises, the sensor package makes itself 'safe' and in a known state.
+
 
 # Impact Considerations
 
