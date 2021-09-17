@@ -63,6 +63,16 @@ build: version climate-sensor.ino
 	$(BINDIR)/arduino-cli core install $(CORE)
 	$(BINDIR)/arduino-cli compile -b $(FQBN) climate-sensor
 
+# Make binaries
+bin: tools version climate-sensor.ino
+	$(BINDIR)/arduino-cli core install $(CORE)
+	$(BINDIR)/arduino-cli compile -b $(FQBN) climate-sensor -e
+	
+	# Clean and rename (could be optimized)
+	rm -rv _build/arduino.avr.mega
+	mv build/* _build
+	rm -rv build
+
 # Only upload the software
 upload: version build climate-sensor.ino
 	$(BINDIR)/arduino-cli upload -b $(FQBN) climate-sensor -p $(SERIAL_DEV)

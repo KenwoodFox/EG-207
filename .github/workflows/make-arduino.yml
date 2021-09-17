@@ -8,7 +8,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: cd climate-sensor && make
+    - run: cd climate-sensor && make binary
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Arduino Binaries (.bin)
+        path: climate-sensor/_build/arduino.avr.mega/*
   
   make_lint:
     runs-on: ubuntu-latest
