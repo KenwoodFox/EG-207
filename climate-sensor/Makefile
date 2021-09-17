@@ -69,7 +69,6 @@ bin: tools version climate-sensor.ino
 	$(BINDIR)/arduino-cli compile -b $(FQBN) climate-sensor -e
 	
 	# Clean and rename (could be optimized)
-	rm -rv _build/arduino.avr.mega
 	mv build/* _build
 	rm -rv build
 
@@ -104,3 +103,7 @@ tools:
 	mkdir -p $(BINDIR)
 	curl -fsSL $(ARDUINO_CLI_URL) | BINDIR=$(BINDIR) sh -s $(ARDUINO_CLI_VERSION)
 	curl -fsSL $(ARDUINO_LINT_URL) | BINDIR=$(BINDIR) sh -s $(ARDUINO_LINT_VERSION)
+
+# Messy, come back and fix?
+clean:
+	rm -rv _build/arduino.avr.mega
