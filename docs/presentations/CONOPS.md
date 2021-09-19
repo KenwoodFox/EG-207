@@ -31,7 +31,7 @@ Our sensor package consisting of an:
 
 The Sensor package will be used in an indoor environment  
 and will be subject to changes in temperature, humidity,  
-uv and visible light exposure.
+UV light intensity, visible light exposure, and water collection/rate.
 
 
 # Support Environment
@@ -59,7 +59,11 @@ with frequent power cycling, re-connections and enable/disable states.
 
 # Impact Considerations
 
-
+The environmental monitoring system 
 
 
 # Risks and Potential Issues
+ 
+ - Increased risk of the system to malfunction if operation of system is prolonged without proper maintenance
+ - Airborne contaminants can cause the system to malfunction and provide inaccurate data
+ 
