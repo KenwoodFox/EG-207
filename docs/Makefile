@@ -7,6 +7,7 @@
 
 # Get vars
 hash := $(shell git describe --abbrev=6 --always --tags --dirty)
+builddate := $(shell date +"%m-%d-%y")
 pwd = $(shell pwd)
 builddir = $(pwd)/_build
 
@@ -25,8 +26,11 @@ generate_pres:
 	# Update the build-hash
 	find $(builddir)/temp -type f -name '*.md' -execdir sed -i "s/&hash/$(hash)/" {} \;
 
+	# Update the date
+	find $(builddir)/temp -type f -name '*.md' -execdir sed -i "s/&date/$(builddate)/" {} \;
+
 	# Convert all presentations to pdf
-	find $(builddir)/temp -type f -name '*.md' -execdir pandoc {} -t beamer -o $(builddir)/pdf/{}.pdf \;
+	find $(builddir)/temp -type f -name '*.md' -execdir pandoc {} -t beamer -V colortheme:crane -o $(builddir)/pdf/{}.pdf \;
 
 clean_filenames:
 	# Clean presentaiton names 

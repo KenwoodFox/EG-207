@@ -11,9 +11,9 @@ description: |
     A CONOPS
     (Concept of Operations)
     For Team Gold's Team Project.
-theme:
- - Malmoe
+theme: Madrid
 navigation: frame
+date: "Build Date: &date"
 aspectratio: 1610
 logo: resources/logo.png
 ---
