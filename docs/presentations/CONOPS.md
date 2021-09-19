@@ -69,4 +69,3 @@ inaccurate data over time.
  
  - Increased risk of the system to malfunction if operation of system is prolonged without proper maintenance
  - Airborne contaminants can cause the system to malfunction and provide inaccurate data
- 
