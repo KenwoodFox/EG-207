@@ -59,7 +59,10 @@ with frequent power cycling, re-connections and enable/disable states.
 
 # Impact Considerations
 
-The environmental monitoring system 
+Because our enviormental monitoring solution does not have the rigourous  
+testing of other similar products, its over-reliance by an end user may  
+produce undiscovered bugs or issues, that may lead to bad results, or  
+inaccurate data over time.
 
 
 # Risks and Potential Issues
