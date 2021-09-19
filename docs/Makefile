@@ -6,7 +6,7 @@
 # Team Gold, SNHU
 
 # Get vars
-hash := $(shell git describe --abbrev=8 --always --tags --dirty)
+hash := $(shell git describe --abbrev=6 --always --tags --dirty)
 pwd = $(shell pwd)
 builddir = $(pwd)/_build
 
