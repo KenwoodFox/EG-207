@@ -23,8 +23,8 @@ logo: resources/logo.png
 
 Our sensor package consisting of an:  
 
- - Arduino Mega 2560 (AVR) with hardware sensors
- - A student Laptop Running LabView
+ - Arduino Mega 2560 (AVR) with hardware sensors.
+ - A student Laptop Running LabView.
 
 
 # Physical Environment
@@ -67,5 +67,5 @@ inaccurate data over time.
 
 # Risks and Potential Issues
  
- - Increased risk of the system to malfunction if operation of system is prolonged without proper maintenance
- - Airborne contaminants can cause the system to malfunction and provide inaccurate data
+ - Increased risk of the system to malfunction if operation of system is prolonged without proper maintenance.
+ - Airborne contaminants can cause the system to malfunction and provide inaccurate data.
