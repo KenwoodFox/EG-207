@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'climate-sensor/**'
+    tags:
+  release:
 
 jobs:
   make_bin:
