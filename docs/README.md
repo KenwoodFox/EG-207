@@ -1,6 +1,9 @@
 Using the documentation
 =======================
 
+[![.github/workflows/make-docs.yml](https://github.com/KenwoodFox/EG-207-CCEMS/actions/workflows/make-docs.yml/badge.svg)](https://github.com/KenwoodFox/EG-207-CCEMS/actions/workflows/make-docs.yml)
+
+
 Storing docs alongside code is a common practice  
 in the industry, it allows for syncronous updates  
 to both the documentation for a product and the software  
