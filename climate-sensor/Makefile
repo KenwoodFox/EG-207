@@ -64,7 +64,7 @@ build: version climate-sensor.ino
 	$(BINDIR)/arduino-cli compile -b $(FQBN) climate-sensor
 
 # Make binaries
-bin: tools version climate-sensor.ino
+bin: tools requirements version climate-sensor.ino
 	$(BINDIR)/arduino-cli core install $(CORE)
 	$(BINDIR)/arduino-cli compile -b $(FQBN) climate-sensor -e
 	
