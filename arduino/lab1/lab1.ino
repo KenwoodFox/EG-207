@@ -1,15 +1,17 @@
 #include "DHT.h"
 #include "Arduino.h"
 
+// DHT pin definition
 #define DHTPIN 2
 
+// DHT type
 #define DHTTYPE DHT11
 
+// Create DHT object (requires DHT.h)
 DHT dht(DHTPIN, DHTTYPE);
 
 void setup() {
-  Serial.begin(9600);
-  Serial.println(F("DHTxx test!"));
+  Serial.begin(115200);
 
   dht.begin();
 }
