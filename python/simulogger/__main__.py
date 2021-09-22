@@ -2,6 +2,7 @@
 # EG-207 Southern New Hampshire University
 
 import csv
+import sys
 
 
 from random import seed
@@ -9,12 +10,12 @@ from random import random
 from datetime import datetime
 
 
-def simulogger():
+def simulogger(filename):
     '''
     Simulates logging data from a serial device,
     and stores the output as a .csv
     '''
-    with open('simulated_dht_data.csv', 'w') as datafile:
+    with open(filename, 'w') as datafile:
         datalogger = csv.writer(datafile,
                                 delimiter=',',
                                 quotechar='"',
@@ -28,5 +29,11 @@ def simulogger():
 
 if __name__ == '__main__':
     seed(1)
-    simulogger()
 
+    try:
+        arg = sys.argv[1]
+    except IndexError:
+        print('Please include a filename.')
+        exit()
+
+    simulogger(f'{arg}.csv')
