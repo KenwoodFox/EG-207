@@ -1,6 +1,12 @@
+// Team Gold
+// EG-207, SNHU
+
 #include "DHT.h"
 #include "Arduino.h"
 #include "TimerOne.h"
+
+// Build information
+#include "version.h"
 
 // DHT pin definition
 #define DHTPIN 2
@@ -31,6 +37,11 @@ void setup() {
 
   // Attach updateDHT to hw inturrupt
   Timer1.attachInterrupt(updateDHT);
+
+  // Spit out MOTD
+  // print out some information about the software we're running.
+  Serial.print("Starting Team Gold LAB1 software. Using version "); Serial.println(VERSION);
+  Serial.print("This software compiled on "); Serial.println(COMPILED_ON); Serial.println();
 }
 
 /* Listen for inturrupts and change a volitalie
