@@ -18,8 +18,8 @@
 DHT dht(DHTPIN, DHTTYPE);
 
 // Sensor variables
-volatile float dhtHumidity;
-volatile float dhtTemperature;
+volatile float dhtHumidity = 0;
+volatile float dhtTemperature = 0;
 
 // Misc persistant data
 float sum = 0;
@@ -38,6 +38,9 @@ void setup() {
   // Attach updateDHT to hw inturrupt
   Timer1.attachInterrupt(updateDHT);
 
+  // Start updateDHT
+  Timer1.start();
+
   // Spit out MOTD
   // print out some information about the software we're running.
   Serial.print("Starting Team Gold LAB1 software. Using version "); Serial.println(VERSION);
@@ -54,8 +57,9 @@ void updateDHT(void) {
 
   // If either number is NAN, the frame is invalid!
   if (isnan(h) || isnan(t)) {
-    ;
+    Serial.println("Got invalid frame."); // Debug!
   } else {
+    Serial.println("Got valid frame."); // Debug!
     // Valid frame data si not coppied
     dhtHumidity = h;
     dhtHumidity = t;
@@ -64,6 +68,9 @@ void updateDHT(void) {
 
 
 void loop() {
+  // Slow loop
+  delay(200);
+
   // Check if data changed (TODO: Replace with actual data checksum)
   if (dhtHumidity + dhtTemperature != sum) {
     // Send large serial frame
@@ -71,5 +78,8 @@ void loop() {
     Serial.print("T"); Serial.print(dhtTemperature); Serial.print(",\n");
 
     sum = dhtHumidity + dhtTemperature;
+  } else { 
+    // For debugging only!
+    Serial.println("Nothing to send.");
   }
 }
