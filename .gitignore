@@ -7,3 +7,9 @@ version.h
 
 # Ignore IDE
 .vscode
+
+# Ignore cache and temp files
+__pycache__
+
+# Ignore data files
+*.csv
