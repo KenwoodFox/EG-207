@@ -1,8 +1,6 @@
 name: Make Arduino
 on:
   push:
-    paths:
-      - 'arduino/lab1/**'
     tags:
   release:
 
