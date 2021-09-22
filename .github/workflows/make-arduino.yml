@@ -20,7 +20,7 @@ jobs:
   
   make_lint:
     runs-on: ubuntu-latest
-    name: De-lint the source code
+    name: c++ Delinter
     steps:
     - uses: actions/checkout@v2
 
