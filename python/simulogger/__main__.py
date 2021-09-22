@@ -20,7 +20,7 @@ def simulogger():
                                 quotechar='"',
                                 quoting=csv.QUOTE_MINIMAL)
 
-        datalogger.writerow(['Num', 'Time', 'Value'])
+        datalogger.writerow(['num', 'time', 'value'])
 
         for i in range(100):
             datalogger.writerow([i, datetime.now().microsecond, random() + i])
@@ -29,3 +29,4 @@ def simulogger():
 if __name__ == '__main__':
     seed(1)
     simulogger()
+
