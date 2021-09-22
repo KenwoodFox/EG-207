@@ -10,6 +10,10 @@ from datetime import datetime
 
 
 def simulogger():
+    '''
+    Simulates logging data from a serial device,
+    and stores the output as a .csv
+    '''
     with open('simulated_dht_data.csv', 'w') as datafile:
         datalogger = csv.writer(datafile,
                                 delimiter=',',
