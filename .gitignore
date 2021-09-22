@@ -10,6 +10,7 @@ version.h
 
 # Ignore cache and temp files
 __pycache__
+Pipfile*
 
 # Ignore data files
 *.csv

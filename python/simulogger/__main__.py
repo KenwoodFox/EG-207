@@ -24,7 +24,14 @@ def simulogger(filename):
         datalogger.writerow(['num', 'time', 'value'])
 
         for i in range(100):
-            datalogger.writerow([i, datetime.now().microsecond, random() + i])
+            rand = random()
+            if (rand % 2 == 0):
+                rand = rand * -1
+
+            value = round(50 + rand, 2)
+            timestamp = round(datetime.now().microsecond, 2)
+
+            datalogger.writerow([i, timestamp, value])
 
 
 if __name__ == '__main__':
