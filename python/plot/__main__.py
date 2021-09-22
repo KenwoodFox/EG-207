@@ -1,13 +1,10 @@
 # Team Gold
 # EG-207 Southern New Hampshire University
 
-import csv
 import sys
 
 import matplotlib.pyplot as plt
-import matplotlib.cbook as cbook
 
-import numpy as np
 import pandas as pd
 
 
