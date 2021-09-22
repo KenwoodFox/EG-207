@@ -1,4 +1,5 @@
 #include "DHT.h"
+#include "Arduino.h"
 
 #define DHTPIN 2
 

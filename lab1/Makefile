@@ -1,6 +1,9 @@
 # Team Gold
 # EG-207, SNHU
 
+# What project to build
+PROJ := lab1
+
 
 # What board to build for and its core
 CORE     ?= arduino:avr
@@ -59,22 +62,22 @@ ifndef VERBOSE
 endif
 
 # Only build the code
-build: version climate-sensor.ino
+build: version $(PROJ).ino
 	$(BINDIR)/arduino-cli core install $(CORE)
-	$(BINDIR)/arduino-cli compile -b $(FQBN) climate-sensor
+	$(BINDIR)/arduino-cli compile -b $(FQBN) $(PROJ)
 
 # Make binaries
-bin: tools requirements version climate-sensor.ino
+bin: tools requirements version $(PROJ).ino
 	$(BINDIR)/arduino-cli core install $(CORE)
-	$(BINDIR)/arduino-cli compile -b $(FQBN) climate-sensor -e
+	$(BINDIR)/arduino-cli compile -b $(FQBN) $(PROJ) -e
 	
 	# Clean and rename (could be optimized)
 	mv build/* _build
 	rm -rv build
 
 # Only upload the software
-upload: version build climate-sensor.ino
-	$(BINDIR)/arduino-cli upload -b $(FQBN) climate-sensor -p $(SERIAL_DEV)
+upload: version build $(PROJ).ino
+	$(BINDIR)/arduino-cli upload -b $(FQBN) $(PROJ) -p $(SERIAL_DEV)
 
 # Only update the version
 version:
@@ -82,8 +85,8 @@ version:
 	echo "#define COMPILED_ON \"$(COMPILED_DATE)\"" >> version.h
 
 # Generate an artifact
-release: build climate-sensor.ino
-	$(BINDIR)/arduino-cli compile -b $(FQBN) climate-sensor --output-dir $(BUILDDIR)
+release: build $(PROJ).ino
+	$(BINDIR)/arduino-cli compile -b $(FQBN) $(PROJ) --output-dir $(BUILDDIR)
 
 # Only fetch the requirements
 requirements:

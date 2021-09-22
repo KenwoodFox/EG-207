@@ -2,7 +2,7 @@ name: Make Arduino
 on:
   push:
     paths:
-      - 'climate-sensor/**'
+      - 'lab1/**'
     tags:
   release:
 
@@ -13,12 +13,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: cd climate-sensor && make bin
+    - run: cd lab1 && make bin
 
     - uses: actions/upload-artifact@v2
       with:
         name: Arduino Binaries (.bin)
-        path: climate-sensor/_build/arduino.avr.mega/*
+        path: lab1/_build/arduino.avr.mega/*
   
   make_lint:
     runs-on: ubuntu-latest
@@ -26,7 +26,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: touch climate-sensor/README.md
-    - run: touch climate-sensor/COPYING
+    - run: touch lab1/README.md
+    - run: touch lab1/COPYING
 
-    - run: cd climate-sensor && make lint
+    - run: cd lab1 && make lint
