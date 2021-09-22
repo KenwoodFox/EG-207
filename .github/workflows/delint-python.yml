@@ -1,9 +1,10 @@
 name: Delint Python
-
 on:
   push:
     paths:
-      - '*.py'
+      - 'python/**'
+    tags:
+  release:
 
 jobs:
   python_flake:

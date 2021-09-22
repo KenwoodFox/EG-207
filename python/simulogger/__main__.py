@@ -1,5 +1,5 @@
 # Team Gold
-# EG-207, SNHU
+# EG-207 Southern New Hampshire University
 
 import csv
 
