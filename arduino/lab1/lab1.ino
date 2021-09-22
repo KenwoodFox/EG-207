@@ -1,5 +1,6 @@
 #include "DHT.h"
 #include "Arduino.h"
+#include "TimerOne.h"
 
 // DHT pin definition
 #define DHTPIN 2
@@ -10,36 +11,54 @@
 // Create DHT object (requires DHT.h)
 DHT dht(DHTPIN, DHTTYPE);
 
+// Sensor variables
+volatile float dhtHumidity;
+volatile float dhtTemperature;
+
+// Misc persistant data
+float sum = 0;
+
+
 void setup() {
+  // Start serial comms and make serial buffer
   Serial.begin(115200);
 
+  // Begin DHT listener
   dht.begin();
+
+  // Initalize hardware inturrupts.
+  Timer1.initialize(200000);
+
+  // Attach updateDHT to hw inturrupt
+  Timer1.attachInterrupt(updateDHT);
 }
 
-void loop() {
-  delay(2000);
-
+/* Listen for inturrupts and change a volitalie
+ * array of data with new values when appropriate
+ */
+void updateDHT(void) {
+  // Read in dht data
   float h = dht.readHumidity();
   float t = dht.readTemperature();
-  float f = dht.readTemperature(true);
 
-  if (isnan(h) || isnan(t) || isnan(f)) {
-    Serial.println(F("Failed to read from DHT sensor!"));
-    return;
+  // If either number is NAN, the frame is invalid!
+  if (isnan(h) || isnan(t)) {
+    ;
+  } else {
+    // Valid frame data si not coppied
+    dhtHumidity = h;
+    dhtHumidity = t;
   }
+}
 
-  float hif = dht.computeHeatIndex(f, h);
-  float hic = dht.computeHeatIndex(t, h, false);
 
-  Serial.print(F(" Humidity: "));
-  Serial.print(h);
-  Serial.print(F("%  Temperature: "));
-  Serial.print(t);
-  Serial.print(F("C "));
-  Serial.print(f);
-  Serial.print(F("F  Heat index: "));
-  Serial.print(hic);
-  Serial.print(F("C "));
-  Serial.print(hif);
-  Serial.println(F("F"));
+void loop() {
+  // Check if data changed (TODO: Replace with actual data checksum)
+  if (dhtHumidity + dhtTemperature != sum) {
+    // Send large serial frame
+    Serial.print("H"); Serial.print(dhtHumidity); Serial.print(",");
+    Serial.print("T"); Serial.print(dhtTemperature); Serial.print(",\n");
+
+    sum = dhtHumidity + dhtTemperature;
+  }
 }
