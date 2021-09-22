@@ -1,3 +1,6 @@
+# Team Gold
+# EG-207, SNHU
+
 import csv
 
 
