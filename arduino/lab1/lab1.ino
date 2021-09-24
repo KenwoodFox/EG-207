@@ -18,8 +18,8 @@
 DHT dht(DHTPIN, DHTTYPE);
 
 // Sensor variables
-volatile float dhtHumidity = 0;
-volatile float dhtTemperature = 0;
+float dhtHumidity = 0;
+float dhtTemperature = 0;
 
 // Misc persistant data
 float sum = 0;
