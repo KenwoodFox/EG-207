@@ -17,10 +17,9 @@ logo: resources/logo.png
 ---
 
 
-# Blank page one
+# Example of how to draw a table
 
-This should be filled out
-First time making a table, lol
-
-| doot | doot2 |
-| test | test  |
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
