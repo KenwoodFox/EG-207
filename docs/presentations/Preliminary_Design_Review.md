@@ -42,6 +42,12 @@ logo: resources/logo.png
 
 
 # Functional Requirements - Compliance
+ | Req Id  | Reqt. Title | Statement Subject | Reqt. Value | Performance | Margin | Notes/Basis |
+ | ------- | ----------- | ----------------- | ----------- | ----------- | ------ | ----------- |
+ |         |             |                   |             |             |        |             |
+ |         |             |                   |             |             |        |             |
+ |         |             |                   |             |             |        |             |
+
 
 
 
