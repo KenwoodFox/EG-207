@@ -1,0 +1,29 @@
+name: Submit Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  artifacts:
+    name: Create Brightspace Submission
+    needs: [make_docs, make_bin]
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: Team_Gold_Arduino_Binaries
+    - uses: actions/download-artifact@v2
+      with:
+        name: Team_Gold_Docs
+    - name: Upload docs
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: Team_Gold_Docs.zip
+        asset_name: Documentation
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "Team gold's Documentation."
