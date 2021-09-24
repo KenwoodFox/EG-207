@@ -28,9 +28,22 @@ logo: resources/logo.png
  - NOTE: We need a flowchart of something
 
 
-# Example of how to draw a table
+# Environmental System Description
 
-| Syntax      | Description |
-| ----------- | ----------- |
-| Header      | Title       |
-| Paragraph   | Text        |
+-Instrument: LabVIEW 2019
+-Data Acquistion:[Specify Arduino board model]
+-DAC Software: Arduino [Specify Version]
+-Sensors:
+	-Temp/RH: [Specift Model]
+	-UV Light:TBD
+	-Visible Light: TBD
+	-Wate Collection: TBD
+
+
+- 
+
+This should be filled out
+First time making a table, lol
+
+| doot | doot2 |
+| test | test  |
