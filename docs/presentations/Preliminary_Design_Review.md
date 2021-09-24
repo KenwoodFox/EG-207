@@ -28,8 +28,17 @@ logo: resources/logo.png
 	-Visible Light: TBD
 	-Wate Collection: TBD
 
+# Envirnomental Sensors
 
-- 
+-Sensors:
+	-Temp/RH:[Specify Model]
+	-Visible Light: CDS-55
+	-UV Light: Parallax 28091
+	-Water Collection: TBD
+
+
+-[Show picture of Temp/RH sensor along with circuit diagrams for sensor setup with your Arduino board]
+-[Dont worry about light and water sensor for PDR... we will cover that at CDR]
 
 This should be filled out
 First time making a table, lol
