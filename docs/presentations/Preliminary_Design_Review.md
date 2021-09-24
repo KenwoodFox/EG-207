@@ -54,6 +54,14 @@ logo: resources/logo.png
 - [Dont worry about light and water sensor for PDR... we will cover that at CDR]
 
 
+# Performance Requirements - Compliance
+
+| Reqt. ID or Section       | Reqt. Title | Statement Subject | Reqt Value | Performance | Margin | Notes/Bias|
+| ----------- | ----------- |             |		      |		   |		 |	  |	      |			
+| Header      | Title       |		  |		      |            |             |        |           |
+| Paragraph   | Text        |		  |		      |		   |             |        |           |
+
+
 # Example table
 
 (remove before submission)
