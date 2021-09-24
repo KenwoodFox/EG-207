@@ -26,7 +26,7 @@ logo: resources/logo.png
 	-Temp/RH: [Specift Model]
 	-UV Light:TBD
 	-Visible Light: TBD
-	-Wate Collection: TBD
+	-Water Collection: TBD
 
 
 - 
