@@ -16,6 +16,7 @@ aspectratio: 1610
 logo: resources/logo.png
 ---
 
+
 # Concept of Operations (ConOps) Summary
 
  - stakeholders
@@ -30,29 +31,34 @@ logo: resources/logo.png
 
 # Environmental System Description
 
--Instrument: LabVIEW 2019
--Data Acquistion:[Specify Arduino board model]
--DAC Software: Arduino [Specify Version]
--Sensors:
-	-Temp/RH: [Specift Model]
-	-UV Light:TBD
-	-Visible Light: TBD
-	-Water Collection: TBD
+ - Instrument: LabVIEW 2019
+ - Data Acquistion:[Specify Arduino board model]
+ - DAC Software: Arduino [Specify Version]
+ - Sensors:
+   - Temp/RH: [Specift Model]
+   - UV Light:TBD
+   - Visible Light: TBD
+   - Water Collection: TBD
+
 
 # Envirnomental Sensors
 
--Sensors:
-	-Temp/RH:[Specify Model]
-	-Visible Light: CDS-55
-	-UV Light: Parallax 28091
-	-Water Collection: TBD
+ - Sensors:
+   - Temp/RH:[Specify Model]
+   - Visible Light: CDS-55
+   - UV Light: Parallax 28091
+   - Water Collection: TBD
 
 
--[Show picture of Temp/RH sensor along with circuit diagrams for sensor setup with your Arduino board]
--[Dont worry about light and water sensor for PDR... we will cover that at CDR]
+- [Show picture of Temp/RH sensor along with circuit diagrams for sensor setup with your Arduino board]
+- [Dont worry about light and water sensor for PDR... we will cover that at CDR]
 
-This should be filled out
-First time making a table, lol
 
-| doot | doot2 |
-| test | test  |
+# Example table
+
+(remove before submission)
+
+| Req id      | Title       | New row |
+| ----------- | ----------- | ------- |
+| Header      | Title       | this |
+| Paragraph   | Text        | ugly not formatted nice |
