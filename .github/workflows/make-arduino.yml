@@ -1,32 +1,30 @@
 name: Make Arduino
 on:
   push:
-    paths:
-      - 'climate-sensor/**'
     tags:
   release:
 
 jobs:
   make_bin:
     runs-on: ubuntu-latest
-    name: Test building a binary
+    name: Binary Builder
     steps:
     - uses: actions/checkout@v2
 
-    - run: cd climate-sensor && make bin
+    - run: cd arduino/lab1 && make bin
 
     - uses: actions/upload-artifact@v2
       with:
-        name: Arduino Binaries (.bin)
-        path: climate-sensor/_build/arduino.avr.mega/*
+        name: Team_Gold_Arduino_Binaries
+        path: arduino/lab1/_build/arduino.avr.mega/*
   
   make_lint:
     runs-on: ubuntu-latest
-    name: De-lint the source code
+    name: c++ Delinter
     steps:
     - uses: actions/checkout@v2
 
-    - run: touch climate-sensor/README.md
-    - run: touch climate-sensor/COPYING
+    - run: touch arduino/lab1/README.md
+    - run: touch arduino/lab1/COPYING
 
-    - run: cd climate-sensor && make lint
+    - run: cd arduino/lab1 && make lint
