@@ -1,8 +1,6 @@
 # Team Gold
 # EG-207 Southern New Hampshire University
 
-import sys
-import csv
 import serial
 
 

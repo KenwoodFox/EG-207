@@ -19,5 +19,5 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: Docs (.pdf)
+        name: Team_Gold_Docs
         path: docs/_build/pdf/*.pdf

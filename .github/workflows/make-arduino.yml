@@ -15,7 +15,7 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: Arduino Binaries (.bin)
+        name: Team_Gold_Arduino_Binaries
         path: arduino/lab1/_build/arduino.avr.mega/*
   
   make_lint:
