@@ -64,8 +64,8 @@ logo: resources/logo.png
 
 # Performance Requirements - Compliance
 
-| Reqt. ID or Section | Reqt. Title | Statement Subject | Reqt Value | Performance | Margin | Notes/Bias |  |
-|---------------------|-------------|-------------------|------------|-------------|--------|------------|--|
-| Header              | Title       |                   |            |             |        |            |  |
-| Paragraph           | Text        |                   |            |             |        |            |  |
+| Reqt. ID or Section | Reqt. Title | Statement Subject | Reqt Value | Performance | Margin | Notes/Bias |
+|---------------------|-------------|-------------------|------------|-------------|--------|------------|
+| Header              | Title       |                   |            |             |        |            |
+| Paragraph           | Text        |                   |            |             |        |            |
 
