@@ -1,4 +1,4 @@
----
+﻿---
 title:
  - Team Gold Preliminary Design Review
 subtitle:
@@ -14,23 +14,24 @@ navigation: frame
 date: "Build Date: &date"
 aspectratio: 1610
 logo: resources/logo.png
+fontsize: 9pt
 ---
 
 
-# Concept of Operations (ConOps) Summary
+# Concept of Operations (Con-Ops) Summary
 
  - Stakeholders
    - (Who has a stake?)
  - Users
-   - Scientists and Analysists in the field.
+   - Scientists and Analysts in the field.
  - Operational Description
    - The sensor should be operated indoors and may be left without supervision to collect data and store it.
  - Support Environment
-   - Released under the GNUv3 license, and supported as the license describes, extending absolutly no warrenty.
+   - Released under the GNUv3 license, and supported as the license describes, extending absolutely no warranty.
  - Use
-   - The operator/analyist will use the sensor in the field, and collect data supervised or not.
+   - The operator/analyst will use the sensor in the field, and collect data supervised or not.
  - Calibration
-   - Calibration data is stored in the EEPROM and the sensor will not require calibrarion between regular uses, the sensor is not expected to require calibration often but will have a procedure to do so.
+   - Calibration data is stored in the EEPROM and the sensor will not require calibration between regular uses, the sensor is not expected to require calibration often but will have a procedure to do so.
  - Impact consideration and risks
    - **This has to be filled out**
 
@@ -40,7 +41,7 @@ logo: resources/logo.png
 # Environmental System Description
 
  - Instrument: LabVIEW 2019
- - Data Acquistion: Arduino AVR (mega)
+ - Data Acquisition: Arduino AVR (mega)
  - DAC Software: Arduino + pyplot and numpy
  - Sensors:
    - Temp/RH: DHT11
@@ -49,7 +50,7 @@ logo: resources/logo.png
    - Water Collection: TBD
 
 
-# Envirnomental Sensors
+# Environmental Sensors
 
  - Sensors:
    - Temp/RH:[Specify Model]
@@ -59,13 +60,13 @@ logo: resources/logo.png
 
 
 - [Show picture of Temp/RH sensor along with circuit diagrams for sensor setup with your Arduino board]
-- [Dont worry about light and water sensor for PDR... we will cover that at CDR]
+- [Don’t worry about light and water sensor for PDR... we will cover that at CDR]
 
 
 # Performance Requirements - Compliance
 
-| Reqt. ID or Section | Reqt. Title | Statement Subject | Reqt Value | Performance | Margin | Notes/Bias |
-|---------------------|-------------|-------------------|------------|-------------|--------|------------|
-| Header              | Title       |                   |            |             |        |            |
-| Paragraph           | Text        |                   |            |             |        |            |
+| Reqt    | Owner | Statement  | Reqt Value | Performance | Margin                      | Notes/Bias                      |
+|---------|-------|------------|------------|-------------|-----------------------------|---------------------------------|
+| REQ-000 | SNHU  | Have a lab | 1 lab      | a good lab  | 90% of the lab must be good | Its difficulty to quantify "good" |
+| REQ-001 | ...   | ...        | ...        | ...         | ...                         | ...                             |
 
