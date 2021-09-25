@@ -63,10 +63,9 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: '*.pdf'
-        asset_name: Documentation
         tag: ${{ github.ref }}
         overwrite: true
-        body: "Team Documentation."
+        body: "Team Gold EG-207, Automated with auto uploaded binaries."
         file_glob: true
     
     - name: Upload Binaries to release
@@ -74,7 +73,5 @@ jobs:
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
         file: 'arduino_binaries.zip'
-        asset_name: Binaries
         tag: ${{ github.ref }}
         overwrite: true
-        body: "Sensor Package Binaries."
