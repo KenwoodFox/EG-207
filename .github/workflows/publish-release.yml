@@ -41,6 +41,7 @@ jobs:
   publish_docs:
     runs-on: ubuntu-latest
     name: Create Brightspace Submission
+    needs: [make_docs, make_bin]
 
     steps:
     - uses: actions/download-artifact@v2
