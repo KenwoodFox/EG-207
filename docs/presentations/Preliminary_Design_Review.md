@@ -19,24 +19,32 @@ logo: resources/logo.png
 
 # Concept of Operations (ConOps) Summary
 
- - stakeholders
- - users
- - Operational Description(Including physical environment)
+ - Stakeholders
+   - (Who has a stake?)
+ - Users
+   - Scientists and Analysists in the field.
+ - Operational Description
+   - The sensor should be operated indoors and may be left without supervision to collect data and store it.
  - Support Environment
+   - Released under the GNUv3 license, and supported as the license describes, extending absolutly no warrenty.
  - Use
+   - The operator/analyist will use the sensor in the field, and collect data supervised or not.
  - Calibration
+   - Calibration data is stored in the EEPROM and the sensor will not require calibrarion between regular uses, the sensor is not expected to require calibration often but will have a procedure to do so.
  - Impact consideration and risks
- - NOTE: We need a flowchart of something
+   - **This has to be filled out**
+
+**A Flow chart is needed here**
 
 
 # Environmental System Description
 
  - Instrument: LabVIEW 2019
- - Data Acquistion:[Specify Arduino board model]
- - DAC Software: Arduino [Specify Version]
+ - Data Acquistion: Arduino AVR (mega)
+ - DAC Software: Arduino + pyplot and numpy
  - Sensors:
-   - Temp/RH: [Specift Model]
-   - UV Light:TBD
+   - Temp/RH: DHT11
+   - UV Light: TBD
    - Visible Light: TBD
    - Water Collection: TBD
 
@@ -56,17 +64,8 @@ logo: resources/logo.png
 
 # Performance Requirements - Compliance
 
-| Reqt. ID or Section       | Reqt. Title | Statement Subject | Reqt Value | Performance | Margin | Notes/Bias|
-| ----------- | ----------- |             |		      |		   |		 |	  |	      |			
-| Header      | Title       |		  |		      |            |             |        |           |
-| Paragraph   | Text        |		  |		      |		   |             |        |           |
+| Reqt. ID or Section | Reqt. Title | Statement Subject | Reqt Value | Performance | Margin | Notes/Bias |  |
+|---------------------|-------------|-------------------|------------|-------------|--------|------------|--|
+| Header              | Title       |                   |            |             |        |            |  |
+| Paragraph           | Text        |                   |            |             |        |            |  |
 
-
-# Example table
-
-(remove before submission)
-
-| Req id      | Title       | New row |
-| ----------- | ----------- | ------- |
-| Header      | Title       | this |
-| Paragraph   | Text        | ugly not formatted nice |
