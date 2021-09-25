@@ -53,9 +53,9 @@ jobs:
         path: arduino_bin
 
     - uses: papeloto/action-zip@v1
-        with:
-          files: arduino_bin/
-          dest: arduino_binaries.zip
+      with:
+        files: arduino_bin/
+        dest: arduino_binaries.zip
 
     - name: Upload Docs to release
       uses: svenstaro/upload-release-action@v2
