@@ -6,24 +6,74 @@ on:
       - '*'
 
 jobs:
-  artifacts:
-    name: Create Brightspace Submission
-    needs: [make_docs, make_bin]
+  make_docs:
     runs-on: ubuntu-latest
+    name: Doc Builder
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - run: sudo apt install texlive-latex-recommended texlive-latex-extra texlive-pictures pandoc rename
+
+    - run: cd docs && make
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Team_Gold_Docs
+        path: docs/_build/pdf/*.pdf
+
+
+  make_bin:
+    runs-on: ubuntu-latest
+    name: Binary Builder
+    steps:
+    - uses: actions/checkout@v2
+
+    - run: cd arduino/lab1 && make bin
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Team_Gold_Arduino_Binaries
+        path: arduino/lab1/_build/arduino.avr.mega/*
+
+
+  publish_docs:
+    runs-on: ubuntu-latest
+    name: Create Brightspace Submission
 
     steps:
     - uses: actions/download-artifact@v2
       with:
-        name: Team_Gold_Arduino_Binaries
+        name: Test_Docs
+
     - uses: actions/download-artifact@v2
       with:
-        name: Team_Gold_Docs
-    - name: Upload docs
+        name: Team_Gold_Arduino_Binaries
+        path: arduino_bin
+
+    - uses: papeloto/action-zip@v1
+        with:
+          files: arduino_bin/
+          dest: arduino_binaries.zip
+
+    - name: Upload Docs to release
       uses: svenstaro/upload-release-action@v2
       with:
         repo_token: ${{ secrets.GITHUB_TOKEN }}
-        file: Team_Gold_Docs.zip
+        file: '*.pdf'
         asset_name: Documentation
         tag: ${{ github.ref }}
         overwrite: true
-        body: "Team gold's Documentation."
+        body: "Team Documentation."
+        file_glob: true
+    
+    - name: Upload Binaries to release
+      uses: svenstaro/upload-release-action@v2
+      with:
+        repo_token: ${{ secrets.GITHUB_TOKEN }}
+        file: 'arduino_binaries.zip'
+        asset_name: Binaries
+        tag: ${{ github.ref }}
+        overwrite: true
+        body: "Sensor Package Binaries."
