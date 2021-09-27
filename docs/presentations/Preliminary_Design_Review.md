@@ -64,9 +64,7 @@ fontsize: 8pt
    - UV Light: Parallax 28091
 
 ![DHT 11 Sensor](resources/dht11.png)
-
-- [Show picture of Temp/RH sensor along with circuit diagrams for sensor setup with your Arduino board]
-- [Don’t worry about light and water sensor for PDR... we will cover that at CDR]
+![Sensor Package Schematic](resources/sensor_package_schematic.png){ width=26% }
 
 
 # Performance Requirements - Compliance
