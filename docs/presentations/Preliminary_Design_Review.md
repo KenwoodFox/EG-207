@@ -14,7 +14,7 @@ navigation: frame
 date: "Build Date: &date"
 aspectratio: 1610
 logo: resources/logo.png
-fontsize: 9pt
+fontsize: 8pt
 ---
 
 
@@ -32,8 +32,15 @@ fontsize: 9pt
    - The operator/analyst will use the sensor in the field, and collect data supervised or not.
  - Calibration
    - Calibration data is stored in the EEPROM and the sensor will not require calibration between regular uses, the sensor is not expected to require calibration often but will have a procedure to do so.
- - Impact consideration and risks
-   - **This has to be filled out**
+
+
+# Concept of Operations (Con-Ops) Summary Cont.
+
+ - Impact consideration
+   - Because our enviormental monitoring solution does not have the same level of quality assurance as a similar solution, over-reliance by the end user could result in uncalibrated data, unexpeced failure modes or strange untested bugs over time.
+ - Risks
+   - Increased risk of the system to malfunction if operation of system is prolonged without proper maintenance.
+   - Airborne contaminants can cause the system to malfunction and provide inaccurate data.
 
 **A Flow chart is needed here**
 
@@ -46,13 +53,13 @@ fontsize: 9pt
  - Sensors:
    - Temp/RH: DHT11
    - UV Light: TBD
-   - Visible Light: TBD
+   - Visible Light: Photoresitor
 
 
 # Environmental Sensors
 
  - Sensors:
-   - Temp/RH:[Specify Model]
+   - Temp/RH: DHT-11
    - Visible Light: CDS-55
    - UV Light: Parallax 28091
 
