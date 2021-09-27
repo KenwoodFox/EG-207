@@ -47,7 +47,6 @@ fontsize: 9pt
    - Temp/RH: DHT11
    - UV Light: TBD
    - Visible Light: TBD
-   - Water Collection: TBD
 
 
 # Environmental Sensors
@@ -56,8 +55,6 @@ fontsize: 9pt
    - Temp/RH:[Specify Model]
    - Visible Light: CDS-55
    - UV Light: Parallax 28091
-   - Water Collection: TBD
-
 
 - [Show picture of Temp/RH sensor along with circuit diagrams for sensor setup with your Arduino board]
 - [Don’t worry about light and water sensor for PDR... we will cover that at CDR]
@@ -65,8 +62,8 @@ fontsize: 9pt
 
 # Performance Requirements - Compliance
 
-| Reqt    | Owner | Statement  | Reqt Value | Performance | Margin                      | Notes/Bias                      |
-|---------|-------|------------|------------|-------------|-----------------------------|---------------------------------|
+| Reqt    | Owner | Statement  | Reqt Value | Performance | Margin                      | Notes/Bias                        |
+|---------|-------|------------|------------|-------------|-----------------------------|-----------------------------------|
 | REQ-000 | SNHU  | Have a lab | 1 lab      | a good lab  | 90% of the lab must be good | Its difficulty to quantify "good" |
-| REQ-001 | ...   | ...        | ...        | ...         | ...                         | ...                             |
+| REQ-001 | ...   | ...        | ...        | ...         | ...                         | ...                               |
 
