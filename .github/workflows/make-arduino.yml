@@ -1,7 +1,8 @@
 name: Make Arduino
 on:
   push:
-    tags:
+    paths:
+      - 'arduino/**'
   release:
 
 jobs:
