@@ -15,3 +15,33 @@ Feel free to fork or create your own PRs! Join us on our [discord](https://disco
 ## Getting started building this code
 
 More to come <3
+
+
+### Tag Naming Scheme
+
+Assignments should stay off this repo.  
+Labs should use tags like so:  
+`L<lab number>-RC<revision>`  
+Labs should also not use subrevisions, and should rely on their `describe` functions to count appendex commits.
+
+The final project should use:
+`CMS-0.0`  
+or  
+`CMS-0.0RC0`
+
+For example:
+```
+L1-RC1
+L1-RC2
+L1-RC3
+```
+
+And for final project
+```
+CMS-0.1RC1
+CMS-0.1
+CMS-0.2
+CMS-0.3
+CMS-0.4RC1
+CMS-0.4RC2
+```
