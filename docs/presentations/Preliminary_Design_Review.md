@@ -69,8 +69,19 @@ fontsize: 8pt
 
 # Performance Requirements - Compliance
 
-| Reqt    | Owner | Statement  | Reqt Value | Performance | Margin                      | Notes/Bias                        |
-|---------|-------|------------|------------|-------------|-----------------------------|-----------------------------------|
-| REQ-000 | SNHU  | Have a lab | 1 lab      | a good lab  | 90% of the lab must be good | Its difficulty to quantify "good" |
-| REQ-001 | ...   | ...        | ...        | ...         | ...                         | ...                               |
-
+| Reqt    | Owner     | Title                           | Reqt Value           | Perf. | Margin          | Notes/Bias                                                        |
+|---------|-----------|---------------------------------|----------------------|-------|-----------------|-------------------------------------------------------------------|
+| 3.1.1   | Team Gold | Virtual Instruments Front Panel | Have                 | N/A   | All or nothing. |                                                                   |
+| 3.1.2   | Team Gold | Sensor Update/Read Rate         | Demonstrate, Inspect | N/A   | All or nothing. |                                                                   |
+| 3.1.3   | Team Gold | Warning and Alarm Indication    | Demonstrate, Test    | N/A   | All or nothing. | Sensor yellow and red limits and decision-making flow chart req’d |
+| 3.1.4   | Team Gold | Waveform Display                | Demonstrate          | N/A   | All or nothing. |                                                                   |
+| 3.1.5   |           |                                 |                      |       |                 |                                                                   |
+| 3.1.6   |           |                                 |                      |       |                 |                                                                   |
+| 3.2.1   |           |                                 |                      |       |                 |                                                                   |
+| 3.2.2   |           |                                 |                      |       |                 |                                                                   |
+| 3.2.3   |           |                                 |                      |       |                 |                                                                   |
+| 3.3.1   |           |                                 |                      |       |                 |                                                                   |
+| 3.3.1.1 |           |                                 |                      |       |                 |                                                                   |
+| 3.3.1.2 |           |                                 |                      |       |                 |                                                                   |
+| 3.3.2   |           |                                 |                      |       |                 |                                                                   |
+| 3.3.3   |           |                                 |                      |       |                 |                                                                   |
