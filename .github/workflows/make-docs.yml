@@ -3,7 +3,7 @@ on:
   push:
     paths:
       - 'docs/**'
-  pull:
+  pull_request:
   release:
 
 jobs:

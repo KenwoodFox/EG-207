@@ -3,7 +3,7 @@ on:
   push:
     paths:
       - 'arduino/**'
-  pull:
+  pull_request:
   release:
 
 jobs:
