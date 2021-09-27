@@ -1,7 +1,9 @@
 name: Make Docs
 on:
   push:
-    tags:
+    paths:
+      - 'docs/**'
+  pull:
   release:
 
 jobs:

@@ -1,7 +1,9 @@
 name: Delint Python
 on:
   push:
-    tags:
+    paths:
+      - '**.py'
+  pull:
   release:
 
 jobs:
