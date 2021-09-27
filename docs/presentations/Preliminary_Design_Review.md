@@ -69,19 +69,26 @@ fontsize: 8pt
 
 # Performance Requirements - Compliance
 
-| Reqt    | Owner     | Title                           | Reqt Value           | Perf. | Margin          | Notes/Bias                                                        |
-|---------|-----------|---------------------------------|----------------------|-------|-----------------|-------------------------------------------------------------------|
-| 3.1.1   | Team Gold | Virtual Instruments Front Panel | Have                 | N/A   | All or nothing. |                                                                   |
-| 3.1.2   | Team Gold | Sensor Update/Read Rate         | Demonstrate, Inspect | N/A   | All or nothing. |                                                                   |
-| 3.1.3   | Team Gold | Warning and Alarm Indication    | Demonstrate, Test    | N/A   | All or nothing. | Sensor yellow and red limits and decision-making flow chart req’d |
-| 3.1.4   | Team Gold | Waveform Display                | Demonstrate          | N/A   | All or nothing. |                                                                   |
-| 3.1.5   |           |                                 |                      |       |                 |                                                                   |
-| 3.1.6   |           |                                 |                      |       |                 |                                                                   |
-| 3.2.1   |           |                                 |                      |       |                 |                                                                   |
-| 3.2.2   |           |                                 |                      |       |                 |                                                                   |
-| 3.2.3   |           |                                 |                      |       |                 |                                                                   |
-| 3.3.1   |           |                                 |                      |       |                 |                                                                   |
-| 3.3.1.1 |           |                                 |                      |       |                 |                                                                   |
-| 3.3.1.2 |           |                                 |                      |       |                 |                                                                   |
-| 3.3.2   |           |                                 |                      |       |                 |                                                                   |
-| 3.3.3   |           |                                 |                      |       |                 |                                                                   |
+| Reqt  | Owner     | Title                           | Reqt Value           | Perf. | Margin | Notes/Bias                                                        |
+|-------|-----------|---------------------------------|----------------------|-------|--------|-------------------------------------------------------------------|
+| 3.1.1 | Team Gold | Virtual Instruments Front Panel | Have                 |       |        |                                                                   |
+| 3.1.2 | Team Gold | Sensor Update/Read Rate         | Demonstrate, Inspect |       |        |                                                                   |
+| 3.1.3 | Team Gold | Warning and Alarm Indication    | Demonstrate, Test    |       |        | Sensor yellow and red limits and decision-making flow chart req’d |
+| 3.1.4 | Team Gold | Waveform Display                | Demonstrate          |       |        |                                                                   |
+| 3.1.5 | Team Gold | Data Logging                    | Demonstrate, Inspect |       |        | Data file to be provided in ADP                                   |
+| 3.1.6 | Team Gold | Operational Modes               | Demonstrate          |       |        |                                                                   |
+| 3.2.1 | Team Gold | Sensor Accuracy                 | Validation           |       |        | Standard to be used for accuracy determination                    |
+| 3.2.2 | Team Gold | Sensor Percision                | Analysis, Validation |       |        | Standard deviation analysis req’d                                 |
+| 3.2.3 | Team Gold | Calibration or Diagnostics      | Demonstration        |       |        |                                                                   |
+
+
+# Performance Requirements - Compliance Cont.
+
+| Reqt    | Owner     | Title                    | Reqt Value                | Perf. | Margin | Notes/Bias                                                            |
+|---------|-----------|--------------------------|---------------------------|-------|--------|-----------------------------------------------------------------------|
+| 3.3.1   | Team Gold | Mounting                 | Analysis, Demonstration   |       |        |                                                                       |
+| 3.3.1.1 | Team Gold | Baseplate Bottom Surface | Demonstration             |       |        |                                                                       |
+| 3.3.1.2 | Team Gold | Housing to Baseplate     | Demonstration             |       |        |                                                                       |
+| 3.3.2   | Team Gold | Electrical               | Validation, Demonstration |       |        | System Electrical Circuit Diagram req’d (including Arduino functions) |
+| 3.3.3   | Team Gold | Data Power and Access    | Demonstration             |       |        |                                                                       |
+| 3.4.1   | Team Gold | Housing                  | Validation, Demonstration |       |        | *STL file and outline drawing required for fabrication                |
