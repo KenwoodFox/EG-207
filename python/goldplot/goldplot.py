@@ -13,7 +13,10 @@ import matplotlib as mpl
 
 
 class GoldPlotApp:
-    def __init__(self, **kwargs):
+    def __init__(self, logger, **kwargs):
+        # logging
+        self.log = logger
+
         # Graphing
         # Select theme
         mpl.style.use('seaborn')
@@ -31,10 +34,15 @@ class GoldPlotApp:
         args = parser.parse_args()
 
         arduino = serial.Serial(args.port, 115200, timeout=1)
-        animation.FuncAnimation(self.fig,
-                                self.update_graph,
-                                fargs=[arduino],
-                                interval=200)
+        ani = animation.FuncAnimation(self.fig,
+                                      self.update_graph,
+                                      fargs=[arduino],
+                                      interval=200)
+
+        # Just for flake
+        ani.__str__()
+
+        # Show plot!
         plt.show()
 
     def initalize_graph(self):
@@ -86,13 +94,16 @@ class GoldPlotApp:
                 self.current_humidy = float(frame[0].strip('H'))
                 self.current_temp = float(frame[1].strip('T'))
 
-                # Logging
-                logging.info(f'Got new frame: {frame}')
+                if self.current_humidy != 0 and self.current_temp != 0:
+                    # Logging
+                    self.log.info(f'Got new frame: {frame}')
 
-                # Plot scales
-                self.time_scale.append(now)
-                self.temp_reading.append(self.current_temp)
-                self.humidity_reading.append(self.current_humidy)
+                    # Plot scales
+                    self.time_scale.append(now)
+                    self.temp_reading.append(self.current_temp)
+                    self.humidity_reading.append(self.current_humidy)
+                else:
+                    logging.error(f'Error, empty frame: {frame}')
 
             self.temp_line_plot.clear()
             self.temp_line_plot.plot(self.time_scale,
@@ -125,10 +136,10 @@ class GoldPlotApp:
 
             plt.show()
         except KeyboardInterrupt:
-            logging.info('Exiting safely.')
+            self.log.info('Exiting safely.')
             exit()
         except (IndexError, AttributeError, ValueError):
-            logging.warn('Got bad frame')
+            self.log.warn('Got bad frame')
             pass
 
         def close(self):

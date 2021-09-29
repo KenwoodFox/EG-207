@@ -11,11 +11,16 @@ from goldplot import GoldPlotApp
 
 if __name__ == '__main__':
     # Setup logging
-    logging.basicConfig(level=logging.DEBUG)
-    coloredlogs.install()
+    logger = logging.getLogger(__name__)
+    coloredlogs.install(
+        fmt='%(asctime)s,%(msecs)03d %(hostname)s %(levelname)s %(message)s',
+        level=logging.DEBUG,
+        logger=logger)
+
+    logger.info("Program Started.")
 
     # Make app
-    app = GoldPlotApp()
+    app = GoldPlotApp(logger)
 
     try:
         app.run()
