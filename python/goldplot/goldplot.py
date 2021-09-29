@@ -3,6 +3,7 @@
 # Southern New Hampshire University, 2021
 
 import re
+import csv
 import time
 import serial
 import logging
@@ -18,12 +19,18 @@ class GoldPlotApp:
         # logging
         self.log = logger
 
-        # Graphing
-        # Select theme
+        # Graph theme
         mpl.style.use('seaborn')
 
         # Arduino version
         self.arduino_version = None
+
+        # Data for this run
+        self.csv_data = open('hardcoded.csv', 'w')
+        self.csv_writer = csv.writer(self.csv_data, delimiter=',',
+                                     quotechar='"',
+                                     quoting=csv.QUOTE_MINIMAL)
+        self.csv_writer.writerow(['Epoch Time', 'Temp', 'Humidity'])
 
         # Setup graph
         self.initalize_graph()
@@ -82,6 +89,15 @@ class GoldPlotApp:
                     logging.error(f'Error, empty frame: {frame}')
         except (IndexError, AttributeError, ValueError):
             self.log.warn('Got bad frame')
+
+        # Trigger a csv update
+        self.write_csv()
+
+    def write_csv(self):
+        for index, timestamp in enumerate(self.time_scale):
+            self.csv_writer.writerow([timestamp,
+                                     self.temp_reading[index],
+                                     self.humidity_reading[index]])
 
     def initalize_graph(self):
         # Setup figure
@@ -163,4 +179,5 @@ class GoldPlotApp:
     def close(self):
         self.log.info(f'Arduino was using version {self.arduino_version}')
         self.arduino.close()
+        self.csv_data.close()
         quit()
