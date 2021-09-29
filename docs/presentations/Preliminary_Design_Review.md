@@ -84,26 +84,26 @@ fontsize: 8pt
 
 # Performance Requirements - Compliance Cont.
 
-| Reqt    | Owner     | Title                     | Reqt Value                | Perf. | Margin | Notes/Bias                                                            |
-|---------|-----------|---------------------------|---------------------------|-------|--------|-----------------------------------------------------------------------|
-| 3.3.1   | Team Gold | Mounting                  | Analysis, Demonstration   |       |        |                                                                       |
-| 3.3.1.1 | Team Gold | Baseplate Bottom Surface  | Demonstration             |       |        |                                                                       |
-| 3.3.1.2 | Team Gold | Housing to Baseplate      | Demonstration             |       |        |                                                                       |
-| 3.3.2   | Team Gold | Electrical                | Validation, Demonstration |       |        | System Electrical Circuit Diagram req’d (including Arduino functions) |
-| 3.3.3   | Team Gold | Data Power and Access     | Demonstration             |       |        |                                                                       |
-| 3.4.1   | Team Gold | Housing                   | Validation, Demonstration |       |        | *STL file and outline drawing required for fabrication                |
-| 3.4.2   | Team Gold | Baseplate                 | Validation                |       |        |                                                                       |
-| 3.4.3   | Team Gold | Electrical                | Validation                |       |        |                                                                       |
-| 3.4.4   | Team Gold | Hardware                  | Validation, Inspection    |       |        |                                                                       |
-| 3.5.1   | Team Gold | Team Structure            | Demonstration             |       |        |                                                                       |
+| Reqt    | Owner     | Title                    | Reqt Value                | Perf. | Margin | Notes/Bias                                                            |
+|---------|-----------|--------------------------|---------------------------|-------|--------|-----------------------------------------------------------------------|
+| 3.3.1   | Team Gold | Mounting                 | Analysis, Demonstration   |       |        |                                                                       |
+| 3.3.1.1 | Team Gold | Baseplate Bottom Surface | Demonstration             |       |        |                                                                       |
+| 3.3.1.2 | Team Gold | Housing to Baseplate     | Demonstration             |       |        |                                                                       |
+| 3.3.2   | Team Gold | Electrical               | Validation, Demonstration |       |        | System Electrical Circuit Diagram req’d (including Arduino functions) |
+| 3.3.3   | Team Gold | Data Power and Access    | Demonstration             |       |        |                                                                       |
+| 3.4.1   | Team Gold | Housing                  | Validation, Demonstration |       |        | *STL file and outline drawing required for fabrication                |
+| 3.4.2   | Team Gold | Baseplate                | Validation                |       |        |                                                                       |
+| 3.4.3   | Team Gold | Electrical               | Validation                |       |        |                                                                       |
+| 3.4.4   | Team Gold | Hardware                 | Validation, Inspection    |       |        |                                                                       |
+| 3.5.1   | Team Gold | Team Structure           | Demonstration             |       |        |                                                                       |
 
 
 # Performance Requirements - Compliance Cont.
 
-|Reqt    | Owner     | Title                     | Reqt Value                | Perf. | Margin | Notes/Bias                                                            |
-|---------|----------|---------------------------|---------------------------|-------|--------|-----------------------------------------------------------------------|
-| 3.5.2   | Team Gold | Team Communications       | Demonstration, Inspection |       |        | Weekly email status reports                                           |
-| 3.5.3   | Team Gold | PDR and CDR Presentations | Demonstration             |       |        | Presentation templates provided, reviewed class before presentations  |
-| 3.5.4.1 | Team Gold | System Fabrication        | Demonstration, Inspection |       |        | Baseplate part file/fab drawing and cover STL file/outline drawing    |
-| 3.5.4.2 | Team Gold | System Demonstration      | Demonstration             |       |        | Instructor executes final verification activity                       |
-| 3.5.5   | Team Gold | System ADP                | Inspection                |       |        | ZIP file of all native files                                          |
+| Reqt    | Owner     | Title                     | Reqt Value                | Perf. | Margin | Notes/Bias                                                           |
+|---------|-----------|---------------------------|---------------------------|-------|--------|----------------------------------------------------------------------|
+| 3.5.2   | Team Gold | Team Communications       | Demonstration, Inspection |       |        | Weekly email status reports                                          |
+| 3.5.3   | Team Gold | PDR and CDR Presentations | Demonstration             |       |        | Presentation templates provided, reviewed class before presentations |
+| 3.5.4.1 | Team Gold | System Fabrication        | Demonstration, Inspection |       |        | Baseplate part file/fab drawing and cover STL file/outline drawing   |
+| 3.5.4.2 | Team Gold | System Demonstration      | Demonstration             |       |        | Instructor executes final verification activity                      |
+| 3.5.5   | Team Gold | System ADP                | Inspection                |       |        | ZIP file of all native files                                         |
