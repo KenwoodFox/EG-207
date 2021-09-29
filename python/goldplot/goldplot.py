@@ -2,6 +2,7 @@
 # EG-207
 # Southern New Hampshire University, 2021
 
+import re
 import time
 import serial
 import logging
@@ -20,6 +21,9 @@ class GoldPlotApp:
         # Graphing
         # Select theme
         mpl.style.use('seaborn')
+
+        # Arduino version
+        self.arduino_version = None
 
         # Setup graph
         self.initalize_graph()
@@ -45,15 +49,23 @@ class GoldPlotApp:
         plt.show()
 
     def get_new_frame(self):
-        try:
-            # Time
-            now = int(time.time())
-            # Frame is one data frame
-            frame = self.arduino.readline().decode().strip('\n')
+        # Time
+        now = int(time.time())
+        # Frame is one data frame
+        frame = self.arduino.readline().decode().strip('\n')
 
+        try:
+            ver_match = re.search('(?<=version )(.*)', frame).group(0)
+            if ver_match is not None:
+                self.arduino_version = str(ver_match)
+        except AttributeError:
+            pass
+
+        try:
             if len(frame) > 0:
                 # Capture a new frame
                 frame = frame.split(',')
+                self.log.debug(f'Raw frame is {frame}')
 
                 self.current_humidy = float(frame[0].strip('H'))
                 self.current_temp = float(frame[1].strip('T'))
@@ -146,7 +158,9 @@ class GoldPlotApp:
             plt.show()
         except KeyboardInterrupt:
             self.log.info('Exiting safely.')
-            exit()
+            self.close()
 
-        def close(self):
-            self.arduino.close()
+    def close(self):
+        self.log.info(f'Arduino was using version {self.arduino_version}')
+        self.arduino.close()
+        quit()
