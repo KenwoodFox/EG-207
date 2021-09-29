@@ -5,18 +5,14 @@ import serial
 
 
 if __name__ == '__main__':
-
-    myframe = 'H39.00,T31.80,\n'
-    print(myframe)
-    print(myframe.split(','))
-
     with serial.Serial('/dev/ttyACM0', 115200, timeout=1) as arduino:
         while True:
             try:
                 # Frame is one data frame
-                frame = arduino.readline()
+                frame = arduino.readline().decode().strip('\n')
 
                 # Split up frame
+                print(frame)
                 frame = frame.split(',')
 
                 humidy = frame[0]
@@ -27,3 +23,5 @@ if __name__ == '__main__':
             except KeyboardInterrupt:
                 print('Exiting safely.')
                 exit()
+            except IndexError:
+                pass

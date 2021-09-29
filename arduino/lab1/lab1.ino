@@ -90,9 +90,9 @@ void loop() {
   // Check if data changed (TODO: Replace with actual data checksum)
   if (dhtHumidity + dhtTemperature != sum) {
     // Send large serial frame
-    Serial.print("H"); Serial.print(dhtHumidity);
+    Serial.print("H"); Serial.print(dhtHumidity);Serial.print(',');
     Serial.print("T"); Serial.print(dhtTemperature);
-    Serial.println("");
+    Serial.print("\n");
 
     sum = dhtHumidity + dhtTemperature;
   } else { 
