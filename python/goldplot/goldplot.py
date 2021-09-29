@@ -33,10 +33,9 @@ class GoldPlotApp:
 
         args = parser.parse_args()
 
-        arduino = serial.Serial(args.port, 115200, timeout=1)
+        self.arduino = serial.Serial(args.port, 115200, timeout=1)
         ani = animation.FuncAnimation(self.fig,
                                       self.update_graph,
-                                      fargs=[arduino],
                                       interval=200)
 
         # Just for flake
@@ -44,6 +43,33 @@ class GoldPlotApp:
 
         # Show plot!
         plt.show()
+
+    def get_new_frame(self):
+        try:
+            # Time
+            now = int(time.time())
+            # Frame is one data frame
+            frame = self.arduino.readline().decode().strip('\n')
+
+            if len(frame) > 0:
+                # Capture a new frame
+                frame = frame.split(',')
+
+                self.current_humidy = float(frame[0].strip('H'))
+                self.current_temp = float(frame[1].strip('T'))
+
+                if self.current_humidy != 0 and self.current_temp != 0:
+                    # Logging
+                    self.log.info(f'Got new frame: {frame}')
+
+                    # Plot scales
+                    self.time_scale.append(now)
+                    self.temp_reading.append(self.current_temp)
+                    self.humidity_reading.append(self.current_humidy)
+                else:
+                    logging.error(f'Error, empty frame: {frame}')
+        except (IndexError, AttributeError, ValueError):
+            self.log.warn('Got bad frame')
 
     def initalize_graph(self):
         # Setup figure
@@ -80,30 +106,13 @@ class GoldPlotApp:
         self.temp_line_plot.set_title('Temp')
         self.humidity_line_plot.set_title('Humidity')
 
-    def update_graph(self, i, arduino):
+    def update_graph(self, i):
         try:
             # Time
             now = int(time.time())
-            # Frame is one data frame
-            frame = arduino.readline().decode().strip('\n')
 
-            if len(frame) > 0:
-                # Capture a new frame
-                frame = frame.split(',')
-
-                self.current_humidy = float(frame[0].strip('H'))
-                self.current_temp = float(frame[1].strip('T'))
-
-                if self.current_humidy != 0 and self.current_temp != 0:
-                    # Logging
-                    self.log.info(f'Got new frame: {frame}')
-
-                    # Plot scales
-                    self.time_scale.append(now)
-                    self.temp_reading.append(self.current_temp)
-                    self.humidity_reading.append(self.current_humidy)
-                else:
-                    logging.error(f'Error, empty frame: {frame}')
+            # Get new frame
+            self.get_new_frame()
 
             self.temp_line_plot.clear()
             self.temp_line_plot.plot(self.time_scale,
@@ -138,9 +147,6 @@ class GoldPlotApp:
         except KeyboardInterrupt:
             self.log.info('Exiting safely.')
             exit()
-        except (IndexError, AttributeError, ValueError):
-            self.log.warn('Got bad frame')
-            pass
 
         def close(self):
             self.arduino.close()
