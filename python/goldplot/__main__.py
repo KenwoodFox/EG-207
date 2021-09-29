@@ -79,7 +79,7 @@ def animate(i, arduino):
 
         # Annotations
         # Max value
-        if float(temp) > max_temp: # If there is a new max
+        if float(temp) > max_temp:  # If there is a new max
             max_temp = float(temp)
             max_temp_time = now
 
@@ -88,8 +88,10 @@ def animate(i, arduino):
                                 xycoords='data',
                                 xytext=(0.8, 0.95),
                                 textcoords='axes fraction',
-                                arrowprops=dict(facecolor='black', shrink=0.05),
-                                horizontalalignment='right', verticalalignment='top')
+                                arrowprops=dict(facecolor='black',
+                                                shrink=0.05),
+                                horizontalalignment='right',
+                                verticalalignment='top')
 
         plt.show()
     except KeyboardInterrupt:
@@ -103,7 +105,15 @@ if __name__ == '__main__':
     try:
         logging.basicConfig(level=logging.INFO)
 
-        arduino = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
+        parser = argparse.ArgumentParser(description='Parse args.')
+        parser.add_argument('--port',
+                            nargs='?',
+                            default='/dev/ttyACM0',
+                            type=str)
+
+        args = parser.parse_args()
+
+        arduino = serial.Serial(args.port, 115200, timeout=1)
         ani = animation.FuncAnimation(fig,
                                       animate,
                                       fargs=[arduino],
