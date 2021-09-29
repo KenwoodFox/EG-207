@@ -31,7 +31,11 @@ ax.spines['top'].set_color('none')
 ax.spines['bottom'].set_color('none')
 ax.spines['left'].set_color('none')
 ax.spines['right'].set_color('none')
-ax.tick_params(labelcolor='w', top=False, bottom=False, left=False, right=False)
+ax.tick_params(labelcolor='w',
+               top=False,
+               bottom=False,
+               left=False,
+               right=False)
 
 ax.set_xlabel('Time (Epoch)')
 
@@ -72,11 +76,10 @@ def animate(i, arduino):
         temp_line_plot.annotate('Max Temp',
                                 xy=(max_temp, now - 1),
                                 xycoords='figure pixels',
-                                arrowprops=dict(facecolor='black', shrink=0.05),
-                                                horizontalalignment='left',
-                                                verticalalignment='top')
-
-
+                                arrowprops=dict(facecolor='black',
+                                                shrink=0.05),
+                                horizontalalignment='left',
+                                verticalalignment='top')
         plt.show()
     except KeyboardInterrupt:
         print('Exiting safely.')
@@ -90,7 +93,10 @@ if __name__ == '__main__':
         logging.basicConfig(level=logging.INFO)
 
         arduino = serial.Serial('/dev/ttyACM0', 115200, timeout=1)
-        ani = animation.FuncAnimation(fig, animate, fargs=[arduino], interval=100)
+        ani = animation.FuncAnimation(fig,
+                                      animate,
+                                      fargs=[arduino],
+                                      interval=100)
         plt.show()
     except KeyboardInterrupt:
         arduino.close()
