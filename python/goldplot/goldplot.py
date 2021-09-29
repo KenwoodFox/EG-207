@@ -19,6 +19,22 @@ class GoldPlotApp:
         # logging
         self.log = logger
 
+        # Parse args
+        parser = argparse.ArgumentParser(description='Parse args.')
+        parser.add_argument('--port',
+                            nargs='?',
+                            default='/dev/ttyACM0',
+                            type=str)
+
+        parser.add_argument('-o',
+                            nargs='?',
+                            default='output.csv',
+                            type=str)
+
+        self.args = parser.parse_args()
+
+        self.arduino = serial.Serial(self.args.port, 115200, timeout=1)
+
         # Graph theme
         mpl.style.use('seaborn')
 
@@ -26,7 +42,7 @@ class GoldPlotApp:
         self.arduino_version = None
 
         # Data for this run
-        self.csv_data = open('hardcoded.csv', 'w')
+        self.csv_data = open(self.args.o, 'w')
         self.csv_writer = csv.writer(self.csv_data, delimiter=',',
                                      quotechar='"',
                                      quoting=csv.QUOTE_MINIMAL)
@@ -36,15 +52,6 @@ class GoldPlotApp:
         self.initalize_graph()
 
     def run(self):
-        parser = argparse.ArgumentParser(description='Parse args.')
-        parser.add_argument('--port',
-                            nargs='?',
-                            default='/dev/ttyACM0',
-                            type=str)
-
-        args = parser.parse_args()
-
-        self.arduino = serial.Serial(args.port, 115200, timeout=1)
         ani = animation.FuncAnimation(self.fig,
                                       self.update_graph,
                                       interval=200)
