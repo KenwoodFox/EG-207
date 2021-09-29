@@ -39,7 +39,7 @@ void setup() {
   dht.begin();
 
   // Initalize hardware inturrupts.
-  Timer1.initialize(50000); // Every 50 ms
+  Timer1.initialize(250000); // Every 250 ms
 
   // Attach raiseDHTFlag to hw inturrupt
   Timer1.attachInterrupt(raiseDHTFlag);

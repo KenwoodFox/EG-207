@@ -4,6 +4,7 @@
 
 import time
 import serial
+import argparse
 import logging
 
 import matplotlib.pyplot as plt
@@ -19,8 +20,11 @@ ax = fig.add_subplot(111)
 temp_line_plot = fig.add_subplot(2, 1, 1, label="Temp")
 humidity_line_plot = fig.add_subplot(2, 1, 2, label="Humidity")
 
+# Mess
 time_scale = []
 temp_reading = []
+max_temp = 0
+max_temp_time = 0
 humidity_reading = []
 
 # Spacing
@@ -45,6 +49,9 @@ humidity_line_plot.set_title('Humidity')
 
 def animate(i, arduino):
     try:
+        global max_temp
+        global max_temp_time
+
         # Time
         now = int(time.time())
         # Frame is one data frame
@@ -64,22 +71,26 @@ def animate(i, arduino):
         temp_reading.append(float(temp))
         humidity_reading.append(float(humidy))
 
+        temp_line_plot.clear()
         temp_line_plot.plot(time_scale, temp_reading, color="red")
+
+        humidity_line_plot.clear()
         humidity_line_plot.plot(time_scale, humidity_reading, color="blue")
 
         # Annotations
         # Max value
-        max_temp = float(max(temp_reading))
-        max_temp_time = now
-        logging.info(f'max is at {max_temp_time} with value {max_temp}')
+        if float(temp) > max_temp: # If there is a new max
+            max_temp = float(temp)
+            max_temp_time = now
 
         temp_line_plot.annotate('Max Temp',
-                                xy=(max_temp, now - 1),
-                                xycoords='figure pixels',
-                                arrowprops=dict(facecolor='black',
-                                                shrink=0.05),
-                                horizontalalignment='left',
-                                verticalalignment='top')
+                                xy=(max_temp_time, max_temp),
+                                xycoords='data',
+                                xytext=(0.8, 0.95),
+                                textcoords='axes fraction',
+                                arrowprops=dict(facecolor='black', shrink=0.05),
+                                horizontalalignment='right', verticalalignment='top')
+
         plt.show()
     except KeyboardInterrupt:
         print('Exiting safely.')
