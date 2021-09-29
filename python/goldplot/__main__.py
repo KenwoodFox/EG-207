@@ -1,3 +1,7 @@
+# Team Gold
+# EG-207
+# Southern New Hampshire University, 2021
+
 import time
 import serial
 import logging
@@ -6,6 +10,8 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import matplotlib as mpl
 
+
+# Select plot theme
 mpl.style.use('seaborn')
 
 fig = plt.figure()
@@ -35,6 +41,8 @@ humidity_line_plot.set_title('Humidity')
 
 def animate(i, arduino):
     try:
+        # Time
+        now = int(time.time())
         # Frame is one data frame
         frame = arduino.readline().decode().strip('\n')
 
@@ -47,12 +55,27 @@ def animate(i, arduino):
         # Logging
         print(f'Got new frame: {frame}')
 
-        time_scale.append(int(time.time()))
+        # Plot scales
+        time_scale.append(now)
         temp_reading.append(float(temp))
         humidity_reading.append(float(humidy))
 
         temp_line_plot.plot(time_scale, temp_reading, color="red")
         humidity_line_plot.plot(time_scale, humidity_reading, color="blue")
+
+        # Annotations
+        # Max value
+        max_temp = float(max(temp_reading))
+        max_temp_time = now
+        logging.info(f'max is at {max_temp_time} with value {max_temp}')
+
+        temp_line_plot.annotate('Max Temp',
+                                xy=(max_temp, now - 1),
+                                xycoords='figure pixels',
+                                arrowprops=dict(facecolor='black', shrink=0.05),
+                                                horizontalalignment='left',
+                                                verticalalignment='top')
+
 
         plt.show()
     except KeyboardInterrupt:
