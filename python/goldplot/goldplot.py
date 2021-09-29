@@ -31,10 +31,10 @@ class GoldPlotApp:
         args = parser.parse_args()
 
         arduino = serial.Serial(args.port, 115200, timeout=1)
-        ani = animation.FuncAnimation(self.fig,
-                                        self.update_graph,
-                                        fargs=[arduino],
-                                        interval=200)
+        animation.FuncAnimation(self.fig,
+                                self.update_graph,
+                                fargs=[arduino],
+                                interval=200)
         plt.show()
 
     def initalize_graph(self):
@@ -95,26 +95,33 @@ class GoldPlotApp:
                 self.humidity_reading.append(self.current_humidy)
 
             self.temp_line_plot.clear()
-            self.temp_line_plot.plot(self.time_scale, self.temp_reading, color="red")
+            self.temp_line_plot.plot(self.time_scale,
+                                     self.temp_reading,
+                                     color="red")
 
             self.humidity_line_plot.clear()
-            self.humidity_line_plot.plot(self.time_scale, self.humidity_reading, color="blue")
+            self.humidity_line_plot.plot(self.time_scale,
+                                         self.humidity_reading,
+                                         color="blue")
 
             # Annotations
-            # Max value
-            if float(self.current_temp) > self.max_temp:  # If there is a new max
+            # If there is a new max
+            if float(self.current_temp) > self.max_temp:
+                # Save the new max
                 self.max_temp = self.current_temp
                 self.max_temp_time = now
 
+            # Annotate the max
             self.temp_line_plot.annotate('Max Temp',
-                                    xy=(self.max_temp_time, self.max_temp),
-                                    xycoords='data',
-                                    xytext=(0.8, 0.95),
-                                    textcoords='axes fraction',
-                                    arrowprops=dict(facecolor='black',
-                                                    shrink=0.05),
-                                    horizontalalignment='right',
-                                    verticalalignment='top')
+                                         xy=(self.max_temp_time,
+                                             self.max_temp),
+                                         xycoords='data',
+                                         xytext=(0.8, 0.95),
+                                         textcoords='axes fraction',
+                                         arrowprops=dict(facecolor='black',
+                                                         shrink=0.05),
+                                         horizontalalignment='right',
+                                         verticalalignment='top')
 
             plt.show()
         except KeyboardInterrupt:
