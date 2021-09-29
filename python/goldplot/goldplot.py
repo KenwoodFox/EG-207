@@ -64,7 +64,7 @@ class GoldPlotApp:
 
     def get_new_frame(self):
         # Time
-        now = int(time.time())
+        now = float(time.time())
         # Frame is one data frame
         frame = self.arduino.readline().decode().strip('\n')
 
@@ -101,10 +101,9 @@ class GoldPlotApp:
         self.write_csv()
 
     def write_csv(self):
-        for index, timestamp in enumerate(self.time_scale):
-            self.csv_writer.writerow([timestamp,
-                                     self.temp_reading[index],
-                                     self.humidity_reading[index]])
+        self.csv_writer.writerow([self.time_scale[-1],
+                                 self.temp_reading[-1],
+                                 self.humidity_reading[-1]])
 
     def initalize_graph(self):
         # Setup figure
