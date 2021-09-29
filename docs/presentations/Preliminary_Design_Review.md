@@ -96,6 +96,12 @@ fontsize: 8pt
 | 3.4.3   | Team Gold | Electrical                | Validation                |       |        |                                                                       |
 | 3.4.4   | Team Gold | Hardware                  | Validation, Inspection    |       |        |                                                                       |
 | 3.5.1   | Team Gold | Team Structure            | Demonstration             |       |        |                                                                       |
+
+
+# Performance Requirements - Compliance Cont.
+
+|Reqt    | Owner     | Title                     | Reqt Value                | Perf. | Margin | Notes/Bias                                                            |
+|---------|----------|---------------------------|---------------------------|-------|--------|-----------------------------------------------------------------------|
 | 3.5.2   | Team Gold | Team Communications       | Demonstration, Inspection |       |        | Weekly email status reports                                           |
 | 3.5.3   | Team Gold | PDR and CDR Presentations | Demonstration             |       |        | Presentation templates provided, reviewed class before presentations  |
 | 3.5.4.1 | Team Gold | System Fabrication        | Demonstration, Inspection |       |        | Baseplate part file/fab drawing and cover STL file/outline drawing    |
