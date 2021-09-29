@@ -14,7 +14,7 @@ if __name__ == '__main__':
     logger = logging.getLogger(__name__)
     coloredlogs.install(
         fmt='%(asctime)s,%(msecs)03d %(hostname)s %(levelname)s %(message)s',
-        level=logging.DEBUG,
+        level=logging.INFO,
         logger=logger)
 
     logger.info("Program Started.")

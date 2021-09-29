@@ -171,7 +171,7 @@ class GoldPlotApp:
                                          xy=(self.max_temp_time,
                                              self.max_temp),
                                          xycoords='data',
-                                         xytext=(0.8, 0.95),
+                                         xytext=(0.2, 0.95),
                                          textcoords='axes fraction',
                                          arrowprops=dict(facecolor='black',
                                                          shrink=0.05),
