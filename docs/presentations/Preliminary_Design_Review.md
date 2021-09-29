@@ -71,7 +71,7 @@ fontsize: 8pt
 
 | Reqt  | Owner     | Title                           | Reqt Value           | Perf. | Margin | Notes/Bias                                                        |
 |-------|-----------|---------------------------------|----------------------|-------|--------|-------------------------------------------------------------------|
-| 3.1.1 | Team Gold | Virtual Instruments Front Panel | Have                 |       |        |                                                                   |
+| 3.1.1 | Team Gold | Virtual Instruments Front Panel | Demonstrate, Inspect |       |        |                                                                   |
 | 3.1.2 | Team Gold | Sensor Update/Read Rate         | Demonstrate, Inspect |       |        |                                                                   |
 | 3.1.3 | Team Gold | Warning and Alarm Indication    | Demonstrate, Test    |       |        | Sensor yellow and red limits and decision-making flow chart req’d |
 | 3.1.4 | Team Gold | Waveform Display                | Demonstrate          |       |        |                                                                   |
