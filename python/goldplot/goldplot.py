@@ -19,11 +19,19 @@ class GoldPlotApp:
         # logging
         self.log = logger
 
+        # Graph theme
+        mpl.style.use('seaborn')
+
         # Parse args
         parser = argparse.ArgumentParser(description='Parse args.')
         parser.add_argument('--port',
                             nargs='?',
                             default='/dev/ttyACM0',
+                            type=str)
+
+        parser.add_argument('--data',
+                            nargs='?',
+                            default=None,
                             type=str)
 
         parser.add_argument('-o',
@@ -33,31 +41,46 @@ class GoldPlotApp:
 
         self.args = parser.parse_args()
 
-        self.arduino = serial.Serial(self.args.port, 115200, timeout=1)
+        if self.args.data is None:
+            # Log
+            self.log.info("Initalizing arduino.")
 
-        # Graph theme
-        mpl.style.use('seaborn')
+            # Connect arduino
+            self.arduino = serial.Serial(self.args.port, 115200, timeout=1)
+
+            # Data for this run
+            self.csv_data = open(self.args.o, 'w')
+            self.csv_writer = csv.writer(self.csv_data, delimiter=',',
+                                         quotechar='"',
+                                         quoting=csv.QUOTE_MINIMAL)
+            self.csv_writer.writerow(['Epoch Time', 'Temp', 'Humidity'])
+
+        else:
+            # Load csv data instead.
+            self.log.debug("Loading CSV.")
+            with open(self.args.data, mode='r') as datafile:
+                csv_reader = csv.DictReader(datafile)
+                for row in csv_reader:
+                    self.log.debug(row)
+                    if row['Epoch Time'] is float:
+                        self.log.debug(f"Read data frame at time {row['Epoch Time']}, with temp {row['Temp']} and humidity {row['Humidity']}")
 
         # Arduino version
         self.arduino_version = None
-
-        # Data for this run
-        self.csv_data = open(self.args.o, 'w')
-        self.csv_writer = csv.writer(self.csv_data, delimiter=',',
-                                     quotechar='"',
-                                     quoting=csv.QUOTE_MINIMAL)
-        self.csv_writer.writerow(['Epoch Time', 'Temp', 'Humidity'])
-
         # Setup graph
         self.initalize_graph()
 
     def run(self):
-        ani = animation.FuncAnimation(self.fig,
-                                      self.update_graph,
-                                      interval=200)
+        if self.args.data is None:
+            # Setup animated graph.
+            ani = animation.FuncAnimation(self.fig,
+                                          self.update_graph,
+                                          interval=200)
 
-        # Just for flake
-        ani.__str__()
+            # Just for flake
+            ani.__str__()
+        else:
+            self.log.debug("Got to run")
 
         # Show plot!
         plt.show()
