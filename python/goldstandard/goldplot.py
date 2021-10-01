@@ -270,6 +270,18 @@ class GoldPlotApp:
                                          verticalalignment='top')
 
 
+            # Calculations for sensor response
+            response_value = self.find_nearest(self.temp_reading, self.max_temp * 0.993)
+            reponse_time = self.time_scale[self.temp_reading.index(response_value)]
+            reponse_time = reponse_time - min(self.time_scale)
+
+            self.temp_line_plot.annotate(f'Sensor Response Time: {reponse_time}',
+                                         xy=(0.3, 1.1),
+                                         xycoords='axes fraction',
+                                         horizontalalignment='right',
+                                         verticalalignment='top')
+
+
             plt.show()
         except KeyboardInterrupt:
             self.log.info('Exiting safely.')
