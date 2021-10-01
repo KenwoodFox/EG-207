@@ -227,9 +227,10 @@ class GoldPlotApp:
 
             self.log.debug(deviations)
 
-            self.temp_first_deviation = self.temp_mean[self.find_nearest(deviations, 1)]
+            self.temp_first_deviation = self.time_scale[self.find_nearest(deviations, 1)]
+            self.temp_second_deviation = self.time_scale[self.find_nearest(deviations, 2)]
 
-            self.log.debug(f"First deviation at {self.temp_first_deviation}")
+            self.log.debug(f"First deviation at {self.temp_first_deviation}, second at {self.temp_second_deviation}")
 
             # Annotate the max
             self.temp_line_plot.annotate('Max Temp',
@@ -244,8 +245,19 @@ class GoldPlotApp:
                                          verticalalignment='top')
 
             self.temp_line_plot.annotate('1st deviation',
-                                         xy=(self.max_temp_time + 4,
-                                             self.max_temp),
+                                         xy=(self.temp_first_deviation,
+                                             self.temp_reading[self.time_scale.index(self.temp_first_deviation)]),
+                                         xycoords='data',
+                                         xytext=(0.5, 0.3),
+                                         textcoords='axes fraction',
+                                         arrowprops=dict(facecolor='black',
+                                                         shrink=0.05),
+                                         horizontalalignment='right',
+                                         verticalalignment='top')
+
+            self.temp_line_plot.annotate('2nd deviation',
+                                         xy=(self.temp_second_deviation,
+                                             self.temp_reading[self.time_scale.index(self.temp_second_deviation)]),
                                          xycoords='data',
                                          xytext=(0.8, 0.3),
                                          textcoords='axes fraction',
@@ -253,6 +265,7 @@ class GoldPlotApp:
                                                          shrink=0.05),
                                          horizontalalignment='right',
                                          verticalalignment='top')
+
 
             plt.show()
         except KeyboardInterrupt:
@@ -263,8 +276,16 @@ class GoldPlotApp:
         normalized_list = []
 
         for element in list:
-            
-            normalized_list.append()
+            element = abs(target - element)
+            normalized_list.append(element)
+
+        local_min = 10
+        for element in normalized_list:
+            if element < local_min:
+                local_min = element
+
+        index_of_min = normalized_list.index(local_min)
+        return index_of_min
 
     def close(self):
         self.log.info(f'Arduino was using version {self.arduino_version}')
