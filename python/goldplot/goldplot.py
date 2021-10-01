@@ -66,17 +66,14 @@ class GoldPlotApp:
             with open(self.args.data, mode='r') as datafile:
                 csv_reader = csv.DictReader(datafile)
                 for row in csv_reader:
-                    self.log.debug(row)
                     if isinstance(row['Epoch Time'], str):
                         _time = row["Epoch Time"]
                         _temp = row["Temp"]
                         _humid = row["Humidity"]
 
-                        self.time_scale.append(_time)
-                        self.temp_reading.append(_temp)
-                        self.humidity_reading.append(_humid)
-
-                        self.log.debug(f"Read data frame at time {_time}, with temp {_temp} and humidity {_humid}")
+                        self.time_scale.append(float(_time))
+                        self.temp_reading.append(float(_temp))
+                        self.humidity_reading.append(float(_humid))
 
     def run(self):
         if self.args.data is None:
@@ -204,15 +201,17 @@ class GoldPlotApp:
                 self.max_temp = self.current_temp
                 self.max_temp_time = now
 
+            self.temp_line_plot.set_xlim(min(self.time_scale), max(self.time_scale))
+
             self.log.debug(f"Max temp {self.max_temp}")
             self.log.debug(f"Time {self.max_temp_time}")
 
             # Annotate the max
-            self.temp_line_plot.annotate('Max Temp',
-                                         xy=(self.max_temp_time,
-                                             self.max_temp),
+            self.temp_line_plot.annotate('This is (0,0)',
+                                         xy=(0,
+                                             0),
                                          xycoords='data',
-                                         xytext=(0.2, 0.95),
+                                         xytext=(0.2, 0.80),
                                          textcoords='axes fraction',
                                          arrowprops=dict(facecolor='black',
                                                          shrink=0.05),
