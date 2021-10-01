@@ -201,8 +201,6 @@ class GoldPlotApp:
                 self.max_temp = self.current_temp
                 self.max_temp_time = now
 
-            self.temp_line_plot.set_xlim(min(self.time_scale), max(self.time_scale))
-
             self.log.debug(f"Max temp {self.max_temp}")
             self.log.debug(f"Time {self.max_temp_time}")
 
