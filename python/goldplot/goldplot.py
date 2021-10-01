@@ -101,9 +101,12 @@ class GoldPlotApp:
         self.write_csv()
 
     def write_csv(self):
-        self.csv_writer.writerow([self.time_scale[-1],
-                                 self.temp_reading[-1],
-                                 self.humidity_reading[-1]])
+        try:
+            self.csv_writer.writerow([self.time_scale[-1],
+                                     self.temp_reading[-1],
+                                     self.humidity_reading[-1]])
+        except IndexError:
+            self.log.warn("Not writing bad frame to csv.")
 
     def initalize_graph(self):
         # Setup figure
