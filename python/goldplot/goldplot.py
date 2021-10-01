@@ -41,6 +41,11 @@ class GoldPlotApp:
 
         self.args = parser.parse_args()
 
+        # Arduino version
+        self.arduino_version = None
+        # Setup graph
+        self.initalize_graph()
+
         if self.args.data is None:
             # Log
             self.log.info("Initalizing arduino.")
@@ -62,13 +67,16 @@ class GoldPlotApp:
                 csv_reader = csv.DictReader(datafile)
                 for row in csv_reader:
                     self.log.debug(row)
-                    if row['Epoch Time'] is float:
-                        self.log.debug(f"Read data frame at time {row['Epoch Time']}, with temp {row['Temp']} and humidity {row['Humidity']}")
+                    if isinstance(row['Epoch Time'], str):
+                        _time = row["Epoch Time"]
+                        _temp = row["Temp"]
+                        _humid = row["Humidity"]
 
-        # Arduino version
-        self.arduino_version = None
-        # Setup graph
-        self.initalize_graph()
+                        self.time_scale.append(_time)
+                        self.temp_reading.append(_temp)
+                        self.humidity_reading.append(_humid)
+
+                        self.log.debug(f"Read data frame at time {_time}, with temp {_temp} and humidity {_humid}")
 
     def run(self):
         if self.args.data is None:
@@ -81,6 +89,8 @@ class GoldPlotApp:
             ani.__str__()
         else:
             self.log.debug("Got to run")
+
+            self.update_graph(0)
 
         # Show plot!
         plt.show()
@@ -171,8 +181,11 @@ class GoldPlotApp:
             # Time
             now = int(time.time())
 
-            # Get new frame
-            self.get_new_frame()
+            if self.args.data is None:
+                # Get new frame
+                self.get_new_frame()
+
+            self.log.debug(self.temp_reading)
 
             self.temp_line_plot.clear()
             self.temp_line_plot.plot(self.time_scale,
@@ -190,6 +203,9 @@ class GoldPlotApp:
                 # Save the new max
                 self.max_temp = self.current_temp
                 self.max_temp_time = now
+
+            self.log.debug(f"Max temp {self.max_temp}")
+            self.log.debug(f"Time {self.max_temp_time}")
 
             # Annotate the max
             self.temp_line_plot.annotate('Max Temp',
