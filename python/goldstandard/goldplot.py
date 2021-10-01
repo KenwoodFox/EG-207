@@ -8,12 +8,11 @@ import time
 import serial
 import logging
 import argparse
+import subprocess
 
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import matplotlib as mpl
-
-import numpy as np
 
 from statistics import mean
 
@@ -47,6 +46,10 @@ class GoldPlotApp:
 
         # Arduino version
         self.arduino_version = None
+
+        # Software version
+        self.software_version = self.get_git_revision_hash()
+
         # Setup graph
         self.initalize_graph()
 
@@ -177,9 +180,9 @@ class GoldPlotApp:
         self.temp_line_plot.set_title('Temp')
         self.humidity_line_plot.set_title('Humidity')
 
-        self.ax.annotate(f"""Software Version {None}
+        self.ax.annotate(f"""Software Version {self.software_version}
                              Arduino Version {self.arduino_version}""",
-                         xy=(0.12, -0.13),
+                         xy=(0.3, -0.13),
                          xycoords='axes fraction',
                          horizontalalignment='right',
                          verticalalignment='top')
@@ -286,6 +289,9 @@ class GoldPlotApp:
 
         index_of_min = normalized_list.index(local_min)
         return index_of_min
+
+    def get_git_revision_hash(self) -> str:
+        return subprocess.check_output(['git', 'describe', '--abbrev=4', '--always', '--tags']).decode('ascii').strip()
 
     def close(self):
         self.log.info(f'Arduino was using version {self.arduino_version}')
