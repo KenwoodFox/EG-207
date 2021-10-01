@@ -195,19 +195,16 @@ class GoldPlotApp:
                                          color="blue")
 
             # Annotations
-            # If there is a new max
-            if float(self.current_temp) > self.max_temp:
-                # Save the new max
-                self.max_temp = self.current_temp
-                self.max_temp_time = now
+            self.max_temp = max(self.temp_reading)
+            self.max_temp_time = self.time_scale[self.temp_reading.index(self.max_temp)]
 
             self.log.debug(f"Max temp {self.max_temp}")
             self.log.debug(f"Time {self.max_temp_time}")
 
             # Annotate the max
-            self.temp_line_plot.annotate('This is (0,0)',
-                                         xy=(0,
-                                             0),
+            self.temp_line_plot.annotate('Max Temp',
+                                         xy=(self.max_temp_time,
+                                             self.max_temp),
                                          xycoords='data',
                                          xytext=(0.2, 0.80),
                                          textcoords='axes fraction',
