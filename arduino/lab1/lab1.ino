@@ -23,6 +23,7 @@ float dhtTemperature = 0;
 
 // Misc persistant data
 float sum = 0;
+int stimulate = 0; // counts up
 
 // Flags
 bool checkdht = false;
@@ -39,7 +40,7 @@ void setup() {
   dht.begin();
 
   // Initalize hardware inturrupts.
-  Timer1.initialize(50000); // Every 50 ms
+  Timer1.initialize(250000); // Every 250 ms
 
   // Attach raiseDHTFlag to hw inturrupt
   Timer1.attachInterrupt(raiseDHTFlag);
@@ -63,6 +64,7 @@ void setup() {
  */
 void raiseDHTFlag(void) {
   checkdht = true;
+  stimulate++;
 }
 
 
@@ -88,12 +90,15 @@ void loop() {
   }
 
   // Check if data changed (TODO: Replace with actual data checksum)
-  if (dhtHumidity + dhtTemperature != sum) {
+  if (dhtHumidity + dhtTemperature != sum || stimulate > 8) {
     // Send large serial frame
-    Serial.print("H"); Serial.print(dhtHumidity); Serial.print(",");
-    Serial.print("T"); Serial.print(dhtTemperature); Serial.println(",");
+    Serial.print("H"); Serial.print(dhtHumidity);Serial.print(',');
+    Serial.print("T"); Serial.print(dhtTemperature);
+    Serial.print("\n");
 
     sum = dhtHumidity + dhtTemperature;
+
+    stimulate = 0;
   } else { 
     //Serial.println("Nothing to send."); // Debug!
   }

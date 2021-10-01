@@ -98,6 +98,11 @@ requirements:
 	else echo "---> MISSING requirements.txt file"; \
 	fi
 
+# Monitor the serial (debug) output.
+# Requires minicom
+monitor: upload
+	minicom -D $(SERIAL_DEV) -b 115200
+
 lint: tools
 	$(BINDIR)/arduino-lint --compliance strict
 
