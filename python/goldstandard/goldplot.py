@@ -173,8 +173,15 @@ class GoldPlotApp:
         self.temp_line_plot.set_title('Temp')
         self.humidity_line_plot.set_title('Humidity')
 
-        self.ax.annotate(f'Software Version {None}\nArduino Version {self.arduino_version}',
+        self.ax.annotate(f"""Software Version {None}
+                             Arduino Version {self.arduino_version}""",
                          xy=(0.12, -0.13),
+                         xycoords='axes fraction',
+                         horizontalalignment='right',
+                         verticalalignment='top')
+
+        self.ax.annotate('Gold Standard, Team Gold, SNHU',
+                         xy=(0.2, 1.1),
                          xycoords='axes fraction',
                          horizontalalignment='right',
                          verticalalignment='top')
