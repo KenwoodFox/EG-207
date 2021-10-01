@@ -173,6 +173,12 @@ class GoldPlotApp:
         self.temp_line_plot.set_title('Temp')
         self.humidity_line_plot.set_title('Humidity')
 
+        self.ax.annotate(f'Software Version {None}\nArduino Version {self.arduino_version}',
+                         xy=(0.12, -0.13),
+                         xycoords='axes fraction',
+                         horizontalalignment='right',
+                         verticalalignment='top')
+
     def update_graph(self, i):
         try:
             if self.args.data is None:
