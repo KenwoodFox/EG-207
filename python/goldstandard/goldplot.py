@@ -230,10 +230,12 @@ class GoldPlotApp:
 
             self.log.debug(deviations)
 
-            self.temp_first_deviation = self.time_scale[self.find_nearest(deviations, 1)]
-            self.temp_second_deviation = self.time_scale[self.find_nearest(deviations, 2)]
+            self.temp_first_deviation = self.time_scale[
+                                        self.find_nearest(deviations, 1)]
+            self.temp_second_deviation = self.time_scale[
+                                         self.find_nearest(deviations, 2)]
 
-            self.log.debug(f"First deviation at {self.temp_first_deviation}, second at {self.temp_second_deviation}")
+            self.log.debug(f"First deviation at {self.temp_first_deviation}, second at {self.temp_second_deviation}")  # Noqa: E501
 
             # Annotate the max
             self.temp_line_plot.annotate('Max Temp',
@@ -249,7 +251,7 @@ class GoldPlotApp:
 
             self.temp_line_plot.annotate('1st deviation',
                                          xy=(self.temp_first_deviation,
-                                             self.temp_reading[self.time_scale.index(self.temp_first_deviation)]),
+                                             self.temp_reading[self.time_scale.index(self.temp_first_deviation)]),  # Noqa: E501
                                          xycoords='data',
                                          xytext=(0.5, 0.3),
                                          textcoords='axes fraction',
@@ -260,7 +262,7 @@ class GoldPlotApp:
 
             self.temp_line_plot.annotate('2nd deviation',
                                          xy=(self.temp_second_deviation,
-                                             self.temp_reading[self.time_scale.index(self.temp_second_deviation)]),
+                                             self.temp_reading[self.time_scale.index(self.temp_second_deviation)]),  # Noqa: E501
                                          xycoords='data',
                                          xytext=(0.8, 0.3),
                                          textcoords='axes fraction',
@@ -304,7 +306,7 @@ class GoldPlotApp:
         return index_of_min
 
     def get_git_revision_hash(self) -> str:
-        return subprocess.check_output(['git', 'describe', '--abbrev=4', '--always', '--tags']).decode('ascii').strip()
+        return subprocess.check_output(['git', 'describe', '--abbrev=4', '--always', '--tags']).decode('ascii').strip()  # Noqa: E501
 
     def close(self):
         self.log.info(f'Arduino was using version {self.arduino_version}')
