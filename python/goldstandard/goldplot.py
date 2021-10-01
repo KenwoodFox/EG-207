@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import matplotlib as mpl
 
+import numpy as np
+
 from statistics import mean
 
 
@@ -194,8 +196,6 @@ class GoldPlotApp:
                 # Get new frame
                 self.get_new_frame()
 
-            self.log.debug(self.temp_reading)
-
             self.temp_line_plot.clear()
             self.temp_line_plot.plot(self.time_scale,
                                      self.temp_reading,
@@ -206,17 +206,30 @@ class GoldPlotApp:
                                          self.humidity_reading,
                                          color="blue")
 
-            # Annotations
+            # === Annotations ===
+            # Max temp
             self.max_temp = max(self.temp_reading)
             self.max_temp_time = self.time_scale[
                                  self.temp_reading.index(self.max_temp)]
-
             self.log.debug(f"Max temp {self.max_temp}")
-            self.log.debug(f"Time {self.max_temp_time}")
 
             # Standard deviation math
             self.temp_mean = mean(self.temp_reading)
-            self.log.debug(f'Mean of temp is {self.temp_mean}')
+            self.log.info(f'Mean of temp is {self.temp_mean}')
+
+            deviations = []
+            for reading in self.temp_reading:
+                result = (reading - self.temp_mean) ** 2
+                deviations.append(result)
+
+            # Variance
+            self.temp_variance = mean(deviations)
+
+            self.log.debug(deviations)
+
+            self.temp_first_deviation = self.temp_mean[self.find_nearest(deviations, 1)]
+
+            self.log.debug(f"First deviation at {self.temp_first_deviation}")
 
             # Annotate the max
             self.temp_line_plot.annotate('Max Temp',
@@ -245,6 +258,13 @@ class GoldPlotApp:
         except KeyboardInterrupt:
             self.log.info('Exiting safely.')
             self.close()
+
+    def find_nearest(self, list, target):
+        normalized_list = []
+
+        for element in list:
+            
+            normalized_list.append()
 
     def close(self):
         self.log.info(f'Arduino was using version {self.arduino_version}')
