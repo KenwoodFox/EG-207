@@ -175,9 +175,6 @@ class GoldPlotApp:
 
     def update_graph(self, i):
         try:
-            # Time
-            now = int(time.time())
-
             if self.args.data is None:
                 # Get new frame
                 self.get_new_frame()
@@ -196,7 +193,8 @@ class GoldPlotApp:
 
             # Annotations
             self.max_temp = max(self.temp_reading)
-            self.max_temp_time = self.time_scale[self.temp_reading.index(self.max_temp)]
+            self.max_temp_time = self.time_scale[
+                                 self.temp_reading.index(self.max_temp)]
 
             self.log.debug(f"Max temp {self.max_temp}")
             self.log.debug(f"Time {self.max_temp_time}")
@@ -207,6 +205,17 @@ class GoldPlotApp:
                                              self.max_temp),
                                          xycoords='data',
                                          xytext=(0.2, 0.80),
+                                         textcoords='axes fraction',
+                                         arrowprops=dict(facecolor='black',
+                                                         shrink=0.05),
+                                         horizontalalignment='right',
+                                         verticalalignment='top')
+
+            self.temp_line_plot.annotate('1st deviation',
+                                         xy=(self.max_temp_time + 4,
+                                             self.max_temp),
+                                         xycoords='data',
+                                         xytext=(0.8, 0.3),
                                          textcoords='axes fraction',
                                          arrowprops=dict(facecolor='black',
                                                          shrink=0.05),
