@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 import matplotlib as mpl
 
+from statistics import mean
+
 
 class GoldPlotApp:
     def __init__(self, logger, **kwargs):
@@ -211,6 +213,10 @@ class GoldPlotApp:
 
             self.log.debug(f"Max temp {self.max_temp}")
             self.log.debug(f"Time {self.max_temp_time}")
+
+            # Standard deviation math
+            self.temp_mean = mean(self.temp_reading)
+            self.log.debug(f'Mean of temp is {self.temp_mean}')
 
             # Annotate the max
             self.temp_line_plot.annotate('Max Temp',
