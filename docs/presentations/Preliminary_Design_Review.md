@@ -22,6 +22,19 @@ fontsize: 8pt
 ---
 
 
+# PDR Agenda
+
+ - Con-Ops Summary
+ - Environmental System Description
+ - Enviornmental Sensors
+ - Performance Requirements/Compliance
+  - Functional
+  - Performance
+  - Verification
+ - Baseplate/Housing Design Concepts
+ - Next Steps
+
+
 # Concept of Operations (Con-Ops) Summary
 
  - Stakeholders
@@ -46,7 +59,7 @@ fontsize: 8pt
    - Increased risk of the system to malfunction if operation of system is prolonged without proper maintenance.
    - Airborne contaminants can cause the system to malfunction and provide inaccurate data.
 
-**A Flow chart is needed here**
+![Con Ops Flow Chart (Arduino)](resources/PDR_Flowchart_Arduino.png){ width=22%} ![Con Ops Flow Chart (Labview)](resources/PDR_Flowchart_LabView.png){ width=25% }
 
 
 # Environmental System Description
