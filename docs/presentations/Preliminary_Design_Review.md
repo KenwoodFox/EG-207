@@ -86,41 +86,43 @@ fontsize: 8pt
 
 # Performance Requirements - Compliance
 
-| Reqt  | Owner     | Title                           | Reqt Value           | Perf. | Margin | Notes/Bias                                                        |
-|-------|-----------|---------------------------------|----------------------|-------|--------|-------------------------------------------------------------------|
-| 3.1.1 | Team Gold | Virtual Instruments Front Panel | Demonstrate, Inspect |       |        |                                                                   |
-| 3.1.2 | Team Gold | Sensor Update/Read Rate         | Demonstrate, Inspect |       |        |                                                                   |
-| 3.1.3 | Team Gold | Warning and Alarm Indication    | Demonstrate, Test    |       |        | Sensor yellow and red limits and decision-making flow chart req’d |
-| 3.1.4 | Team Gold | Waveform Display                | Demonstrate          |       |        |                                                                   |
-| 3.1.5 | Team Gold | Data Logging                    | Demonstrate, Inspect |       |        | Data file to be provided in ADP                                   |
-| 3.1.6 | Team Gold | Operational Modes               | Demonstrate          |       |        |                                                                   |
-| 3.2.1 | Team Gold | Sensor Accuracy                 | Validation           |       |        | Standard to be used for accuracy determination                    |
-| 3.2.2 | Team Gold | Sensor Percision                | Analysis, Validation |       |        | Standard deviation analysis req’d                                 |
-| 3.2.3 | Team Gold | Calibration or Diagnostics      | Demonstration        |       |        |                                                                   |
+| Reqt  | Owner     | Title                           | Reqt Value           | Perf.           | Margin | Notes/Bias                                                        |
+|-------|-----------|---------------------------------|----------------------|-----------------|--------|-------------------------------------------------------------------|
+| 3.1.1 | Team Gold | Virtual Instruments Front Panel | Demonstrate, Inspect | Complies        |        |                                                                   |
+| 3.1.2 | Team Gold | Sensor Update/Read Rate         | Demonstrate, Inspect | Inturrupt Based | ISR    |                                                                   |
+| 3.1.3 | Team Gold | Warning and Alarm Indication    | Demonstrate, Test    | Complies        |        | Sensor yellow and red limits and decision-making flow chart req’d |
+| 3.1.4 | Team Gold | Waveform Display                | Demonstrate          | Complies        |        |                                                                   |
+| 3.1.5 | Team Gold | Data Logging                    | Demonstrate, Inspect | Complies        |        | Data file to be provided in ADP                                   |
+| 3.1.6 | Team Gold | Operational Modes               | Demonstrate          | Complies        |        |                                                                   |
+| 3.2.1 | Team Gold | Sensor Accuracy                 | Validation           | Characterized   |        | Standard to be used for accuracy determination                    |
+| 3.2.2 | Team Gold | Sensor Percision                | Analysis, Validation | Characterized   |        | Standard deviation analysis req’d                                 |
+| 3.2.3 | Team Gold | Calibration or Diagnostics      | Demonstration        | Built in        |        |                                                                   |
 
 
 # Performance Requirements - Compliance Cont.
 
-| Reqt    | Owner     | Title                    | Reqt Value                | Perf. | Margin | Notes/Bias                                                            |
-|---------|-----------|--------------------------|---------------------------|-------|--------|-----------------------------------------------------------------------|
-| 3.3.1   | Team Gold | Mounting                 | Analysis, Demonstration   |       |        |                                                                       |
-| 3.3.1.1 | Team Gold | Baseplate Bottom Surface | Demonstration             |       |        |                                                                       |
-| 3.3.1.2 | Team Gold | Housing to Baseplate     | Demonstration             |       |        |                                                                       |
-| 3.3.2   | Team Gold | Electrical               | Validation, Demonstration |       |        | System Electrical Circuit Diagram req’d (including Arduino functions) |
-| 3.3.3   | Team Gold | Data Power and Access    | Demonstration             |       |        |                                                                       |
-| 3.4.1   | Team Gold | Housing                  | Validation, Demonstration |       |        | *STL file and outline drawing required for fabrication                |
-| 3.4.2   | Team Gold | Baseplate                | Validation                |       |        |                                                                       |
-| 3.4.3   | Team Gold | Electrical               | Validation                |       |        |                                                                       |
-| 3.4.4   | Team Gold | Hardware                 | Validation, Inspection    |       |        |                                                                       |
-| 3.5.1   | Team Gold | Team Structure           | Demonstration             |       |        |                                                                       |
+| Reqt    | Owner     | Title                    | Reqt Value                | Perf.           | Margin    | Notes/Bias                                                            |
+|---------|-----------|--------------------------|---------------------------|-----------------|-----------|-----------------------------------------------------------------------|
+| 3.3.1   | Team Gold | Mounting                 | Analysis, Demonstration   | Complies        |           |                                                                       |
+| 3.3.1.1 | Team Gold | Baseplate Bottom Surface | Demonstration             | Complies        | Flush     |                                                                       |
+| 3.3.1.2 | Team Gold | Housing to Baseplate     | Demonstration             | Complies        | Flush     |                                                                       |
+| 3.3.2   | Team Gold | Electrical               | Validation, Demonstration | Complies        | Proto     | System Electrical Circuit Diagram req’d (including Arduino functions) |
+| 3.3.3   | Team Gold | Data Power and Access    | Demonstration             | Complies        | TTY       |                                                                       |
+| 3.4.1   | Team Gold | Housing                  | Validation, Demonstration | Complies        |           | *STL file and outline drawing required for fabrication                |
+| 3.4.2   | Team Gold | Baseplate                | Validation                | Complies        |           |                                                                       |
+| 3.4.3   | Team Gold | Electrical               | Validation                | Complies        |           |                                                                       |
+| 3.4.4   | Team Gold | Hardware                 | Validation, Inspection    | Complies        | Collected |                                                                       |
+| 3.5.1   | Team Gold | Team Structure           | Demonstration             | Does Not Comply |           |                                                                       |
 
 
 # Performance Requirements - Compliance Cont.
 
-| Reqt    | Owner     | Title                     | Reqt Value                | Perf. | Margin | Notes/Bias                                                           |
-|---------|-----------|---------------------------|---------------------------|-------|--------|----------------------------------------------------------------------|
-| 3.5.2   | Team Gold | Team Communications       | Demonstration, Inspection |       |        | Weekly email status reports                                          |
-| 3.5.3   | Team Gold | PDR and CDR Presentations | Demonstration             |       |        | Presentation templates provided, reviewed class before presentations |
-| 3.5.4.1 | Team Gold | System Fabrication        | Demonstration, Inspection |       |        | Baseplate part file/fab drawing and cover STL file/outline drawing   |
-| 3.5.4.2 | Team Gold | System Demonstration      | Demonstration             |       |        | Instructor executes final verification activity                      |
-| 3.5.5   | Team Gold | System ADP                | Inspection                |       |        | ZIP file of all native files                                         |
+| Reqt    | Owner     | Title                     | Reqt Value                | Perf.        | Margin    | Notes/Bias                                                           |
+|---------|-----------|---------------------------|---------------------------|--------------|-----------|----------------------------------------------------------------------|
+| 3.5.2   | Team Gold | Team Communications       | Demonstration, Inspection | Complies[^1] |           | Weekly email status reports                                          |
+| 3.5.3   | Team Gold | PDR and CDR Presentations | Demonstration             | Complies     | Automatic | Presentation templates provided, reviewed class before presentations |
+| 3.5.4.1 | Team Gold | System Fabrication        | Demonstration, Inspection | Complies     |           | Baseplate part file/fab drawing and cover STL file/outline drawing   |
+| 3.5.4.2 | Team Gold | System Demonstration      | Demonstration             | Complies     |           | Instructor executes final verification activity                      |
+| 3.5.5   | Team Gold | System ADP                | Inspection                | Complies     |           | ZIP file of all native files                                         |
+
+[^1]: See our [discord](https://discord.gg/gQ547MBvgA).
