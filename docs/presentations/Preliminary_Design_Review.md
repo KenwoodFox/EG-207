@@ -126,3 +126,46 @@ fontsize: 8pt
 | 3.5.5   | Team Gold | System ADP                | Inspection                | Complies     |           | ZIP file of all native files                                         |
 
 [^1]: See our [discord](https://discord.gg/gQ547MBvgA).
+
+
+# Verification Requirements
+
+| Reqt  | Title                   | Method | Notes/Bias |
+|-------|-------------------------|--------|------------|
+| 3.1   | Functional Requirements |        |            |
+| 3.1.1 | FILL ME OUT...          |        |            |
+
+
+# Concepts/RC0
+
+## Base Plate
+
+![Baseplate Drawing](resources/BasePlate.png)
+
+The base plate is ready to machine and has its drawings written up.
+
+
+# Concepts/RC0 Cont.
+
+## Shell
+
+![Shell 3D Render](resources/ShellRender.png)
+
+The Upper shell contains all the mounting for each sensor save for the light sensor, witch has its own, actuated housing.
+
+
+# Concepts/RC0 Cont.
+
+## LabView
+
+FILL THIS OUT
+
+
+# Next Steps[^2]
+
+ - Complete RC1 manufacturing on plastic cover
+ - Complete prototyping of light sensor housing
+ - Machine Baseplate
+ - Construct/Finalize VI
+
+[^2]: Next steps coppied from kaban, see cards for latest status: [Link](https://github.com/KenwoodFox/EG-207-CCEMS/projects/1)
