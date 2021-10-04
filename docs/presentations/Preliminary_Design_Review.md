@@ -4,11 +4,15 @@ title:
 subtitle:
  - Version &hash
 author:
- - Team Gold
+ - Joe
+ - Maria
+ - Noah
+ - Josh
+ - William
 institute:
  - Southern New Hampshire University
 description: |
-    This should be filled out
+    This should be filled out...
 theme: Madrid
 navigation: frame
 date: "Build Date: &date"
