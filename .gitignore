@@ -21,3 +21,4 @@ Pipfile*
 
 # Compiled artifacts
 *.stl
+*.pdf
