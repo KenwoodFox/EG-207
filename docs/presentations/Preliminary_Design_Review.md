@@ -70,7 +70,7 @@ fontsize: 8pt
  - Sensors:
    - Temp/RH: DHT11
    - UV Light: TBD
-   - Visible Light: Photoresitor
+   - Visible Light: Photoresistor
 
 
 # Environmental Sensors
