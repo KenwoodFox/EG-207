@@ -140,7 +140,7 @@ fontsize: 8pt
 
 ## Base Plate
 
-![Baseplate Drawing](resources/BasePlate.png)
+![Baseplate Drawing](resources/sensor_baseplate_rc0.png)
 
 The base plate is ready to machine and has its drawings written up.
 
@@ -149,7 +149,7 @@ The base plate is ready to machine and has its drawings written up.
 
 ## Shell
 
-![Shell 3D Render](resources/ShellRender.png)
+![Shell 3D Render](resources/sensor_package_housing_rc0.png)
 
 The Upper shell contains all the mounting for each sensor save for the light sensor, witch has its own, actuated housing.
 
@@ -158,7 +158,7 @@ The Upper shell contains all the mounting for each sensor save for the light sen
 
 ## LabView
 
-FILL THIS OUT
+![Lab View VI prototype](resources/PDR_LabVIEW_VI_Front_Panel.png){ width=45% }
 
 
 # Next Steps[^2]
