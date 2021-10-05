@@ -130,37 +130,54 @@ fontsize: 8pt
 
 # Verification Requirements
 
-| Reqt    | Title                        | Method | Notes/Bias                                                           |
-|---------|------------------------------|--------|----------------------------------------------------------------------|
-| 3.1     | Functional Requirements      |        |                                                                      |
-| 3.1.1   | Virtual Instrument panel     | D,I    |                                                                      |
-| 3.1.2   | Sensor Update/Read Rate      | A,D    |                                                                      |
-| 3.1.3   | Warning and Alarm Indication | D,T    | Sensor and red limits and decision-making flow chart                 |
-| 3.1.4   | Waveform Display             | D      |                                                                      |
-| 3.1.5   | Data Logging                 | D,I    | Data file to be provided in ADP                                      |
-| 3.1.6   | Operational Modes            | D      |                                                                      |
-| 3.2     | Performance Requirements     |        |                                                                      |
-| 3.2.1   | Sensor accuracy              | V      | Standard to be used for accuracy determination                       |
-| 3.2.2   | Sensor Precision             | A,V    | Standard Deviation Analysis                                          |
-| 3.2.3   | Calibration Diagnostics      | D      |                                                                      |
-| 3.3     | Interface Requirements       |        |                                                                      |
-| 3.3.1   | Mounting                     | A,D    |                                                                      |
-| 3.3.1.1 | Baseplate Bottom Surface     | D      |                                                                      |
-| 3.3.1.2 | Housing to Baseplate         | D      |                                                                      |
-| 3.3.2   | Electrical                   | V,D    | System Electrical Circuit Diagram                                    |
-| 3.3.3   | Data and power Access        | D      |                                                                      |
-| 3.4     | Design Requirements          |        |                                                                      |
-| 3.4 1   | Housing                      | V,D    | STl file anf outline drawing required for fabrication                |
-| 3.4.2   | Baseplate                    | V      |                                                                      |
-| 3.4.3   | Electrical                   | V      |                                                                      |
-| 3.4.4.  | Hardware                     | V,I    |                                                                      |
-| 3.5     | Project Requirements         |        |                                                                      |
-| 3.5.1   | Team Structure               | D      |                                                                      |
-| 3.5.2   | Team Communications          | D,I    | Weekly email status reports                                          |
-| 3.5.3   | PDR and CDR Presentations    | D      | Presentation templates provided, reviewed class before presentations |
-| 3.5.4   | System Fabrication           | D,I    | Baseplate part file/fab/ drawing and cover STL file/outline drawing  |
-| 3.5.4   | System Demonstration         | D      | Instructor executes final verification activity                      |
-| 3.5.5   | System ADP                   | I      | ZIP file of all native files                                         |
+| Reqt  | Title                        | Method       | Notes/Bias                                                               |
+|-------|------------------------------|--------------|--------------------------------------------------------------------------|
+| 3.1   | Functional Requirements      |              |                                                                          |
+| 3.1.1 | Virtual Instrument panel     | D[^D], I[^I] | By including it we can demonstrate that we meet this req.                |
+| 3.1.2 | Sensor Update/Read Rate      | A[^A], D     | We will use inturrupt based frame handling, to avoid 'read rate' issues. |
+| 3.1.3 | Warning and Alarm Indication | D, T[^T]     | Sensor and red limits and decision-making flow chart                     |
+| 3.1.4 | Waveform Display             | D            |                                                                          |
+| 3.1.5 | Data Logging                 | D, I         | Data file to be provided in ADP                                          |
+| 3.1.6 | Operational Modes            | D            | The sensor will operate as a state machine, and have transition states   |
+| 3.2   | Performance Requirements     |              |                                                                          |
+| 3.2.1 | Sensor accuracy              | V[^V]        | Standard to be used for accuracy determination                           |
+| 3.2.2 | Sensor Precision             | A, V         | Standard Deviation Analysis                                              |
+| 3.2.3 | Calibration Diagnostics      | D            |                                                                          |
+| 3.3   | Interface Requirements       |              |                                                                          |
+| 3.3.1 | Mounting                     | A, D         |                                                                          |
+
+[^D]: Demonstrate.
+[^I]: Inspection.
+[^T]: Test.
+[^V]: Validation.
+[^A]: Analysis.
+
+
+# Verification Requirements Cont.
+
+| Reqt    | Title                     | Method  | Notes/Bias                                                           |
+|---------|---------------------------|---------|----------------------------------------------------------------------|
+| 3.3.1.1 | Baseplate Bottom Surface  | D[^D]   | Flush mount only!                                                    |
+| 3.3.1.2 | Housing to Baseplate      | D       | Screws on mounting corners.                                          |
+| 3.3.2   | Electrical                | V[^V],D | System Electrical Circuit Diagram                                    |
+| 3.3.3   | Data and power Access     | D       | Utilizing only VRM power (if no more is required)                    |
+| 3.4     | Design Requirements       |         |                                                                      |
+| 3.4 1   | Housing                   | V,D     | STl file anf outline drawing required for fabrication                |
+| 3.4.2   | Baseplate                 | V       | Modeled in 3D, manufactured to 2D spec.                              |
+| 3.4.3   | Electrical                | V       | Solder and protoboarding                                             |
+| 3.4.4.  | Hardware                  | V,I[^I] |                                                                      |
+| 3.5     | Project Requirements      |         |                                                                      |
+| 3.5.1   | Team Structure            | D       | Unstructured, plans to implement a team leader?                      |
+| 3.5.2   | Team Communications       | D,I     | Weekly email status reports                                          |
+| 3.5.3   | PDR and CDR Presentations | D       | Presentation templates provided, reviewed class before presentations |
+| 3.5.4   | System Fabrication        | D,I     | Baseplate part file/fab/ drawing and cover STL file/outline drawing  |
+| 3.5.4   | System Demonstration      | D       | Instructor executes final verification activity                      |
+| 3.5.5   | System ADP                | I       | ZIP file of all native files                                         |
+
+[^D]: Demonstrate.
+[^I]: Inspection.
+[^V]: Validation.
+
 
 # Concepts/RC0
 
@@ -175,7 +192,7 @@ The base plate is ready to machine and has its drawings written up.
 
 ## Shell
 
-![Shell 3D Render](resources/sensor_package_housing_rc0.png)
+![Shell 3D Render](resources/sensor_package_housing_rc0.png){ width=38% }
 
 The Upper shell contains all the mounting for each sensor save for the light sensor, witch has its own, actuated housing.
 
@@ -184,7 +201,7 @@ The Upper shell contains all the mounting for each sensor save for the light sen
 
 ## LabView
 
-![Lab View VI prototype](resources/PDR_LabVIEW_VI_Front_Panel.png){ width=45% }
+![Lab View VI prototype](resources/PDR_LabVIEW_VI_Front_Panel.png){ width=38% }
 
 
 # Next Steps[^2]
