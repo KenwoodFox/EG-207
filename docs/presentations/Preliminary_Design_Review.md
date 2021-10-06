@@ -10,9 +10,8 @@ author:
  - Josh
  - William
 institute:
- - Southern New Hampshire University
-description: |
-    This should be filled out...
+ - SNHU/CETA, EG-207
+titlegraphic: resources/SNHU-CETA.png
 theme: Madrid
 navigation: frame
 date: "Build Date: &date"
