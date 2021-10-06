@@ -38,7 +38,8 @@ fontsize: 8pt
 # Concept of Operations (Con-Ops) Summary
 
  - Stakeholders
-   - (Who has a stake?)
+   - We hold some stake in our own system.
+   - The completion of our lab is important to those grading it.
  - Users
    - Scientists and Analysts in the field.
  - Operational Description
