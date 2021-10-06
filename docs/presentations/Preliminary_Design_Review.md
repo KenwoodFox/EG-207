@@ -206,7 +206,7 @@ The Upper shell contains all the mounting for each sensor save for the light sen
 
 ![Custom Frame Standard](resources/Proposed_Frame_Communications_Standard.png){ width=90% }
 
-We propose creating our own, standard byte-by-byte frame based communication protocol to faccilate better resource management as well as cleaner code.
+We propose creating our own, standard byte-by-byte frame based communication protocol to facilitate better resource management as well as cleaner code.
 
 
 # Next Steps[^2]
