@@ -44,7 +44,7 @@ fontsize: 8pt
  - Operational Description
    - The sensor should be operated indoors and may be left without supervision to collect data and store it.
  - Support Environment
-   - Released under the GNUv3 license, and supported as the license describes, extending absolutely no warranty.
+   - Released under the GNUv3 license after final graded release `CCEMS-RELEASE` is published, and supported as the license describes, extending absolutely no warranty.
  - Use
    - The operator/analyst will use the sensor in the field, and collect data supervised or not.
  - Calibration
