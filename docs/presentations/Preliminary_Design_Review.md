@@ -197,7 +197,7 @@ The Upper shell contains all the mounting for each sensor save for the light sen
 
 ## LabView
 
-![Lab View VI prototype](resources/PDR_LabVIEW_VI_Front_Panel.png){ width=38% }
+![Lab View VI prototype](resources/PDR_LabVIEW_VI_Front_Panel.png){ width=70% }
 
 
 # Concepts/RC0 Cont.
