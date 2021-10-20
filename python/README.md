@@ -4,7 +4,7 @@ Gold Standard
 # Intro
 Gold Standard is a data characterization program  
 writen by Team Gold, for use with the EG-207  
-lab1 and following labs.
+lab1 and lab2.
 
 # Usage
 
