@@ -6,8 +6,7 @@
 #include "Arduino.h"
 #include "TimerOne.h"
 
-// Dataframes
-#include "dataframe.h"
+#include "CDS55.h"
 
 // Build information
 #include "version.h"
@@ -32,6 +31,8 @@ int stimulate = 0; // counts up
 // Flags
 bool checkdht = false;
 
+CDS55 my_photoresistor = CDS55(2);
+
 
 void setup() {
   // Start serial comms and make serial buffer
@@ -51,7 +52,7 @@ void setup() {
 
   // Spit out MOTD
   // print out some information about the software we're running.
-  Serial.print("Starting Team Gold LAB1 software. Using version "); Serial.println(VERSION);
+  Serial.print("Starting Team Gold LAB2 software. Using version "); Serial.println(VERSION);
   Serial.print("This software compiled on "); Serial.println(COMPILED_ON); Serial.println();
 
   // Delay before starting tasks.
@@ -74,11 +75,9 @@ void raiseDHTFlag(void) {
 
 void loop() {
   // Slow loop
-  delay(600);
+  delay(500);
 
-  DataPacket myframe = DataPacket('E');
-
-  Serial.println(myframe.getPacket());
+  Serial.println(my_photoresistor.getLuxValue());
 
   // If its time to check the DHT sesor
   if (checkdht) {
