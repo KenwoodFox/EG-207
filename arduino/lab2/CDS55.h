@@ -22,7 +22,7 @@ class CDS55 {
             getRawValue(); // Populate value
 
             // Magic 4th order polynomial (Sucks a lot)
-            double luxvalue = -525.0179 + (8.14062 * value) - (0.02335421* pow(value, 2)) + (0.00002457257 * pow(value, 3));
+            double luxvalue = 1020.881 - (19.60206 * value) + (0.1080073 * pow(value, 2)) - (0.0001971755 * pow(value, 3)) + (1.218544e-7* pow(value, 4));
             return luxvalue;
         };
 };
