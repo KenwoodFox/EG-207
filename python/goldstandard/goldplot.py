@@ -42,6 +42,9 @@ class GoldPlotApp:
                             default='output.csv',
                             type=str)
 
+        parser.add_argument('--hist',
+                            action='store_true')
+
         self.args = parser.parse_args()
 
         # Arduino version
@@ -65,7 +68,7 @@ class GoldPlotApp:
             self.csv_writer = csv.writer(self.csv_data, delimiter=',',
                                          quotechar='"',
                                          quoting=csv.QUOTE_MINIMAL)
-            self.csv_writer.writerow(['Epoch Time', 'Temp', 'Humidity'])
+            self.csv_writer.writerow(['Epoch Time', 'Temp', 'Humidity', 'Lux Level', 'UV Index'])
 
         else:
             # Load csv data instead.
@@ -87,7 +90,7 @@ class GoldPlotApp:
             # Setup animated graph.
             ani = animation.FuncAnimation(self.fig,
                                           self.update_graph,
-                                          interval=200)
+                                          interval=2)
 
             # Just for flake
             ani.__str__()
@@ -103,7 +106,7 @@ class GoldPlotApp:
         # Time
         now = float(time.time())
         # Frame is one data frame
-        frame = self.arduino.readline().decode().strip('\n')
+        frame = self.arduino.readline().decode().strip('\n\r')
 
         try:
             ver_match = re.search('(?<=version )(.*)', frame).group(0)
@@ -120,6 +123,8 @@ class GoldPlotApp:
 
                 self.current_humidy = float(frame[0].strip('H'))
                 self.current_temp = float(frame[1].strip('T'))
+                self.current_lux_level = float(frame[2].strip('L'))
+                self.current_uv_index = float(frame[3].strip('U'))
 
                 if self.current_humidy != 0 and self.current_temp != 0:
                     # Logging
@@ -129,10 +134,13 @@ class GoldPlotApp:
                     self.time_scale.append(now)
                     self.temp_reading.append(self.current_temp)
                     self.humidity_reading.append(self.current_humidy)
+                    self.lux_reading.append(self.current_lux_level)
+                    self.index_reading.append(self.current_uv_index)
                 else:
                     logging.error(f'Error, empty frame: {frame}')
-        except (IndexError, AttributeError, ValueError):
+        except (IndexError, AttributeError, ValueError) as e:
             self.log.warn('Got bad frame')
+            self.log.error(e)
 
         # Trigger a csv update
         self.write_csv()
@@ -141,7 +149,10 @@ class GoldPlotApp:
         try:
             self.csv_writer.writerow([self.time_scale[-1],
                                      self.temp_reading[-1],
-                                     self.humidity_reading[-1]])
+                                     self.humidity_reading[-1],
+                                     self.lux_reading[-1],
+                                     self.index_reading[-1]])
+            self.log.info(f'Wrote {self.current_lux_level} to data.')
         except IndexError:
             self.log.warn("Not writing bad frame to csv.")
 
@@ -158,6 +169,8 @@ class GoldPlotApp:
         self.max_temp = 0
         self.max_temp_time = 0
         self.humidity_reading = []
+        self.index_reading = []
+        self.lux_reading = []
         self.current_humidy = float(0)
         self.current_temp = float(0)
 
@@ -201,7 +214,7 @@ class GoldPlotApp:
 
             self.temp_line_plot.clear()
             self.temp_line_plot.plot(self.time_scale,
-                                     self.temp_reading,
+                                     self.lux_reading,
                                      color="red")
 
             self.humidity_line_plot.clear()
@@ -286,6 +299,8 @@ class GoldPlotApp:
                             verticalalignment='top')
 
             plt.show()
+        except ValueError as e:
+            self.log.error(e)
         except KeyboardInterrupt:
             self.log.info('Exiting safely.')
             self.close()

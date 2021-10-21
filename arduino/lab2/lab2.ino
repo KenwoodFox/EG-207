@@ -39,7 +39,7 @@ void setup() {
   delay(1000);
 
   // Initalize hardware inturrupts.
-  Timer1.initialize(250000); // Every 250 ms
+  Timer1.initialize(500000); // Every 50 ms
 
   // Attach raiseDHTFlag to hw inturrupt
   Timer1.attachInterrupt(raiseDHTFlag);
@@ -69,7 +69,7 @@ void raiseDHTFlag(void) {
 
 void loop() {
   // Slow loop
-  delay(40);
+  delay(100);
 
   // If its time to check the DHT sesor
   if (checkdht) {
@@ -89,8 +89,10 @@ void loop() {
   // Check if data changed (TODO: Replace with actual data checksum)
   if (photoresistorLux != sum || stimulate > 8) {
     // Send large serial frame
+    Serial.print("H"); Serial.print(1.00);Serial.print(',');
+    Serial.print("T"); Serial.print(1.00);Serial.print(',');
     Serial.print("L"); Serial.print(photoresistorLux);Serial.print(',');
-    Serial.print("U"); Serial.print(0.00);
+    Serial.print("U"); Serial.print(1.00);
     Serial.print("\n\r");
 
     sum = photoresistorLux;
