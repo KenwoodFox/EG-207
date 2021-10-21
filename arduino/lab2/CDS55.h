@@ -1,7 +1,6 @@
 // Team Gold
 // EG-207, SNHU
 
-// y = 3664347000 + (238.5626 - 3664347000)/(1 + (x/19246.87)^4.36837)
 
 class CDS55 {
     private:
@@ -25,9 +24,9 @@ class CDS55 {
             int luxvalue = 1020.881 - (19.60206 * value) + (0.1080073 * pow(value, 2)) - (0.0001971755 * pow(value, 3)) + (1.218544e-7* pow(value, 4));
 
             if (luxvalue > 0) {
-                return luxvalue;
+                return luxvalue; // Only return valid outputs 
             } else {
-                return sqrt(-1);
+                return sqrt(-1); // NaN any other time.
             }
 
         };

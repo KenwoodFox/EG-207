@@ -3,7 +3,6 @@
 // Lab 2
 
 // Public libraries
-#include "DHT.h"
 #include "Arduino.h"
 #include "TimerOne.h"
 
