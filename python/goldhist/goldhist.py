@@ -51,6 +51,12 @@ class GoldHist:
         parser.add_argument('-t',
                             action='store_true')
 
+        # TC Cuttoff value
+        parser.add_argument('--tcut',
+                            nargs='?',
+                            default=0,
+                            type=int)
+
         self.args = parser.parse_args()
 
         self.log.debug("Loading CSV.")
@@ -85,12 +91,20 @@ class GoldHist:
         max = np.amax(self.data)
         self.log.info(f"Found data max: {max}")
 
+        # Time to max
         data_points_to_reach_max = np.where(self.data == max)[0][0]
         self.log.info(f"It took {data_points_to_reach_max} data points to reach max.")
         time_to_max = self.time_scale[data_points_to_reach_max] - self.time_scale[0]
-        # Need to find the time it takes to get to 60% of the max value
 
-        time_const = time_to_max
+        # Need to find the time it takes to get to 60% of the max value
+        data_points_to_1_tau = int(data_points_to_reach_max * 0.6) # This is a bad estimate...
+        self.log.info(f"It took {data_points_to_1_tau} data points to reach one tau.")
+        time_to_1st_tau = self.time_scale[data_points_to_1_tau] - self.time_scale[0]
+
+        # Tau duration minus leading 'tail' before delta env, user specified! messy!
+        normalized_tau = time_to_1st_tau - (self.time_scale[self.args.tcut] - self.time_scale[0])
+
+        time_const = normalized_tau
 
         # This is really messy and needs to be cleaned up!!!
         if self.args.std != -1:
