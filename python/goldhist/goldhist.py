@@ -104,7 +104,7 @@ class GoldHist:
         # Tau duration minus leading 'tail' before delta env, user specified! messy!
         normalized_tau = time_to_1st_tau - (self.time_scale[self.args.tcut] - self.time_scale[0])
 
-        time_const = normalized_tau
+        time_const = abs(normalized_tau)
 
         # This is really messy and needs to be cleaned up!!!
         if self.args.std != -1:
