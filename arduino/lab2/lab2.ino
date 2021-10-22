@@ -8,15 +8,18 @@
 
 // Team Gold libraries
 #include "CDS55.h"
+#include "UVSensor.h"
 
 // Build information
 #include "version.h"
 
 // Sensor pin defs
 #define CDSPIN 2
+#define UVSENSORPIN 4
 
 // Create sensor objects
 CDS55 my_photoresistor = CDS55(CDSPIN);
+UVSensor my_uvsensor = UVSensor(UVSENSORPIN);
 
 // Sensor variables
 float photoresistorLux = 0;
@@ -74,27 +77,29 @@ void loop() {
   if (checkdht) {
     // Read in sensor data
     int _l = my_photoresistor.getLuxValue(); // Int because values are sometimes invalid
+    int _u = my_uvsensor.getRawValue();
 
     // If either number is NAN, the frame is invalid!
-    if (isnan(_l)) {
+    if (isnan(_l) || isnan(_u)) {
       //Serial.println("Got invalid frame."); // Debug!
     } else {
       //Serial.println("Got valid frame."); // Debug!
       // Valid frame data is coppied.
       photoresistorLux = _l;
+      UVIndex = _u;
     }
   }
 
   // Check if data changed (TODO: Replace with actual data checksum)
-  if (photoresistorLux != sum || stimulate > 8) {
+  if (photoresistorLux + UVIndex != sum || stimulate > 8) {
     // Send large serial frame
     Serial.print("H"); Serial.print(1.00);Serial.print(',');
     Serial.print("T"); Serial.print(1.00);Serial.print(',');
     Serial.print("L"); Serial.print(photoresistorLux);Serial.print(',');
-    Serial.print("U"); Serial.print(1.00);
+    Serial.print("U"); Serial.print(UVIndex);
     Serial.print("\n\r");
 
-    sum = photoresistorLux;
+    sum = photoresistorLux + UVIndex;
 
     stimulate = 0;
   } else { 
