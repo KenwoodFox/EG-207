@@ -119,6 +119,8 @@ class GoldHist:
         # add labels
         ax[0].set_xlabel('Value')
         ax[0].set_ylabel('Frequency')
+        ax[1].set_xlabel('Epoch')
+        ax[1].set_ylabel('Value')
         ax[0].set_title(self.args.data)
 
         props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
