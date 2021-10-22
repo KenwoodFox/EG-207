@@ -17,3 +17,18 @@ $ python goldstandard --port /dev/ttyACM0 -o MyOutputFile.csv
 ```
 $ python goldstandard --data MyOutputFile.csv
 ``` 
+
+## Histogram data
+
+### With time constant
+
+```
+$ python goldhist --data resources/Photoresistor_Delta_Response.csv -t --tcut 10
+```
+
+### Std deviation
+
+```
+$ python goldhist --data resources/Photoresistor_Background_Response.csv --std 241
+$ python goldhist --data resources/Photoresistor_Nominal_Response.csv --std 1170
+```
