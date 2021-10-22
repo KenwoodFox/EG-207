@@ -39,6 +39,9 @@ class GoldHist:
                             default=3,
                             type=int)
 
+        parser.add_argument('-l',
+                            action='store_true')
+
         self.args = parser.parse_args()
 
         self.log.debug("Loading CSV.")
@@ -57,7 +60,7 @@ class GoldHist:
 
     def run(self):
         # Make a histogram using the data
-        fig, ax = plt.subplots()
+        fig, ax = plt.subplots(2)
 
         # Annotations/math
         mu = self.data.mean()
@@ -67,30 +70,41 @@ class GoldHist:
         accuracy = abs((mean - self.args.std) / mean) * 100
         percision = ((2 * sigma) / self.args.std) * 100
 
+        max = np.amax(self.data)
+        data_points_to_reach_max = np.where(self.data == max)[0][0]
+        time_to_max = self.time_scale[data_points_to_reach_max] - self.time_scale[0]
+        time_const = time_to_max
+
         annotationtext = '\n'.join((
             r'$\mu=%.2f$' % (mu, ),
             r'$\mathrm{median}=%.2f$' % (median, ),
             r'$\sigma=%.2f$' % (sigma, ),
             r'$\mathrm{accuracy}=%.2f$' % (accuracy, ),
-            r'$\mathrm{percision}=%.2f$' % (percision, )))
+            r'$\mathrm{percision}=%.2f$' % (percision, ),
+            r'$\tau=%.2f$' % (time_const, )))
 
-        ax.annotate('Gold Standard, Team Gold, SNHU',
-                         xy=(0.9, 1.12),
+        ax[0].annotate('Gold Standard, Team Gold, SNHU',
+                         xy=(1.0, 1.25),
                          xycoords='axes fraction',
                          horizontalalignment='right',
                          verticalalignment='top')
 
-        # Histogram plot
-        ax.hist(self.data, bins=self.args.b)
 
-        ax.set_xlabel('Value')
-        ax.set_ylabel('Frequency')
-        ax.set_title(self.args.data)
+        # Histogram plot
+        ax[0].hist(self.data, bins=self.args.b)
+
+        # Add data over time plot
+        ax[1].plot(self.data)
+
+        # add labels
+        ax[0].set_xlabel('Value')
+        ax[0].set_ylabel('Frequency')
+        ax[0].set_title(self.args.data)
 
         props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 
         # place a text box in upper left in axes coords
-        ax.text(0.05, 0.95, annotationtext, transform=ax.transAxes, fontsize=14,
+        ax[0].text(0.05, 0.95, annotationtext, transform=ax[0].transAxes, fontsize=14,
                 verticalalignment='top', bbox=props)
 
         plt.show()
