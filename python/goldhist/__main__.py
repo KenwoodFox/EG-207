@@ -5,8 +5,8 @@
 import logging
 import coloredlogs
 
-import matplotlib.pyplot as plt
-import numpy as np
+from goldhist import GoldHist
+
 
 if __name__ == '__main__':
     # Setup logging
@@ -18,18 +18,11 @@ if __name__ == '__main__':
 
     logger.info("Program Started.")
 
-    data=np.random.random((4,10))
-    xaxes = ['x1','x2','x3','x4']
-    yaxes = ['y1','y2','y3','y4']
-    titles = ['t1','t2','t3','t4'] 
+    # Make app
+    app = GoldHist(logger)
 
-    f,a = plt.subplots(2,2)
-    a = a.ravel()
-    for idx,ax in enumerate(a):
-        ax.hist(data[idx])
-        ax.set_title(titles[idx])
-        ax.set_xlabel(xaxes[idx])
-        ax.set_ylabel(yaxes[idx])
-    plt.tight_layout()
-
-    plt.show()
+    try:
+        app.run()
+    except KeyboardInterrupt:
+        app.close()
+        quit()
