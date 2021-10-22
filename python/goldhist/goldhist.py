@@ -24,22 +24,30 @@ class GoldHist:
         # Parse args
         parser = argparse.ArgumentParser(description='Parse args.')
 
+        # What data to use
         parser.add_argument('--data',
                             nargs='?',
                             default=None,
                             type=str)
 
+        # The standard for this dataset
         parser.add_argument('--std',
                             nargs='?',
-                            default=None,
+                            default=-1,
                             type=int)
 
+        # Number of display bins
         parser.add_argument('-b',
                             nargs='?',
                             default=3,
                             type=int)
 
+        # Idk
         parser.add_argument('-l',
+                            action='store_true')
+
+        # Weather or not to do the TC math
+        parser.add_argument('-t',
                             action='store_true')
 
         self.args = parser.parse_args()
@@ -75,13 +83,25 @@ class GoldHist:
         time_to_max = self.time_scale[data_points_to_reach_max] - self.time_scale[0]
         time_const = time_to_max
 
-        annotationtext = '\n'.join((
-            r'$\mu=%.2f$' % (mu, ),
-            r'$\mathrm{median}=%.2f$' % (median, ),
-            r'$\sigma=%.2f$' % (sigma, ),
-            r'$\mathrm{accuracy}=%.2f$' % (accuracy, ),
-            r'$\mathrm{percision}=%.2f$' % (percision, ),
-            r'$\tau=%.2f$' % (time_const, )))
+        # This is really messy and needs to be cleaned up!!!
+        if self.args.std != -1:
+            annotationtext = '\n'.join((
+                r'$\mu=%.2f$' % (mu, ),
+                r'$\mathrm{median}=%.2f$' % (median, ),
+                r'$\sigma=%.2f$' % (sigma, ),
+                r'$\mathrm{accuracy}=%.2f$' % (accuracy, ),
+                r'$\mathrm{percision}=%.2f$' % (percision, )))
+        elif self.args.t:
+            annotationtext = '\n'.join((
+                r'$\mu=%.2f$' % (mu, ),
+                r'$\mathrm{median}=%.2f$' % (median, ),
+                r'$\sigma=%.2f$' % (sigma, ),
+                r'$\tau=%.2f$' % (time_const, )))
+        else:
+            annotationtext = '\n'.join((
+                r'$\mu=%.2f$' % (mu, ),
+                r'$\mathrm{median}=%.2f$' % (median, ),
+                r'$\sigma=%.2f$' % (sigma, )))
 
         ax[0].annotate('Gold Standard, Team Gold, SNHU',
                          xy=(1.0, 1.25),
