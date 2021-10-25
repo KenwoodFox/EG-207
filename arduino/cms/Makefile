@@ -3,7 +3,7 @@
 
 
 # What project to build
-PROJ := lab2
+PROJ := cms
 
 # What board to build for and its core
 CORE     ?= arduino:avr

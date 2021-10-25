@@ -7,8 +7,8 @@
 #include "TimerOne.h"
 
 // Team Gold libraries
-#include "CDS55.h"
-#include "UVSensor.h"
+#include "sensors/CDS55.h"
+#include "sensors/ParallaxUVSensor.h"
 
 // Auto-generated defs
 #include "version.h"
