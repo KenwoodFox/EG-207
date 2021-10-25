@@ -7,41 +7,48 @@ EG-207
 [![Submit Release](https://github.com/KenwoodFox/EG-207-CCEMS/actions/workflows/publish-release.yml/badge.svg)](https://github.com/KenwoodFox/EG-207-CCEMS/actions)
 [![Discord](https://img.shields.io/discord/886985777085566986.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/vbgyRJBJCs)
 
-
-
 Feel free to fork or create your own PRs! Join us on our [discord](https://discord.gg/vbgyRJBJCs)!
 
 
-## Getting started building this code
+# Building and Installation
 
-More to come <3
+## From Source
 
+### Requisites
 
-### Tag Naming Scheme
+Start by collecting all the neccicary requirements.
 
-Assignments should stay off this repo.  
-Labs should use tags like so:  
-`L<lab number>-RC<revision>`  
-Labs should also not use subrevisions, and should rely on their `describe` functions to count appendex commits.
+#### Arch
 
-The final project should use:
-`CMS-0.0`  
-or  
-`CMS-0.0RC0`
-
-For example:
 ```
-L1-RC1
-L1-RC2
-L1-RC3
+pacman -S base-devel curl
 ```
 
-And for final project
+#### Ubuntu/Debian
+
 ```
-CMS-0.1RC1
-CMS-0.1
-CMS-0.2
-CMS-0.3
-CMS-0.4RC1
-CMS-0.4RC2
+sudo apt install build-essential curl
+```
+
+Navigate to the arduino code and invoke make
+
+```
+cd arduino/src
+make
+```
+
+to upload to the sensor package, use 
+
+```
+make upload
+```
+
+## From a release
+
+Download a binary from the [releases](https://github.com/KenwoodFox/EG-207-CCEMS/releases) page.
+
+Have either `arduino-cli` or the `arduino-ide` available, and flash the sensor package with a pre-made hex.
+
+```
+arduino-cli upload -i CCEMS_v0.2.hex
 ```
