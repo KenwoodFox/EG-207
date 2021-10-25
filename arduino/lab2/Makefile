@@ -1,13 +1,15 @@
 # Team Gold
 # EG-207, SNHU
 
+
 # What project to build
 PROJ := lab2
-
 
 # What board to build for and its core
 CORE     ?= arduino:avr
 FQBN     ?= arduino:avr:mega
+
+EEPROM_SIZE ?= 4096
 
 # Tools, their links and versions
 ARDUINO_CLI_VERSION :=
@@ -39,10 +41,10 @@ ifndef SERIAL_DEV
 endif
 
 
-.PHONY: all help build upload version release requirements
+.PHONY: all help build upload version eeprom release requirements
 
 # Do everything
-all: tools requirements version build
+all: tools requirements version eeprom build
 
 
 help:
@@ -52,6 +54,8 @@ help:
 	@echo "   build      	Build the software."
 	@echo "   upload     	Upload the software."
 	@echo "   requirements	Fetch all requirements."
+	@echo "   monitor		Open a serial monitor after uploading (requires minicom)."
+	@echo "   tools			Install required tools automatically."
 	@echo
 
 
@@ -61,13 +65,13 @@ ifndef VERBOSE
 .SILENT:
 endif
 
-# Only build the code
-build: version $(PROJ).ino
+# Build
+build: version eeprom $(PROJ).ino
 	$(BINDIR)/arduino-cli core install $(CORE)
 	$(BINDIR)/arduino-cli compile -b $(FQBN) $(PROJ)
 
 # Make binaries
-bin: tools requirements version $(PROJ).ino
+bin: tools requirements version eeprom $(PROJ).ino
 	$(BINDIR)/arduino-cli core install $(CORE)
 	$(BINDIR)/arduino-cli compile -b $(FQBN) $(PROJ) -e
 	
@@ -75,11 +79,15 @@ bin: tools requirements version $(PROJ).ino
 	mv build/* _build
 	rm -rv build
 
-# Only upload the software
+# Upload the software
 upload: version build $(PROJ).ino
 	$(BINDIR)/arduino-cli upload -b $(FQBN) $(PROJ) -p $(SERIAL_DEV)
 
-# Only update the version
+# EEPROM Randomizer
+eeprom:
+	echo "#define EEPROM_ERROR_CODE $(shell shuf -i 0-$(EEPROM_SIZE) -n 1)" > eeprom_settings.h
+
+# Inform the compiler of version and software build date
 version:
 	echo "#define VERSION \"$(GIT_VERSION)\"" > version.h
 	echo "#define COMPILED_ON \"$(COMPILED_DATE)\"" >> version.h

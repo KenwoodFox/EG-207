@@ -4,6 +4,7 @@ _build
 
 # Ignore special artifacts
 version.h
+eeprom_settings.h
 
 # Ignore IDE
 .vscode
