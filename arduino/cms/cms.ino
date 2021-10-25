@@ -5,6 +5,7 @@
 // Public libraries
 #include "Arduino.h"
 #include "TimerOne.h"
+#include "EEPROM.h"
 
 // Team Gold libraries
 #include "sensors/CDS55.h"
@@ -38,9 +39,6 @@ void setup() {
   // Start serial comms and make serial buffer
   Serial.begin(115200);
 
-  // Delay while host device establishes a link (Mostly for LabView being weird)
-  delay(1000);
-
   // Initalize hardware inturrupts.
   Timer1.initialize(500000); // Every 50 ms
 
@@ -49,7 +47,7 @@ void setup() {
 
   // Spit out MOTD
   // print out some information about the software we're running.
-  Serial.print("Starting Team Gold LAB2 software. Using version "); Serial.println(VERSION);
+  Serial.print("Starting Team Gold CCEMS software. Using version "); Serial.println(VERSION);
   Serial.print("This software compiled on "); Serial.println(COMPILED_ON); Serial.println(); // Could use __DATE__ and __TIME__ instead
 
   // Delay before starting tasks.
