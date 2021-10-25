@@ -10,8 +10,9 @@
 #include "CDS55.h"
 #include "UVSensor.h"
 
-// Build information
+// Auto-generated defs
 #include "version.h"
+#include "eeprom_settings.h"
 
 // Sensor pin defs
 #define CDSPIN 2
@@ -49,7 +50,7 @@ void setup() {
   // Spit out MOTD
   // print out some information about the software we're running.
   Serial.print("Starting Team Gold LAB2 software. Using version "); Serial.println(VERSION);
-  Serial.print("This software compiled on "); Serial.println(COMPILED_ON); Serial.println();
+  Serial.print("This software compiled on "); Serial.println(COMPILED_ON); Serial.println(); // Could use __DATE__ and __TIME__ instead
 
   // Delay before starting tasks.
   delay(200);
