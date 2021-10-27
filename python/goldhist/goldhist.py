@@ -31,6 +31,12 @@ class GoldHist:
                             default=None,
                             type=str)
 
+        # What sensor, (col) in the data to read
+        parser.add_argument('--sensor',
+                            nargs='?',
+                            default=None,
+                            type=str)
+
         # The standard for this dataset
         parser.add_argument('--std',
                             nargs='?',
@@ -65,12 +71,24 @@ class GoldHist:
             for row in csv_reader:
                 if isinstance(row['Epoch Time'], str):
                     _time = row["Epoch Time"]
-                    _data = row["Lux Level"]
+
+                    try:
+                        if self.args.sensor is None:
+                            # Pick whatever the second key is.
+                            _data = row[list(row.keys())[1]]
+                        else:
+                            _data = row[self.args.sensor]  # User supplied arg.
+                    except KeyError as e:
+                        # Raised if we cannot find
+                        # the specified col in the data.
+                        self.log.error(e)
+                        raise(e)
 
                     self.time_scale.append(float(_time))
                     self.data.append(float(_data))
 
-        # Convert data list to np array, this does not include time tho, and should.
+        # Convert data list to np array,
+        # this does not include time tho, and should.
         self.data = np.asarray(self.data)
 
         # Get version
@@ -93,16 +111,17 @@ class GoldHist:
 
         # Time to max
         data_points_to_reach_max = np.where(self.data == max)[0][0]
-        self.log.info(f"It took {data_points_to_reach_max} data points to reach max.")
-        time_to_max = self.time_scale[data_points_to_reach_max] - self.time_scale[0]
+        self.log.info(f"It took {data_points_to_reach_max} data points to reach max.")  # noqa: E501
+        time_to_max = self.time_scale[data_points_to_reach_max] - self.time_scale[0]  # noqa: E501 F841
 
         # Need to find the time it takes to get to 60% of the max value
-        data_points_to_1_tau = int(data_points_to_reach_max * 0.6) # This is a bad estimate...
-        self.log.info(f"It took {data_points_to_1_tau} data points to reach one tau.")
-        time_to_1st_tau = self.time_scale[data_points_to_1_tau] - self.time_scale[0]
+        data_points_to_1_tau = int(data_points_to_reach_max * 0.6)  # This is a bad estimate...  # noqa: E501
+        self.log.info(f"It took {data_points_to_1_tau} data points to reach one tau.")  # noqa: E501
+        time_to_1st_tau = self.time_scale[data_points_to_1_tau] - self.time_scale[0]  # noqa: E501
 
-        # Tau duration minus leading 'tail' before delta env, user specified! messy!
-        normalized_tau = time_to_1st_tau - (self.time_scale[self.args.tcut] - self.time_scale[0])
+        # Tau duration minus leading 'tail'
+        # before delta env, user specified! messy!
+        normalized_tau = time_to_1st_tau - (self.time_scale[self.args.tcut] - self.time_scale[0])  # noqa: E501
 
         time_const = abs(normalized_tau)
 
@@ -116,10 +135,10 @@ class GoldHist:
                 r'$\mathrm{percision}=%.2f$' % (percision, )))
 
             ax[0].annotate(f'Std value: {self.args.std}',
-                            xy=(1.0, 0.8),
-                            xycoords='axes fraction',
-                            horizontalalignment='right',
-                            verticalalignment='top')
+                           xy=(1.0, 0.8),
+                           xycoords='axes fraction',
+                           horizontalalignment='right',
+                           verticalalignment='top')
         elif self.args.t:
             annotationtext = '\n'.join((
                 r'$\mu=%.2f$' % (mu, ),
@@ -132,12 +151,11 @@ class GoldHist:
                 r'$\mathrm{median}=%.2f$' % (median, ),
                 r'$\sigma=%.2f$' % (sigma, )))
 
-        ax[0].annotate(f'Gold Standard, Team Gold, SNHU\nVersion: {self.software_version}',
-                         xy=(1.0, 1.25),
-                         xycoords='axes fraction',
-                         horizontalalignment='right',
-                         verticalalignment='top')
-
+        ax[0].annotate(f'Gold Standard, Team Gold, SNHU\nVersion: {self.software_version}',  # noqa: E501
+                        xy=(1.0, 1.25),
+                        xycoords='axes fraction',
+                        horizontalalignment='right',
+                        verticalalignment='top')
 
         # Histogram plot
         ax[0].hist(self.data, bins=self.args.b)
@@ -155,8 +173,12 @@ class GoldHist:
         props = dict(boxstyle='round', facecolor='wheat', alpha=0.5)
 
         # place a text box in upper left in axes coords
-        ax[0].text(0.05, 0.95, annotationtext, transform=ax[0].transAxes, fontsize=14,
-                verticalalignment='top', bbox=props)
+        ax[0].text(0.05, 0.95,
+                   annotationtext,
+                   transform=ax[0].transAxes,
+                   fontsize=14,
+                   verticalalignment='top',
+                   bbox=props)
 
         plt.show()
 

@@ -68,7 +68,7 @@ class GoldPlotApp:
             self.csv_writer = csv.writer(self.csv_data, delimiter=',',
                                          quotechar='"',
                                          quoting=csv.QUOTE_MINIMAL)
-            self.csv_writer.writerow(['Epoch Time', 'Temp', 'Humidity', 'Lux Level', 'UV Index'])
+            self.csv_writer.writerow(['Epoch Time', 'Temp', 'Humidity', 'Lux Level', 'UV Index'])  # noqa: E501
 
         else:
             # Load csv data instead.
