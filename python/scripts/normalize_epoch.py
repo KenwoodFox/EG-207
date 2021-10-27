@@ -23,7 +23,7 @@ start_time = None
 
 with open(args.data, 'r', newline='') as inputFile, open(args.data + '.tmp', 'w', newline='') as writerFile:
     read_file = csv.reader(inputFile)
-    write_file = csv.writer(writerFile, delimiter=' ', quotechar='|', quoting=csv.QUOTE_MINIMAL)
+    write_file = csv.writer(writerFile)
 
 
     for row in read_file:
@@ -36,5 +36,6 @@ with open(args.data, 'r', newline='') as inputFile, open(args.data + '.tmp', 'w'
             write_file.writerow(row)
         except ValueError:
             print("Got header or bad value")
+            write_file.writerow(row)
 
 Path(args.data + '.tmp').rename(args.data)
