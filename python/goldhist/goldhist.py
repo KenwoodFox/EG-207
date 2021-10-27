@@ -152,10 +152,10 @@ class GoldHist:
                 r'$\sigma=%.2f$' % (sigma, )))
 
         ax[0].annotate(f'Gold Standard, Team Gold, SNHU\nVersion: {self.software_version}',  # noqa: E501
-                        xy=(1.0, 1.25),
-                        xycoords='axes fraction',
-                        horizontalalignment='right',
-                        verticalalignment='top')
+                       xy=(1.0, 1.25),
+                       xycoords='axes fraction',
+                       horizontalalignment='right',
+                       verticalalignment='top')
 
         # Histogram plot
         ax[0].hist(self.data, bins=self.args.b)
