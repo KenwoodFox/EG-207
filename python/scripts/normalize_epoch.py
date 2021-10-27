@@ -21,15 +21,14 @@ args = parser.parse_args()
 
 start_time = None
 
-with open(args.data, 'r', newline='') as inputFile, open(args.data + '.tmp', 'w', newline='') as writerFile:
+with open(args.data, 'r', newline='') as inputFile, open(args.data + '.tmp', 'w', newline='') as writerFile:  # noqa: E501
     read_file = csv.reader(inputFile)
     write_file = csv.writer(writerFile)
-
 
     for row in read_file:
         try:
             if start_time is None:
-                start_time = float(row[0]) # Set starting time
+                start_time = float(row[0])  # Set starting time
 
             row[0] = float(row[0]) - start_time
 
