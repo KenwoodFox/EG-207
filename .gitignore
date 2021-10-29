@@ -22,3 +22,6 @@ Pipfile*
 # Compiled artifacts
 *.stl
 *.pdf
+
+# Ignore file locks
+*.*#
