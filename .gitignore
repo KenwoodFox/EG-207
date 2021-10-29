@@ -1,6 +1,7 @@
 # Ignore build dirs and build artifacts
 *.*~
 _build
+*.pdf
 
 # Ignore special artifacts
 version.h
@@ -14,6 +15,13 @@ Pipfile*
 
 # Ignore data files
 *.csv
+
+# Backup/temp
+*.FCStd1
+
+# Compiled artifacts
+*.stl
+*.pdf
 
 # Ignore file locks
 *.*#
