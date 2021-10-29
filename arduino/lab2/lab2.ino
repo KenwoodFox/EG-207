@@ -1,25 +1,29 @@
 // Team Gold
 // EG-207, SNHU
+// Lab 2
 
-#include "DHT.h"
+// Public libraries
 #include "Arduino.h"
 #include "TimerOne.h"
+
+// Team Gold libraries
+#include "CDS55.h"
+#include "UVSensor.h"
 
 // Build information
 #include "version.h"
 
-// DHT pin definition
-#define DHTPIN 2
+// Sensor pin defs
+#define CDSPIN 2
+#define UVSENSORPIN 4
 
-// DHT type
-#define DHTTYPE DHT11
-
-// Create DHT object (requires DHT.h)
-DHT dht(DHTPIN, DHTTYPE);
+// Create sensor objects
+CDS55 my_photoresistor = CDS55(CDSPIN);
+UVSensor my_uvsensor = UVSensor(UVSENSORPIN);
 
 // Sensor variables
-float dhtHumidity = 0;
-float dhtTemperature = 0;
+float photoresistorLux = 0;
+float UVIndex = 0;
 
 // Misc persistant data
 float sum = 0;
@@ -36,18 +40,15 @@ void setup() {
   // Delay while host device establishes a link (Mostly for LabView being weird)
   delay(1000);
 
-  // Begin DHT listener
-  dht.begin();
-
   // Initalize hardware inturrupts.
-  Timer1.initialize(250000); // Every 250 ms
+  Timer1.initialize(500000); // Every 50 ms
 
   // Attach raiseDHTFlag to hw inturrupt
   Timer1.attachInterrupt(raiseDHTFlag);
 
   // Spit out MOTD
   // print out some information about the software we're running.
-  Serial.print("Starting Team Gold LAB1 software. Using version "); Serial.println(VERSION);
+  Serial.print("Starting Team Gold LAB2 software. Using version "); Serial.println(VERSION);
   Serial.print("This software compiled on "); Serial.println(COMPILED_ON); Serial.println();
 
   // Delay before starting tasks.
@@ -70,33 +71,35 @@ void raiseDHTFlag(void) {
 
 void loop() {
   // Slow loop
-  delay(50);
+  delay(100);
 
   // If its time to check the DHT sesor
   if (checkdht) {
-    // Read in dht data
-    float _h = dht.readHumidity();
-    float _t = dht.readTemperature();
+    // Read in sensor data
+    int _l = my_photoresistor.getLuxValue(); // Int because values are sometimes invalid
+    int _u = my_uvsensor.getRawValue();
 
     // If either number is NAN, the frame is invalid!
-    if (isnan(_h) || isnan(_t)) {
+    if (isnan(_l) || isnan(_u)) {
       //Serial.println("Got invalid frame."); // Debug!
     } else {
       //Serial.println("Got valid frame."); // Debug!
       // Valid frame data is coppied.
-      dhtHumidity = _h;
-      dhtTemperature = _t;
+      photoresistorLux = _l;
+      UVIndex = _u;
     }
   }
 
   // Check if data changed (TODO: Replace with actual data checksum)
-  if (dhtHumidity + dhtTemperature != sum || stimulate > 8) {
+  if (photoresistorLux + UVIndex != sum || stimulate > 8) {
     // Send large serial frame
-    Serial.print("H"); Serial.print(dhtHumidity);Serial.print(',');
-    Serial.print("T"); Serial.print(dhtTemperature);
-    Serial.print("\n");
+    Serial.print("H"); Serial.print(1.00);Serial.print(',');
+    Serial.print("T"); Serial.print(1.00);Serial.print(',');
+    Serial.print("L"); Serial.print(photoresistorLux);Serial.print(',');
+    Serial.print("U"); Serial.print(UVIndex);
+    Serial.print("\n\r");
 
-    sum = dhtHumidity + dhtTemperature;
+    sum = photoresistorLux + UVIndex;
 
     stimulate = 0;
   } else { 

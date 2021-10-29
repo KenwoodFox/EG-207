@@ -30,12 +30,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: cd arduino/lab1 && make bin
+    - run: cd arduino/lab2 && make bin
 
     - uses: actions/upload-artifact@v2
       with:
         name: Team_Gold_Arduino_Binaries
-        path: arduino/lab1/_build/arduino.avr.mega/*
+        path: arduino/lab2/_build/arduino.avr.mega/*
 
 
   publish_docs:

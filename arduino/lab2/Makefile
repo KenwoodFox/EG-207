@@ -2,7 +2,7 @@
 # EG-207, SNHU
 
 # What project to build
-PROJ := lab1
+PROJ := lab2
 
 
 # What board to build for and its core
