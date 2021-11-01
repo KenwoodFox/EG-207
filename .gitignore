@@ -18,6 +18,7 @@ Pipfile*
 
 # Backup/temp
 *.FCStd1
+*.*-bak
 
 # Compiled artifacts
 *.stl
