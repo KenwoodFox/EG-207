@@ -1,0 +1,167 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L power:GND #PWR?
+U 1 1 617D1BF9
+P 4200 2550
+F 0 "#PWR?" H 4200 2300 50  0001 C CNN
+F 1 "GND" H 4205 2377 50  0000 C CNN
+F 2 "" H 4200 2550 50  0001 C CNN
+F 3 "" H 4200 2550 50  0001 C CNN
+	1    4200 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R_PHOTO R2
+U 1 1 617D33A4
+P 3200 2850
+F 0 "R2" V 2875 2850 50  0000 C CNN
+F 1 "CDS-55" V 2966 2850 50  0000 C CNN
+F 2 "" V 3250 2600 50  0001 L CNN
+F 3 "~" H 3200 2800 50  0001 C CNN
+	1    3200 2850
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4500 2500 4200 2500
+Wire Wire Line
+	4200 2500 4200 2550
+Wire Wire Line
+	4500 2400 4200 2400
+Wire Wire Line
+	4200 2400 4200 2300
+$Comp
+L power:+5V #PWR?
+U 1 1 617EEA35
+P 4200 2300
+F 0 "#PWR?" H 4200 2150 50  0001 C CNN
+F 1 "+5V" H 4215 2473 50  0000 C CNN
+F 2 "" H 4200 2300 50  0001 C CNN
+F 3 "" H 4200 2300 50  0001 C CNN
+	1    4200 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 617F4D6A
+P 2850 2800
+F 0 "#PWR?" H 2850 2650 50  0001 C CNN
+F 1 "+5V" H 2865 2973 50  0000 C CNN
+F 2 "" H 2850 2800 50  0001 C CNN
+F 3 "" H 2850 2800 50  0001 C CNN
+	1    2850 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 2850 4400 2750
+Wire Wire Line
+	4400 2750 4500 2750
+Wire Wire Line
+	3400 2850 3400 2800
+Wire Wire Line
+	3400 2500 4200 2500
+Connection ~ 4200 2500
+Wire Wire Line
+	3400 2850 4400 2850
+Wire Wire Line
+	3400 2600 3400 2500
+$Comp
+L Device:R_Small_US R1
+U 1 1 617D783C
+P 3400 2700
+F 0 "R1" H 3468 2746 50  0000 L CNN
+F 1 "1k" H 3468 2655 50  0000 L CNN
+F 2 "" H 3400 2700 50  0001 C CNN
+F 3 "~" H 3400 2700 50  0001 C CNN
+	1    3400 2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3150 3850 3150 3800
+Wire Wire Line
+	3250 3800 3250 3900
+Wire Wire Line
+	4450 2850 4500 2850
+$Comp
+L power:+5V #PWR?
+U 1 1 61819FE1
+P 4150 3700
+F 0 "#PWR?" H 4150 3550 50  0001 C CNN
+F 1 "+5V" H 4165 3873 50  0000 C CNN
+F 2 "" H 4150 3700 50  0001 C CNN
+F 3 "" H 4150 3700 50  0001 C CNN
+	1    4150 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L custom_sensors:ParallaxUVSensor UV1
+U 1 1 61813C6E
+P 3250 3600
+F 0 "UV1" V 3665 3567 50  0000 C CNN
+F 1 "ParallaxUVSensor" V 3574 3567 50  0000 C CNN
+F 2 "" H 3550 3600 50  0001 C CNN
+F 3 "" H 3550 3600 50  0001 C CNN
+	1    3250 3600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 618345DF
+P 4000 3600
+F 0 "#PWR?" H 4000 3350 50  0001 C CNN
+F 1 "GND" H 4005 3427 50  0000 C CNN
+F 2 "" H 4000 3600 50  0001 C CNN
+F 3 "" H 4000 3600 50  0001 C CNN
+	1    4000 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3450 3600 4000 3600
+Wire Wire Line
+	4150 3700 4150 3850
+Wire Wire Line
+	4150 3850 3850 3850
+Wire Wire Line
+	3850 3850 3850 3700
+Wire Wire Line
+	3850 3700 3450 3700
+$Comp
+L w_connectors:Arduino_Mega_Header J?
+U 1 1 617C9C24
+P 5050 3400
+F 0 "J?" H 5050 4787 60  0001 C CNN
+F 1 "Arduino Mega" H 5050 4681 60  0000 C CNN
+F 2 "" H 5050 3400 60  0000 C CNN
+F 3 "" H 5050 3400 60  0000 C CNN
+	1    5050 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4450 2850 4450 3450
+Wire Wire Line
+	4450 3450 3850 3450
+Wire Wire Line
+	3850 3450 3850 3500
+Wire Wire Line
+	3850 3500 3450 3500
+Wire Wire Line
+	3400 2850 3350 2850
+Connection ~ 3400 2850
+Wire Wire Line
+	3050 2850 2850 2850
+Wire Wire Line
+	2850 2850 2850 2800
+$EndSCHEMATC
