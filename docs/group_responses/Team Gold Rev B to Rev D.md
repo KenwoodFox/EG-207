@@ -1,4 +1,4 @@
-Team Gold Rev B to Rev D Response
+Team Gold Rev C to Rev D Response
 =================================
 
 # Authors
@@ -13,8 +13,8 @@ Team Gold Rev B to Rev D Response
 Mr D.,
 
 After reviewing the revised subject specification, team gold have assessed that the associated changes do not
-majorily impact our ability to deliever a functioning monitor system that satisfies the requirements. We do,
-however, require the following clarifcations to the recent changes:
+majorily impact our ability to deliever a functioning monitor system that satisfies the requirements. We
+comprehended the specification requirements and there are no questions.
 
-- *Something something something*
-- * More something something something*
+In regards,
+Team Gold
