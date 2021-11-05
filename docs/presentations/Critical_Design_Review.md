@@ -36,8 +36,14 @@ fontsize: 8pt
 
 # Environmental System Description
 
-Fill me out
-
+Instrument: LabVIEW 2019 SP1
+Data Acquisition: Arduino Mega 2560
+DAC Software: Ardunio IDE 1.8.15
+Sensors:
+ - Temp/RH: DHT11 Sensor
+ - Visible Light: CDS55 Photoresistor
+ - UV Light: 28091 UV Parallax Sensor
+ - Water Collection: DGZZI Water Level Sensor Module
 
 # Environmental Sensors & Interfaces
 
