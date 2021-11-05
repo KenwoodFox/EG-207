@@ -14,7 +14,7 @@ Mr D.,
 
 After reviewing the revised subject specification, team gold have assessed that the associated changes do not
 majorily impact our ability to deliever a functioning monitor system that satisfies the requirements. We
-comprehended the specification requirements and there are no questions.
+comprehended the specification requirements and there are no questions concerning with the changes.
 
 In regards,
 Team Gold
