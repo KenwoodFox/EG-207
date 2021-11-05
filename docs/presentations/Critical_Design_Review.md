@@ -21,9 +21,17 @@ fontsize: 8pt
 ---
 
 
-# PDR Agenda
+# CDR Agenda
 
- - Fill me out!
+ - Concept of Operations (ConOps) Summary
+ - Environmental Systems Description
+ - Environmental Sensors
+ - Requirement Compliance
+ - Front Panel Display, Baseplate and Housing Design Details
+ - Summary of Analyses
+ - Calibration Plan
+ - References/Citations
+ - Next Steps
 
 
 # Environmental System Description
