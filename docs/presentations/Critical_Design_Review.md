@@ -40,7 +40,9 @@ fontsize: 8pt
 
 :::: column
 
-[Image goes here]
+## Functional Block Diagram
+
+![Dont Submit This Image](resources/placeholder.png)
 
 ::::
 
