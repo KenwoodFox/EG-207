@@ -12,12 +12,14 @@ author:
 institute:
  - SNHU/CETA, EG-207
 titlegraphic: resources/SNHU-CETA.png
-theme: Frankfurt
+theme: Ilmenau
 navigation: frame
 date: "Build Date: &date"
 aspectratio: 1610
 logo: resources/logo.png
 fontsize: 8pt
+section-titles: false
+toc: false
 ---
 
 
@@ -68,25 +70,25 @@ fontsize: 8pt
 
 ::: columns
 
-:::: column
+:::: {.column width=25%}
 
 ![DHT 11](resources/placeholder.png){ width=90 }
 
 ::::
 
-:::: column
+:::: {.column width=25%}
 
 ![CDS 55 Photoresistor](resources/placeholder.png){ width=90 }
 
 ::::
 
-:::: column
+:::: {.column width=25%}
 
 ![Parallax UV Light Sensor](resources/placeholder.png){ width=90 }
 
 ::::
 
-:::: column
+:::: {.column width=25%}
 
 ![Water Level Sensor](resources/placeholder.png){ width=90 }
 
@@ -118,6 +120,8 @@ fontsize: 8pt
  | 3.1.6   | Operational Mode             |                                                         |            |             |        |             |
 
 
+# Prototypes
+
 ## Front Panel Display Design (LabVIEW)
 
 Stuff here
@@ -143,6 +147,8 @@ Doot
 Doot
 
 
+# Analyses
+
 ## List and Summary of Analyses
 
 Stuff
@@ -153,6 +159,8 @@ Stuff
 Stuff for calibration
 
 
+# Appendix
+
 ## References/Citations
 
 Doot 
@@ -162,6 +170,8 @@ Doot
 
 Step
 
+
+# Extra Material
 
 ## Backup Slides
 
