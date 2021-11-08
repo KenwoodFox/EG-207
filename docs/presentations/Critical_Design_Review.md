@@ -21,7 +21,9 @@ fontsize: 8pt
 ---
 
 
-# CDR Agenda
+# Introduction
+
+## CDR Agenda
 
  - Concept of Operations (ConOps) Summary
  - Environmental Systems Description
@@ -34,13 +36,13 @@ fontsize: 8pt
  - Next Steps
 
 
-# Environmental System Description
+## Environmental System Description
 
 ::: columns
 
 :::: column
 
-## Functional Block Diagram
+### Functional Block Diagram
 
 ![Functional Block Diagram](resources/placeholder.png)
 
@@ -62,12 +64,40 @@ fontsize: 8pt
 :::
 
 
-# Environmental Sensors & Interfaces
+## Environmental Sensors & Interfaces
 
-Fill me out
+::: columns
+
+:::: column
+
+![DHT 11](resources/placeholder.png){ width=90 }
+
+::::
+
+:::: column
+
+![CDS 55 Photoresistor](resources/placeholder.png){ width=90 }
+
+::::
+
+:::: column
+
+![Parallax UV Light Sensor](resources/placeholder.png){ width=90 }
+
+::::
+
+:::: column
+
+![Water Level Sensor](resources/placeholder.png){ width=90 }
+
+::::
+
+:::
 
 
-# Functional Requiremenets - Compliance
+# Reqirements
+
+## Functional Requiremenets - Compliance
 
  | Reqt    | Reqt Title                   | Statement Subject                                       | Reqt Value | Performance | Margin | Notes/Basis |
  |---------|------------------------------|---------------------------------------------------------|------------|-------------|--------|-------------|
@@ -88,51 +118,51 @@ Fill me out
  | 3.1.6   | Operational Mode             |                                                         |            |             |        |             |
 
 
-# Front Panel Display Design (LabVIEW)
+## Front Panel Display Design (LabVIEW)
 
 Stuff here
 
 
-# Sensor Package Assembly Model
+## Sensor Package Assembly Model
 
 Stuff here too
 
 
-# Baseplate Design Drawing
+## Baseplate Design Drawing
 
 Stuff here
 
 
-# Housing Design - Solid Model
+## Housing Design - Solid Model
 
 Doot
 
 
-# Housing Design - Drawing
+## Housing Design - Drawing
 
 Doot
 
 
-# List and Summary of Analyses
+## List and Summary of Analyses
 
 Stuff
 
 
-# Calibration Plan
+## Calibration Plan
 
 Stuff for calibration
 
 
-# References/Citations
+## References/Citations
 
 Doot 
 
 
-# Next Steps
+## Next Steps
 
 Step
 
 
-# Backup Slides
+## Backup Slides
 
 Idk, stuff
