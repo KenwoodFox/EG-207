@@ -12,7 +12,7 @@ author:
 institute:
  - SNHU/CETA, EG-207
 titlegraphic: resources/SNHU-CETA.png
-theme: Madrid
+theme: Frankfurt
 navigation: frame
 date: "Build Date: &date"
 aspectratio: 1610
