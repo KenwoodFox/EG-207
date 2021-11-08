@@ -38,6 +38,15 @@ toc: false
  - Next Steps
 
 
+## Concept of Operations (ConOps) Summary
+
+::: notes
+
+This page needs some more work.
+
+:::
+
+
 ## Environmental System Description
 
 ::: columns
@@ -156,6 +165,28 @@ This page needs some more work.
 
 ## Front Panel Display Design (LabVIEW)
 
+::: columns
+
+:::: column
+
+### LabView Front Panel
+
+![Team Gold LabView Front Panel](resources/placeholder.png){ width=180 }
+
+::::
+
+:::: column
+
+- List
+- of
+- things
+- here
+  - idk i use python
+
+::::
+
+:::
+
 ::: notes
 
 This page needs some more work.
@@ -164,6 +195,8 @@ This page needs some more work.
 
 
 ## Sensor Package Assembly Model
+
+![Team Gold Sensor Package Assembly Model](resources/placeholder.png){ width=240 }
 
 ::: notes
 
@@ -174,6 +207,8 @@ This page needs some more work.
 
 ## Baseplate Design Drawing
 
+![Team Gold BasePlate Design](resources/sensor_baseplate_rc0.png){ width=240 }
+
 ::: notes
 
 This page needs some more work.
@@ -183,18 +218,23 @@ This page needs some more work.
 
 ## Housing Design - Solid Model
 
+![Team Gold Solid Model](resources/placeholder.png){ width=240 }
+
 ::: notes
 
-This page needs some more work.
+Have some callouts and stuff for  
+important features and cutouts on model.
 
 :::
 
 
 ## Housing Design - Drawing
 
+![Team Gold Housing Design Drawing](resources/placeholder.png){ width=240 }
+
 ::: notes
 
-This page needs some more work.
+Just put the drawing here
 
 :::
 
@@ -243,9 +283,10 @@ This page needs some more work.
 
 ## Backup Slides
 
+![Josh](resources/placeholder.png){ width=240 }
+
 ::: notes
 
 This page needs some more work.
 
 :::
-Idk, stuff
