@@ -42,7 +42,7 @@ fontsize: 8pt
 
 ## Functional Block Diagram
 
-![Dont Submit This Image](resources/placeholder.png)
+![Functional Block Diagram](resources/placeholder.png)
 
 ::::
 
@@ -69,23 +69,23 @@ Fill me out
 
 # Functional Requiremenets - Compliance
 
- | Reqt | Reqt Title | Statement Subject | Reqt Value | Performance | Margin | Notes/Basis |
- |------|-------------|-------------------|-----------|-------------|--------|-------------|
- | 3.1.1 | Vi Front Panel | 
- | 3.1.1.1 | Sensor Read and Indications | Numeric Indicators, "Warning" and "Alarm" LEDs |
- | 3.1.1.2 | Senors Controls | Provide necessary controls |
- | 3.1.1.3 | operation Indications | Display current system configuration and operating mode |
- | 3.1.1.4 | Calibration Updates |
- | 3.1.2 | Update/Read Rate |
- | 3.1.3 | Warning and Alarm Indication |
- | 3.1.3.1 | Temperature |
- | 3.1.3.2 | Humidity |
- | 3.1.3.3 | Visible Light |
- | 3.1.3.4 | UV Light |
- | 3.1.3.5 | Water Level |
- | 3.1.4 | Waveform Display |
- | 3.1.5 | Data Logging |
- | 3.1.6 | Operational Mode |
+ | Reqt    | Reqt Title                   | Statement Subject                                       | Reqt Value | Performance | Margin | Notes/Basis |
+ |---------|------------------------------|---------------------------------------------------------|------------|-------------|--------|-------------|
+ | 3.1.1   | Vi Front Panel               |                                                         |            |             |        |             |
+ | 3.1.1.1 | Sensor Read and Indications  | Numeric Indicators, "Warning" and "Alarm" LEDs          |            |             |        |             |
+ | 3.1.1.2 | Senors Controls              | Provide necessary controls                              |            |             |        |             |
+ | 3.1.1.3 | operation Indications        | Display current system configuration and operating mode |            |             |        |             |
+ | 3.1.1.4 | Calibration Updates          |                                                         |            |             |        |             |
+ | 3.1.2   | Update/Read Rate             |                                                         |            |             |        |             |
+ | 3.1.3   | Warning and Alarm Indication |                                                         |            |             |        |             |
+ | 3.1.3.1 | Temperature                  |                                                         |            |             |        |             |
+ | 3.1.3.2 | Humidity                     |                                                         |            |             |        |             |
+ | 3.1.3.3 | Visible Light                |                                                         |            |             |        |             |
+ | 3.1.3.4 | UV Light                     |                                                         |            |             |        |             |
+ | 3.1.3.5 | Water Level                  |                                                         |            |             |        |             |
+ | 3.1.4   | Waveform Display             |                                                         |            |             |        |             |
+ | 3.1.5   | Data Logging                 |                                                         |            |             |        |             |
+ | 3.1.6   | Operational Mode             |                                                         |            |             |        |             |
 
 
 # Front Panel Display Design (LabVIEW)
