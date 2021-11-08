@@ -46,7 +46,7 @@ toc: false
 
 ### Functional Block Diagram
 
-![Functional Block Diagram](resources/placeholder.png)
+![Functional Block Diagram](resources/placeholder.png){ width=180 }
 
 ::::
 
@@ -65,6 +65,10 @@ toc: false
 
 :::
 
+### Notes
+
+> This page still needs work.
+
 
 ## Environmental Sensors & Interfaces
 
@@ -72,7 +76,11 @@ toc: false
 
 :::: {.column width=25%}
 
-![DHT 11](resources/placeholder.png){ width=90 }
+![DHT 11](resources/dht11.png){ width=90 }
+
+The DHT 11 is an inexpensive  
+serial type thermometer and  
+hydrometer.
 
 ::::
 
@@ -80,11 +88,19 @@ toc: false
 
 ![CDS 55 Photoresistor](resources/placeholder.png){ width=90 }
 
+The CDS 55 is a commonly used  
+visible light detecting photoresistor.
+
 ::::
 
 :::: {.column width=25%}
 
 ![Parallax UV Light Sensor](resources/placeholder.png){ width=90 }
+
+The parallax UV Sensor Breakout  
+board is a breakout board  
+used in prototypes  
+to sense UV Light.
 
 ::::
 
@@ -92,9 +108,15 @@ toc: false
 
 ![Water Level Sensor](resources/placeholder.png){ width=90 }
 
+It get wet, idk
+
 ::::
 
 :::
+
+### Notes
+
+> This page still needs work.
 
 
 # Reqirements
@@ -119,60 +141,85 @@ toc: false
  | 3.1.5   | Data Logging                 |                                                         |            |             |        |             |
  | 3.1.6   | Operational Mode             |                                                         |            |             |        |             |
 
+ ### Notes
+
+> This page still needs work.
+
 
 # Prototypes
 
 ## Front Panel Display Design (LabVIEW)
 
-Stuff here
+### Notes
+
+> This page still needs work.
 
 
 ## Sensor Package Assembly Model
 
-Stuff here too
+### Notes
+
+> This page still needs work.
 
 
 ## Baseplate Design Drawing
 
-Stuff here
+### Notes
+
+> This page still needs work.
 
 
 ## Housing Design - Solid Model
 
-Doot
+### Notes
+
+> This page still needs work.
 
 
 ## Housing Design - Drawing
 
-Doot
+### Notes
+
+> This page still needs work.
 
 
 # Analyses
 
 ## List and Summary of Analyses
 
-Stuff
+### Notes
+
+> This page still needs work.
 
 
 ## Calibration Plan
 
-Stuff for calibration
+### Notes
+
+> This page still needs work.
 
 
 # Appendix
 
 ## References/Citations
 
-Doot 
+### Notes
+
+> This page still needs work.
 
 
 ## Next Steps
 
-Step
+### Notes
+
+> This page still needs work.
 
 
 # Extra Material
 
 ## Backup Slides
 
+### Notes
+
+> This page still needs work.
 Idk, stuff
