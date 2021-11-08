@@ -65,9 +65,11 @@ toc: false
 
 :::
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 ## Environmental Sensors & Interfaces
@@ -114,9 +116,11 @@ It get wet, idk
 
 :::
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 # Reqirements
@@ -141,85 +145,107 @@ It get wet, idk
  | 3.1.5   | Data Logging                 |                                                         |            |             |        |             |
  | 3.1.6   | Operational Mode             |                                                         |            |             |        |             |
 
- ### Notes
+ ::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 # Prototypes
 
 ## Front Panel Display Design (LabVIEW)
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 ## Sensor Package Assembly Model
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 ## Baseplate Design Drawing
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 ## Housing Design - Solid Model
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 ## Housing Design - Drawing
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 # Analyses
 
 ## List and Summary of Analyses
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 ## Calibration Plan
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 # Appendix
 
 ## References/Citations
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 ## Next Steps
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 
 
 # Extra Material
 
 ## Backup Slides
 
-### Notes
+::: notes
 
-> This page still needs work.
+This page needs some more work.
+
+:::
 Idk, stuff
