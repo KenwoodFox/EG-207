@@ -40,9 +40,23 @@ toc: false
 
 ## Concept of Operations (ConOps) Summary
 
+ - Stakeholders
+   - We hold some stake in our own system.
+   - The completion of our lab is important to those grading it.
+ - Users
+   - Scientists and Analysts in the field.
+ - Operational Description
+   - The sensor should be operated indoors and may be left without supervision to collect data and store it.
+ - Support Environment
+   - Released under the [GNUv3](https://www.gnu.org/licenses/gpl-3.0.en.html) license after final graded release `CMS-1.0-RELEASE` is published, and supported as the license describes, extending absolutely no warranty, and making all source code fully open source.
+ - Use
+   - The operator/analyst will use the sensor in the field, and collect data supervised or not.
+ - Calibration
+   - Calibration data is stored in the EEPROM and the sensor will not require calibration between regular uses, the sensor is not expected to require calibration often but will have a procedure to do so.
+
 ::: notes
 
-This page needs some more work.
+None.
 
 :::
 
