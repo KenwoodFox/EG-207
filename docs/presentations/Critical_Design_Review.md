@@ -113,7 +113,7 @@ hydrometer.
 
 :::: {.column width=25%}
 
-![CDS 55 Photoresistor](resources/placeholder.png){ width=90 }
+![CDS 55 Photoresistor](resources/CDS-55_Picture.jpg){ width=90 }
 
 The CDS 55 is a commonly used  
 visible light detecting photoresistor.
@@ -122,7 +122,7 @@ visible light detecting photoresistor.
 
 :::: {.column width=25%}
 
-![Parallax UV Light Sensor](resources/placeholder.png){ width=90 }
+![Parallax UV Light Sensor](resources/Parallax_UV_Light_Sensor.png){ width=90 }
 
 The parallax UV Sensor Breakout  
 board is a breakout board  
@@ -133,7 +133,7 @@ to sense UV Light.
 
 :::: {.column width=25%}
 
-![Water Level Sensor](resources/placeholder.png){ width=90 }
+![Water Level Sensor](resources/DGZZI_Water_Sensor_Module.jpg){ width=90 }
 
 It get wet, idk
 
@@ -200,11 +200,11 @@ This page needs some more work.
 
 ::: columns
 
-:::: column
+:::: {.column width=60%}
 
 ### LabView Front Panel
 
-![Team Gold LabView Front Panel](resources/placeholder.png){ width=180 }
+![Team Gold LabView Front Panel](resources/PDR_LabVIEW_VI_Front_Panel.png){ height=55% }
 
 ::::
 
