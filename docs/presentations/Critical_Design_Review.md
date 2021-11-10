@@ -350,9 +350,13 @@ This page needs some more work.
 
 ## Next Steps
 
-::: notes
+ - Complete manufactoring of base plate
+ - Complete manufatoring of rain bucket
+ - Finalize Arduino Code 
+ - Construct LabVIEW for all sensors and their environments
+ - Configure the wiring from Arduino to the bread board for all sensors
 
-This page needs some more work.
+::: notes
 
 :::
 
