@@ -393,7 +393,7 @@ This page needs some more work.
 
 :::: {.column width=20%}
 
-![William](resources/team_members/will      .png){ width=90 }
+![William](resources/team_members/will.png){ width=90 }
 
 ::::
 
