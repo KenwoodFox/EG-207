@@ -183,11 +183,11 @@ This page needs some more work.
 
 ::: columns
 
-:::: column
+:::: {.column width=60%}
 
 ### LabView Front Panel
 
-![Team Gold LabView Front Panel](resources/placeholder.png){ width=180 }
+![Team Gold LabView Front Panel](resources/PDR_LabVIEW_VI_Front_Panel.png){ height=55% }
 
 ::::
 
