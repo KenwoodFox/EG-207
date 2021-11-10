@@ -31,7 +31,7 @@ toc: false
  - Environmental Systems Description
  - Environmental Sensors
  - Requirement Compliance
- - Front Panel Display, Baseplate and Housing Design Details
+ - Front Panel Display, Base-plate and Housing Design Details
  - Summary of Analyses
  - Calibration Plan
  - References/Citations
@@ -79,7 +79,7 @@ toc: false
 
 - Instrument: LabVIEW 2019 SP1
 - Data Acquisition: Arduino Mega 2560
-- DAC Software: Ardunio IDE 1.8.15
+- DAC Software: Arduino IDE 1.8.15
 - Sensors:
   - Temp/RH: DHT11 Sensor
   - Visible Light: CDS55 Photoresistor
@@ -148,16 +148,16 @@ This page needs some more work.
 :::
 
 
-# Reqirements
+# Requirements
 
-## Functional Requiremenets - Compliance
+## Functional Requirements - Compliance
 
 | Reqt    | Reqt Title                   | Statement Subject                                       | Reqt Value              | Perf   | Margin | Notes/Basis                  |
 |---------|------------------------------|---------------------------------------------------------|-------------------------|--------|--------|------------------------------|
 | 3.1.1   | Vi Front Panel               |                                                         |                         |        |        |                              |
 | 3.1.1.1 | Sensor Read and Indications  | Numeric Indicators, "Warning" and "Alarm" LEDs          | Provide for all sensors | Comply | N/A    | Physical Indicators as well. |
 | 3.1.1.2 | Senors Controls              | Provide necessary controls                              | Arduino Power and STOP  | Comply | N/A    |                              |
-| 3.1.1.3 | operation Indications        | Display current system configuration and operating mode | LEDs for Indicaton      | Comply | N/A    | Physical Indicators as well. |
+| 3.1.1.3 | operation Indications        | Display current system configuration and operating mode | LEDs for Indication     | Comply | N/A    | Physical Indicators as well. |
 | 3.1.1.4 | Calibration Updates          | Update Calibration Parameters through LabVIEW           |                         |        |        |                              |
 | 3.1.2   | Update/Read Rate             |                                                         |                         |        |        |                              |
 | 3.1.3   | Warning and Alarm Indication | Provide warning or alarm indication for each sensor     |                         |        |        |                              |
@@ -221,9 +221,9 @@ This page needs some more work.
 :::
 
 
-## Baseplate Design Drawing
+## Base plate Design Drawing
 
-![Team Gold BasePlate Design](resources/Sensor_Base_Plate_Drawing_CDR.png){ height=240 }
+![Team Gold Base Plate Design](resources/Sensor_Base_Plate_Drawing_CDR.png){ height=240 }
 
 ::: notes
 
