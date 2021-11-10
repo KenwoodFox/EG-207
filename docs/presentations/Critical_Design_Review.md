@@ -162,19 +162,36 @@ This page needs some more work.
 | 3.1.2   | Update/Read Rate             |                                                         |                         |        |        |                              |
 | 3.1.3   | Warning and Alarm Indication | Provide warning or alarm indication for each sensor     |                         |        |        |                              |
 | 3.1.3.1 | Temperature                  | Provide warning or alarm indication                     | [spec limits go here]   | Comply | ±2^-1^ |                              |
-| 3.1.3.2 | Humidity                     |                                                         |                         |        |        |                              |
-| 3.1.3.3 | Visible Light                |                                                         |                         |        |        |                              |
-| 3.1.3.4 | UV Light                     |                                                         |                         |        |        |                              |
-| 3.1.3.5 | Water Level                  |                                                         |                         |        |        |                              |
-| 3.1.4   | Waveform Display             |                                                         |                         |        |        |                              |
-| 3.1.5   | Data Logging                 |                                                         |                         |        |        |                              |
-| 3.1.6   | Operational Mode             |                                                         |                         |        |        |                              |
+| 3.1.3.2 | Humidity                     | Provide temperature warning or alarm indication                                                     |                         |        |        |                              |
+| 3.1.3.3 | Visible Light                | Provide temperature warning or alarm indication                                                       |                         |        |        |                              |
+| 3.1.3.4 | UV Light                     | Provide temperature warning or alarm indication                                                        |                         |        |        |                              |
+| 3.1.3.5 | Water Level                  | Provide temperature warning or alarm indication                                                        |                         |        |        |                              |
+| 3.1.4   | Waveform Display             | Display waveform for sensors                                                        |                         |        |        |                              |
+| 3.1.5   | Data Logging                 | Time-stamped data exported to file with specific filename                                                        |                         |        |        |                              |
+| 3.1.6   | Operational Mode             | Provide additional mode                                                        |                         |        |        |                              |
 
  ::: notes
 
 This page needs some more work.
 
 :::
+
+## Performance Requirements - Compliance
+
+| Reqt. ID or section | Reqt. Title | Statement Subject | Reqt. Value | Performance | Margin | Notes/Basis |
+|---------------------|-------------|-------------------|-------------|-------------|--------|-------------|
+| 3.2.1 | Accuracy | Accuracy better than; | | | | |
+| | | Temperature | ± 2.5 degrees Celsius | | | |
+| | | Humidity | ± 7% | | | |
+| | | Vis Illuminance | ± 10 % | | | |
+| | | UV Intensity | N/A | N/A | N/A | N/A |
+| | | Range detection | ± 1 mm | | | |
+| 3.2.2 | Precision | Precision better than; | | | | |
+| | | Temperature | 2 degrees Celsius | | | |
+| | | Humidity | 2 % | | | |
+| | | Vis Illuminance | 20 Lux | | | |
+| | | UV intensity | N/A | N/A | N/A | N/A |
+| | | Range detection | 0.2 mm | | | | 
 
 
 # Prototypes
