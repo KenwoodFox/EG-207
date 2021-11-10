@@ -152,12 +152,12 @@ This page needs some more work.
 
 ## Functional Requirements - Compliance
 
-| Reqt    | Reqt Title                   | Statement Subject                                       | Reqt Value              | Perf   | Margin | Notes/Basis                  |
+| Reqt    | Reqt Title                   | Statement Subject                                       | Reqt Value              | Perf.  | Margin | Notes/Basis                  |
 |---------|------------------------------|---------------------------------------------------------|-------------------------|--------|--------|------------------------------|
 | 3.1.1   | Vi Front Panel               |                                                         |                         |        |        |                              |
 | 3.1.1.1 | Sensor Read and Indications  | Numeric Indicators, "Warning" and "Alarm" LEDs          | Provide for all sensors | Comply | N/A    | Physical Indicators as well. |
 | 3.1.1.2 | Senors Controls              | Provide necessary controls                              | Arduino Power and STOP  | Comply | N/A    |                              |
-| 3.1.1.3 | operation Indications        | Display current system configuration and operating mode | LEDs for Indication     | Comply | N/A    | Physical Indicators as well. |
+| 3.1.1.3 | Operation Indications        | Display current system configuration and operating mode | LEDs for Indication     | Comply | N/A    | Physical Indicators as well. |
 | 3.1.1.4 | Calibration Updates          | Update Calibration Parameters through LabVIEW           |                         |        |        |                              |
 | 3.1.2   | Update/Read Rate             |                                                         |                         |        |        |                              |
 | 3.1.3   | Warning and Alarm Indication | Provide warning or alarm indication for each sensor     |                         |        |        |                              |
@@ -165,35 +165,35 @@ This page needs some more work.
 
 ## Functional Requirements - Compliance Cont.
 
-| Reqt    | Reqt Title       | Statement Subject                                         | Reqt Value            | Perf   | Margin | Notes/Basis |
-|---------|------------------|-----------------------------------------------------------|-----------------------|--------|--------|-------------|
-| 3.1.3.1 | Temperature      | Provide warning or alarm indication                       | [spec limits go here] | Comply | ±2^-1^ |             |
-| 3.1.3.2 | Humidity         | Provide temperature warning or alarm indication           |                       |        |        |             |
-| 3.1.3.3 | Visible Light    | Provide temperature warning or alarm indication           |                       |        |        |             |
-| 3.1.3.4 | UV Light         | Provide temperature warning or alarm indication           |                       |        |        |             |
-| 3.1.3.5 | Water Level      | Provide temperature warning or alarm indication           |                       |        |        |             |
-| 3.1.4   | Waveform Display | Display waveform for sensors                              |                       |        |        |             |
-| 3.1.5   | Data Logging     | Time-stamped data exported to file with specific filename |                       |        |        |             |
-| 3.1.6   | Operational Mode | Provide additional mode                                   |                       |        |        |             |
+| Reqt    | Reqt Title       | Statement Subject                                         | Reqt Value            | Perf.  | Margin | Notes/Basis                                           |
+|---------|------------------|-----------------------------------------------------------|-----------------------|--------|--------|-------------------------------------------------------|
+| 3.1.3.1 | Temperature      | Provide warning or alarm indication                       | [spec limits go here] | Comply | ±2^-1^ |                                                       |
+| 3.1.3.2 | Humidity         | Provide temperature warning or alarm indication           |                       | Comply |        |                                                       |
+| 3.1.3.3 | Visible Light    | Provide temperature warning or alarm indication           |                       | Comply |        |                                                       |
+| 3.1.3.4 | UV Light         | Provide temperature warning or alarm indication           |                       | Comply |        |                                                       |
+| 3.1.3.5 | Water Level      | Provide temperature warning or alarm indication           |                       | Comply |        |                                                       |
+| 3.1.4   | Waveform Display | Display waveform for sensors                              |                       | Comply |        |                                                       |
+| 3.1.5   | Data Logging     | Time-stamped data exported to file with specific filename |                       | Comply |        | On-Microcontroller Timestamp (to negate serial delay) |
+| 3.1.6   | Operational Mode | Provide additional mode                                   |                       | Comply |        |                                                       |
 
 
 ## Performance Requirements - Compliance
 
-| Reqt. ID or section | Reqt. Title                | Statement Subject                                        | Reqt. Value                   | Performance | Margin | Notes/Basis |
-|---------------------|----------------------------|----------------------------------------------------------|-------------------------------|-------------|--------|-------------|
-| 3.2.1               | Accuracy                   | Accuracy better than;                                    |                               |             |        |             |
-|                     |                            | Temperature                                              | ± 2.5 degrees Celsius         |             |        |             |
-|                     |                            | Humidity                                                 | ± 7%                          |             |        |             |
-|                     |                            | Vis Illuminance                                          | ± 10 %                        |             |        |             |
-|                     |                            | UV Intensity                                             | N/A                           | N/A         | N/A    | N/A         |
-|                     |                            | Range detection                                          | ± 1 mm                        |             |        |             |
-| 3.2.2               | Precision                  | Precision better than;                                   |                               |             |        |             |
-|                     |                            | Temperature                                              | 2 degrees Celsius             |             |        |             |
-|                     |                            | Humidity                                                 | 2 %                           |             |        |             |
-|                     |                            | Vis Illuminance                                          | 20 Lux                        |             |        |             |
-|                     |                            | UV intensity                                             | N/A                           | N/A         | N/A    | N/A         |
-|                     |                            | Range detection                                          | 0.2 mm                        |             |        |             |
-| 3.2.3               | Calibration or Diagnostics | The display Shall provide ability to update calribration | Update via numerical Controls | Comply      |        |             |
+| Reqt. ID or section | Reqt. Title                | Statement Subject                                        | Reqt. Value                   | Perf.  | Margin | Notes/Basis |
+|---------------------|----------------------------|----------------------------------------------------------|-------------------------------|--------|--------|-------------|
+| 3.2.1               | Accuracy                   | Accuracy better than;                                    | ---                           |        |        |             |
+| ---                 | ---                        | Temperature                                              | ± 2.5ºC                       |        |        |             |
+| ---                 | ---                        | Humidity                                                 | ± 7%                          |        |        |             |
+| ---                 | ---                        | Vis Illuminance                                          | ± 10%                         |        |        |             |
+| ---                 | ---                        | UV Intensity                                             | N/A                           | N/A    | N/A    | N/A         |
+| ---                 | ---                        | Range detection                                          | ± 1 mm                        |        |        |             |
+| 3.2.2               | Precision                  | Precision better than;                                   | ---                           |        |        |             |
+| ---                 | ---                        | Temperature                                              | 2ºC                           |        |        |             |
+| ---                 | ---                        | Humidity                                                 | 2%                            |        |        |             |
+| ---                 | ---                        | Vis Illuminance                                          | 20 Lux                        |        |        |             |
+| ---                 | ---                        | UV intensity                                             | N/A                           | N/A    | N/A    | N/A         |
+| ---                 | ---                        | Range detection                                          | 0.2 mm                        |        |        |             |
+| 3.2.3               | Calibration or Diagnostics | The display Shall provide ability to update calribration | Update via numerical Controls | Comply |        |             |
 
 
 # Prototypes
