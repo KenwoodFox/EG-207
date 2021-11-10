@@ -369,31 +369,36 @@ This page needs some more work.
 
 :::: {.column width=20%}
 
-![Josh](resources/team_members/josh.png){ width=90 }
+![](resources/team_members/josh.png){ width=90 }  
+Josh
 
 ::::
 
 :::: {.column width=20%}
 
-![Noah](resources/team_members/noah.jpg){ width=90 }
+![](resources/team_members/noah.jpg){ width=90 }  
+Noah
 
 ::::
 
 :::: {.column width=20%}
 
-![Joe](resources/team_members/joe.jpg){ width=90 }
+![](resources/team_members/joe.jpg){ width=90 }  
+Joe
 
 ::::
 
 :::: {.column width=20%}
 
-![Maria](resources/team_members/maria.png){ width=90 }
+![](resources/team_members/maria.jpg){ width=90 }  
+Maria
 
 ::::
 
 :::: {.column width=20%}
 
-![William](resources/team_members/will.png){ width=90 }
+![](resources/team_members/will.jpg){ width=90 }  
+Will
 
 ::::
 
