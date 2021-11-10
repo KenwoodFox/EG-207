@@ -356,10 +356,6 @@ This page needs some more work.
  - Construct LabVIEW for all sensors and their environments
  - Configure the wiring from Arduino to the bread board for all sensors
 
-::: notes
-
-:::
-
 
 # Extra Material
 
