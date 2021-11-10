@@ -381,7 +381,7 @@ This page needs some more work.
 
 :::: {.column width=20%}
 
-![Joe](resources/team_members/joe.png){ width=90 }
+![Joe](resources/team_members/joe.jpg){ width=90 }
 
 ::::
 
