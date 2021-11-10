@@ -268,6 +268,49 @@ This page needs some more work.
 
 ## Calibration Plan
 
+::: columns
+
+:::: column
+
+### Auto-Calibration
+
+Procedure for undergoing an autocal:
+
+ - When sensor is first powered on, these conditions must be met:
+   - Light Sensor door must be closed.
+   - Neither Sensor must read an absolute 0 value.
+   - There must be no error codes in the error EEPROM location.
+   - There must be no warning, or out-of-range codes in the warning EEPROM location.
+ - If all conditions are met, the sensor will compare its previous 0 mark to the current readings of the light sensors
+   - If they differ:
+     - Sensor will average 10 seconds of recording and create a new offset, and store this in the EEPROM
+     - Sensor will then allow a user to extend or retract the light sensor door as normal, while also raising a warning code for 50 seconds indicating it has had a recent autocal.
+   - If they do not differ:
+     - Sensor will not change the value and will not wait 10 seconds or raise a warning code.
+
+::::
+
+:::: column
+
+### Manual Calibration
+
+Neither the water sensor, nor the DHT11 can have an accurate autocal routine, these sensors must be calibrated by the operator via the LabVIEW vi.
+
+ - To calibrate the DHT11
+   - The sensor must start in or be in this state:
+     - Light Sensor Door closed.
+     - No error codes.
+     - No out-of-range or warning codes.
+   - The operator must specify their own offset values via the VI, and submit them to the sensor with a AUTOCAL tagged packet
+   - The sensor will store these offsets in its EEPROM
+ - To Calbrate the Water Flow Sensor
+   - The operator must meet the state defined for the DHT11 Calibration
+   - They can input their own values, or alternativly, select the 'zero' button for the flow sensor, to calibrate in a known dry enviorment.
+
+::::
+
+:::
+
 ::: notes
 
 This page needs some more work.
