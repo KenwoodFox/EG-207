@@ -35,3 +35,7 @@ generate_pres:
 clean_filenames:
 	# Clean presentaiton names 
 	cd $(builddir)/pdf/ && rename 's/.md.pdf$$/.pdf/' *.md.pdf
+
+# General doc cleanup
+clean:
+	git clean -fdX
