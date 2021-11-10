@@ -223,7 +223,7 @@ This page needs some more work.
 
 ## Baseplate Design Drawing
 
-![Team Gold BasePlate Design](resources/sensor_baseplate_rc0.png){ width=240 }
+![Team Gold BasePlate Design](resources/Sensor_Base_Plate_Drawing_CDR.png){ height=240 }
 
 ::: notes
 
@@ -234,7 +234,7 @@ This page needs some more work.
 
 ## Housing Design - Solid Model
 
-![Team Gold Solid Model](resources/placeholder.png){ width=240 }
+![Team Gold Solid Model](resources/sensor_package_housing_cdr.png){ height=240 }
 
 ::: notes
 
@@ -246,7 +246,7 @@ important features and cutouts on model.
 
 ## Housing Design - Drawing
 
-![Team Gold Housing Design Drawing](resources/placeholder.png){ width=240 }
+![Team Gold Housing Design Drawing](resources/Sensor_Cover_Drawing_CDR.png){ height=240 }
 
 ::: notes
 
