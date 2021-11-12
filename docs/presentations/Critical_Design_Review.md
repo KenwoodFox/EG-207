@@ -242,6 +242,8 @@ This page needs some more work.
 
 ## Base plate Design Drawing
 
+ - Baseplate status: In Progress
+
 ![Team Gold Base Plate Design](resources/Sensor_Base_Plate_Drawing_CDR.png){ height=240 }
 
 ::: notes
@@ -266,6 +268,8 @@ important features and cutouts on model.
 ## Housing Design - Drawing
 
 ![Team Gold Housing Design Drawing](resources/Sensor_Cover_Drawing_CDR.png){ height=240 }
+
+ - Housing status: In progress
 
 ::: notes
 
