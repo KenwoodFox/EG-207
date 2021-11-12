@@ -206,7 +206,7 @@ This page needs some more work.
 
 ### LabView Front Panel
 
-![Team Gold LabView Front Panel](resources/CDRFrontPanel.png){ height=55% }
+![Team Gold LabView Front Panel](resources/CDRFrontPanelLabVIEW.png){ height=55% }
 
 ::::
 
