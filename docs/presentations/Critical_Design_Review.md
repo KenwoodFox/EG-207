@@ -240,11 +240,6 @@ This page needs some more work.
   - Moisture Alarm light
 
 
-- of
-- things
-- here
-  - idk i use python
-
 ::::
 
 :::
