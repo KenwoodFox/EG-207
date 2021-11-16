@@ -60,6 +60,7 @@ toc: false
    - Because our environmental monitoring solution does not have the same level of quality assurance as a similar solution, over-reliance by the end user could result in uncalibrated data, unexpected failure modes or strange untested bugs over time.
  - Risks
    - Increased risk of the system to malfunction if operation of system is prolonged without proper maintenance.
+   - Potential light scatter non-visible to the naked eye.
    - Airborne contaminants can cause the system to malfunction and provide inaccurate data.
 
 
@@ -372,8 +373,8 @@ This page needs some more work.
 
 ## Next Steps
 
- - Complete manufactoring of base plate
- - Complete manufatoring of rain bucket
+ - Fabrication of Baseplate
+ - Complete manufactoring of rain bucket
  - Finalize Arduino Code 
  - Construct LabVIEW for all sensors and their environments
  - Configure the wiring from Arduino to the bread board for all sensors
