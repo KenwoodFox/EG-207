@@ -110,6 +110,7 @@ The DHT 11 is an inexpensive
 serial type thermometer and  
 hydrometer.
 
+<<<<<<< Updated upstream
  - Humidity
    - Accuracy: ±5% RH
    - Precision: ±2% 
@@ -119,6 +120,17 @@ hydrometer.
    - Accuracy: ±2.5%
    - Precision: 2 Degrees Celcius 
    - Response Time: 30 seconds
+=======
+Humidity
+Accuracy: ±5% RH
+Precision: ±2% 
+Response Time: 30 seconds
+
+Temperature
+Accuracy: ±2.5%
+Precision: 2 Degrees Celcius 
+Response Time: 30 seconds
+>>>>>>> Stashed changes
 
 ::::
 
@@ -128,6 +140,10 @@ hydrometer.
 
 The CDS 55 is a commonly used  
 visible light detecting photoresistor.
+
+Accuracy: 10%
+Precision: 20 lux 
+Response Time: 0.30 seconds
 
 ::::
 
@@ -140,6 +156,10 @@ board is a breakout board
 used in prototypes  
 to sense UV Light.
 
+Accuracy: N/A
+Precision: N/A 
+Response Time: N/A
+
 ::::
 
 :::: {.column width=25%}
@@ -147,6 +167,10 @@ to sense UV Light.
 ![Water Level Sensor](resources/DGZZI_Water_Sensor_Module.jpg){ width=90 }
 
 The Water Level Sensor is used to measure the depths of water and the core component of an amplifying circuit.
+
+Accuracy: ±1 mm
+Precision: 0.2 mm 
+Response Time: TBS
 
 ::::
 
