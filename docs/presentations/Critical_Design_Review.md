@@ -63,9 +63,8 @@ toc: false
    - Potential light scatter non-visible to the naked eye.
    - Airborne contaminants can cause the system to malfunction and provide inaccurate data.
 
-::::
+![Flowchart](resources/CDR_Flowchart.png){ height=60 }
 
-![Flowchart](resources/CDR_Flowchart.png){ height=200 }
 
 ## Environmental System Description
 
@@ -74,7 +73,9 @@ toc: false
 :::: column
 
 ### Functional Block Diagram
-![Functional Block Diagram](resources/Functional_Block_Diagram.png){ width=50}
+
+![Functional Block Diagram](resources/Functional_Block_Diagram.png){ width=200}
+
 ::::
 
 :::: column
