@@ -136,7 +136,7 @@ to sense UV Light.
 
 ![Water Level Sensor](resources/DGZZI_Water_Sensor_Module.jpg){ width=90 }
 
-It get wet, idk
+The Water Level Sensor is used to measure the depths of water and the core component of an amplifying circuit.
 
 ::::
 
