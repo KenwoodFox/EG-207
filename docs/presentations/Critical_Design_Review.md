@@ -72,7 +72,7 @@ toc: false
 
 ### Functional Block Diagram
 
-![Functional Block Diagram](resources/placeholder.png){ width=220 }
+![Functional Block Diagram](resources/CDR_Flowchart_Arduino.png){ height=215 }
 
 ::::
 
