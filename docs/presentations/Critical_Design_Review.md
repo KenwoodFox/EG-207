@@ -110,15 +110,16 @@ The DHT 11 is an inexpensive
 serial type thermometer and  
 hydrometer.
 
-Humidity
-Accuracy: ±5% RH
-Precision: ±2% 
-Response Time: 30 seconds
+ - Humidity
+   - Accuracy: ±5% RH
+   - Precision: ±2% 
+   - Response Time: 30 seconds
 
-Temperature
-Accuracy: ±2.5%
-Precision: 2 Degrees Celcius 
-Response Time: 30 seconds
+ - Temperature
+   - Accuracy: ±2.5%
+   - Precision: 2 Degrees Celcius 
+   - Response Time: 30 seconds
+
 ::::
 
 :::: {.column width=25%}
