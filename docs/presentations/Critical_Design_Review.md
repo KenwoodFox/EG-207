@@ -74,7 +74,7 @@ toc: false
 :::: column
 
 ### Functional Block Diagram
-![Functional Block Diagram](resources/Functional Block Diagram.png){ width=50}
+![Functional Block Diagram](resources/Functional_Block_Diagram.png){ width=50}
 ::::
 
 :::: column
@@ -160,7 +160,7 @@ measure the depths of water and the
 core component in an amplifying circuit.
 The brick-designed sensor has three major
 components: electronic brick connector,
-1MΩ resistor, and several lines of
+1Mohm resistor, and several lines of
 bare-conducting wires ("Last Minute Engineers"). 
 
    - Accuracy: ±1 mm
@@ -197,11 +197,11 @@ This page needs some more work.
 
 | Reqt    | Reqt Title        | Statement Subject                                         | Reqt Value            | Perf.  | Margin | Notes/Basis                                           |
 |---------|-------------------|-----------------------------------------------------------|-----------------------|--------|--------|-------------------------------------------------------|
-| 3.1.3.1 | Temperature (°F)  | Provide temperature warning or alarm indication           | 85≤T≤100, > 100       | Comply | ±2^-1^ |                                                       |
-| 3.1.3.2 | Humidity          | Provide humidity warning or alarm indication              | 30%≤RH≤40%, < 30%     | Comply |        |                                                       |
-| 3.1.3.3 | Visible Light(lux)| Provide lux warning or alarm indication                   | 700≤lux≤1000, > 1000  | Comply |        |                                                       |
-| 3.1.3.4 | UV Light          | Provide UV intensity warning or alarm indication          | 300≤U≤600, > 600      | Comply |        |                                                       |
-| 3.1.3.5 | Water Level (mm)  | Provide rainfall warning or alarm indication              | W≤0.5 or 6≤W≤10, > 10 | Comply |        |                                                       |
+| 3.1.3.1 | Temperature (°F)  | Provide temperature warning or alarm indication           | 85<T<100, > 100       | Comply | ±2^-1^ |                                                       |
+| 3.1.3.2 | Humidity          | Provide humidity warning or alarm indication              | 30%<RH<40%, < 30%     | Comply |        |                                                       |
+| 3.1.3.3 | Visible Light(lux)| Provide lux warning or alarm indication                   | 700<lux<1000, > 1000  | Comply |        |                                                       |
+| 3.1.3.4 | UV Light          | Provide UV intensity warning or alarm indication          | 300<U<600, > 600      | Comply |        |                                                       |
+| 3.1.3.5 | Water Level (mm)  | Provide rainfall warning or alarm indication              | W<0.5 or 6<W<10, > 10 | Comply |        |                                                       |
 | 3.1.4   | Waveform Display  | Display waveform for sensors                              | Demonstrate           | Comply |        |                                                       |
 | 3.1.5   | Data Logging      | Time-stamped data exported to file with specific filename | Demonstrate, Inspect  | Comply |        | On-Microcontroller Timestamp (to negate serial delay) |
 | 3.1.6   | Operational Mode  | Provide additional mode                                   | Demonstrate           | Comply |        |                                                       |
