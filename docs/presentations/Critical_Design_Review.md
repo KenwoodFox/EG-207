@@ -65,8 +65,6 @@ toc: false
 
 ::::
 
-:::: {.column width=25%}
-
 ![Flowchart](resources/CDR_Flowchart.png){ height=200 }
 
 ## Environmental System Description
@@ -76,9 +74,7 @@ toc: false
 :::: column
 
 ### Functional Block Diagram
-
 ![Functional Block Diagram](resources/Functional Block Diagram.png){ width=50}
-
 ::::
 
 :::: column
@@ -113,7 +109,7 @@ This page needs some more work.
 
 The DHT 11 is an inexpensive  
 serial type thermometer and  
-hydrometer.
+hydrometer (John).
 
  - Humidity
    - Accuracy: ±5% RH
@@ -132,7 +128,7 @@ hydrometer.
 ![CDS 55 Photoresistor](resources/CDS-55_Picture.jpg){ width=90 }
 
 The CDS 55 is a commonly used  
-visible light detecting photoresistor.
+visible light detecting photoresistor (KlSelectronic).
 
    - Accuracy: 10%
    - Precision: 20 lux 
@@ -147,7 +143,7 @@ visible light detecting photoresistor.
 The parallax UV Sensor Breakout  
 board is a breakout board  
 used in prototypes  
-to sense UV Light.
+to sense UV Light ("UV Light Sensor").
 
    - Accuracy: N/A
    - Precision: N/A 
@@ -159,7 +155,13 @@ to sense UV Light.
 
 ![Water Level Sensor](resources/DGZZI_Water_Sensor_Module.jpg){ width=90 }
 
-The Water Level Sensor is used to measure the depths of water and the core component of an amplifying circuit.
+The Water Level Sensor is used to 
+measure the depths of water and the 
+core component in an amplifying circuit.
+The brick-designed sensor has three major
+components: electronic brick connector,
+1MΩ resistor, and several lines of
+bare-conducting wires ("Last Minute Engineers"). 
 
    - Accuracy: ±1 mm
    - Precision: 0.2 mm 
@@ -195,11 +197,11 @@ This page needs some more work.
 
 | Reqt    | Reqt Title       | Statement Subject                                         | Reqt Value            | Perf.  | Margin | Notes/Basis                                           |
 |---------|------------------|-----------------------------------------------------------|-----------------------|--------|--------|-------------------------------------------------------|
-| 3.1.3.1 | Temperature      | Provide warning or alarm indication                       | [spec limits go here] | Comply | ±2^-1^ |                                                       |
-| 3.1.3.2 | Humidity         | Provide temperature warning or alarm indication           |                       | Comply |        |                                                       |
-| 3.1.3.3 | Visible Light    | Provide temperature warning or alarm indication           |                       | Comply |        |                                                       |
-| 3.1.3.4 | UV Light         | Provide temperature warning or alarm indication           |                       | Comply |        |                                                       |
-| 3.1.3.5 | Water Level      | Provide temperature warning or alarm indication           |                       | Comply |        |                                                       |
+| 3.1.3.1 | Temperature      | Provide temperature warning or alarm indication           | [spec limits go here] | Comply | ±2^-1^ |                                                       |
+| 3.1.3.2 | Humidity         | Provide humidity warning or alarm indication              |                       | Comply |        |                                                       |
+| 3.1.3.3 | Visible Light    | Provide lux warning or alarm indication                   |                       | Comply |        |                                                       |
+| 3.1.3.4 | UV Light         | Provide UV intensity warning or alarm indication          |                       | Comply |        |                                                       |
+| 3.1.3.5 | Water Level      | Provide rainfall warning or alarm indication              |                       | Comply |        |                                                       |
 | 3.1.4   | Waveform Display | Display waveform for sensors                              |                       | Comply |        |                                                       |
 | 3.1.5   | Data Logging     | Time-stamped data exported to file with specific filename |                       | Comply |        | On-Microcontroller Timestamp (to negate serial delay) |
 | 3.1.6   | Operational Mode | Provide additional mode                                   |                       | Comply |        |                                                       |
@@ -391,7 +393,17 @@ This page needs some more work.
 
 ## References/Citations
 
-::: notes
+“C:UsersAdministratorDesktop~$KLS6-3537 - Klsele.com.” KlSelectronic. Accessed October 22, 2021. 
+	http://www.klsele.com/admin/product_upload/20190322144057KLS6-3537..pdf. 
+
+“UV Light Sensor.” UV Light Sensor | 28091 | Parallax Inc. Accessed October 22, 2021. 
+	https://www1.parallax.com/product/28091. 
+
+John G. Webster, & Halit Eren. (2014). Measurement, Instrumentation, and Sensors Handbook: Two-Volume Set. CRC Press. 
+
+Last Minute Engineers. “In-Depth: How Water Level Sensor Works and Interface It with Arduino.” Last Minute Engineers. 
+	Last Minute Engineers, December 18, 2020. 
+	https://lastminuteengineers.com/water-level-sensor-arduino-tutorial/. 
 
 This page needs some more work.
 
