@@ -161,7 +161,7 @@ The Water Level Sensor is used to measure the depths of water and the core compo
 
    - Accuracy: ±1 mm
    - Precision: 0.2 mm 
-   - Response Time: TBS
+   - Response Time: TBD
 
 ::::
 
