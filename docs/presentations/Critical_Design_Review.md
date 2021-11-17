@@ -63,8 +63,9 @@ toc: false
    - Potential light scatter non-visible to the naked eye.
    - Airborne contaminants can cause the system to malfunction and provide inaccurate data.
 
-![Flowchart](resources/CDR_Flowchart.png){ height=60 }
+::::
 
+![Flowchart](resources/CDR_Flowchart.png){ height=200 }
 
 ## Environmental System Description
 
@@ -73,9 +74,7 @@ toc: false
 :::: column
 
 ### Functional Block Diagram
-
-![Functional Block Diagram](resources/Functional_Block_Diagram.png){ width=220}
-
+![Functional Block Diagram](resources/Functional Block Diagram.png){ width=50}
 ::::
 
 :::: column
@@ -161,7 +160,7 @@ measure the depths of water and the
 core component in an amplifying circuit.
 The brick-designed sensor has three major
 components: electronic brick connector,
-1Mohm resistor, and several lines of
+1MΩ resistor, and several lines of
 bare-conducting wires ("Last Minute Engineers"). 
 
    - Accuracy: ±1 mm
@@ -196,35 +195,35 @@ This page needs some more work.
 
 ## Functional Requirements - Compliance Cont.
 
-| Reqt    | Reqt Title         | Statement Subject                                         | Reqt Value            | Perf.  | Margin | Notes/Basis                                           |
-|---------|--------------------|-----------------------------------------------------------|-----------------------|--------|--------|-------------------------------------------------------|
-| 3.1.3.1 | Temperature (°F)   | Provide temperature warning or alarm indication           | 85<T<100, > 100       | Comply | ±2^-1^ |                                                       |
-| 3.1.3.2 | Humidity           | Provide humidity warning or alarm indication              | 30%<RH<40%, < 30%     | Comply |        |                                                       |
-| 3.1.3.3 | Visible Light(lux) | Provide lux warning or alarm indication                   | 700<lux<1000, > 1000  | Comply |        |                                                       |
-| 3.1.3.4 | UV Light           | Provide UV intensity warning or alarm indication          | 300<U<600, > 600      | Comply |        |                                                       |
-| 3.1.3.5 | Water Level (mm)   | Provide rainfall warning or alarm indication              | W<0.5 or 6<W<10, > 10 | Comply |        |                                                       |
-| 3.1.4   | Waveform Display   | Display waveform for sensors                              |                       | Comply |        |                                                       |
-| 3.1.5   | Data Logging       | Time-stamped data exported to file with specific filename |                       | Comply |        | On-Microcontroller Timestamp (to negate serial delay) |
-| 3.1.6   | Operational Mode   | Provide additional mode                                   |                       | Comply |        |                                                       |
+| Reqt    | Reqt Title        | Statement Subject                                         | Reqt Value            | Perf.  | Margin | Notes/Basis                                           |
+|---------|-------------------|-----------------------------------------------------------|-----------------------|--------|--------|-------------------------------------------------------|
+| 3.1.3.1 | Temperature (°F)  | Provide temperature warning or alarm indication           | 85≤T≤100, > 100       | Comply | ±2^-1^ |                                                       |
+| 3.1.3.2 | Humidity          | Provide humidity warning or alarm indication              | 30%≤RH≤40%, < 30%     | Comply |        |                                                       |
+| 3.1.3.3 | Visible Light(lux)| Provide lux warning or alarm indication                   | 700≤lux≤1000, > 1000  | Comply |        |                                                       |
+| 3.1.3.4 | UV Light          | Provide UV intensity warning or alarm indication          | 300≤U≤600, > 600      | Comply |        |                                                       |
+| 3.1.3.5 | Water Level (mm)  | Provide rainfall warning or alarm indication              | W≤0.5 or 6≤W≤10, > 10 | Comply |        |                                                       |
+| 3.1.4   | Waveform Display  | Display waveform for sensors                              | Demonstrate           | Comply |        |                                                       |
+| 3.1.5   | Data Logging      | Time-stamped data exported to file with specific filename | Demonstrate, Inspect  | Comply |        | On-Microcontroller Timestamp (to negate serial delay) |
+| 3.1.6   | Operational Mode  | Provide additional mode                                   | Demonstrate           | Comply |        |                                                       |
 
 
 ## Performance Requirements - Compliance
 
-| Reqt. ID or section | Reqt. Title                | Statement Subject                                        | Reqt. Value                   | Perf.  | Margin | Notes/Basis |
-|---------------------|----------------------------|----------------------------------------------------------|-------------------------------|--------|--------|-------------|
-| 3.2.1               | Accuracy                   | Accuracy better than;                                    | ---                           |        |        |             |
-| ---                 | ---                        | Temperature                                              | ± 2.5ºC                       |        |        |             |
-| ---                 | ---                        | Humidity                                                 | ± 7%                          |        |        |             |
-| ---                 | ---                        | Vis Illuminance                                          | ± 10%                         |        |        |             |
-| ---                 | ---                        | UV Intensity                                             | N/A                           | N/A    | N/A    | N/A         |
-| ---                 | ---                        | Range detection                                          | ± 1 mm                        |        |        |             |
-| 3.2.2               | Precision                  | Precision better than;                                   | ---                           |        |        |             |
-| ---                 | ---                        | Temperature                                              | 2ºC                           |        |        |             |
-| ---                 | ---                        | Humidity                                                 | 2%                            |        |        |             |
-| ---                 | ---                        | Vis Illuminance                                          | 20 Lux                        |        |        |             |
-| ---                 | ---                        | UV intensity                                             | N/A                           | N/A    | N/A    | N/A         |
-| ---                 | ---                        | Range detection                                          | 0.2 mm                        |        |        |             |
-| 3.2.3               | Calibration or Diagnostics | The display Shall provide ability to update calribration | Update via numerical Controls | Comply |        |             |
+| Reqt. ID or section | Reqt. Title                | Statement Subject                                        | Reqt. Value                   | Perf.   | Margin | Notes/Basis |
+|---------------------|----------------------------|----------------------------------------------------------|-------------------------------|---------|--------|-------------|
+| 3.2.1               | Accuracy                   | Accuracy better than;                                    | ---                           |         |        |             |
+| ---                 | ---                        | Temperature                                              | ± 2.5ºC                       | ± 1.35ºC| 46.00% |             |
+| ---                 | ---                        | Humidity                                                 | ± 7%                          | ± 5.84% | 16.57% |             |
+| ---                 | ---                        | Vis Illuminance                                          | ± 10%                         | ± 8.21% | 17.90% |             |
+| ---                 | ---                        | UV Intensity                                             | N/A                           | N/A     | N/A    | N/A         |
+| ---                 | ---                        | Range detection                                          | ± 1 mm                        | TBD     | TBD    | TBD         |
+| 3.2.2               | Precision                  | Precision better than;                                   | ---                           |         |        |             |
+| ---                 | ---                        | Temperature                                              | 2ºC                           | 1.23ºC  | 38.50% |             |
+| ---                 | ---                        | Humidity                                                 | 2%                            | 2.69%   | -34.50%|             |
+| ---                 | ---                        | Vis Illuminance                                          | 20 Lux                        | 2.69    | 86.55% |             |
+| ---                 | ---                        | UV intensity                                             | N/A                           | N/A     | N/A    | N/A         |
+| ---                 | ---                        | Range detection                                          | 0.2 mm                        | TBD     | TBD    | TBD         |
+| 3.2.3               | Calibration or Diagnostics | The display Shall provide ability to update calribration | Update via numerical Controls | Comply  |        |             |
 
 
 # Prototypes
@@ -331,9 +330,7 @@ Just put the drawing here
 
 ## List and Summary of Analyses
 
-::: The calculations for accuracy and precision were found together as a team 
-using Joe's data from the Arduino Code he provided as it represented the best 
-values to calculate the margin.
+::: notes
 
 This page needs some more work.
 
