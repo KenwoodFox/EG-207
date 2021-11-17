@@ -330,7 +330,10 @@ Just put the drawing here
 
 ## List and Summary of Analyses
 
-::: notes
+::: The calculated accuracy and precision measurements were found together as a team
+using Joe's data of the Visible Light and UV Sensor from the Arduino code, and Noah's data
+of the humidity and temperature they provided as it represented the best values to calculate
+the margin.
 
 This page needs some more work.
 
