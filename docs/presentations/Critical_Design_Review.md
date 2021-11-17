@@ -63,6 +63,11 @@ toc: false
    - Potential light scatter non-visible to the naked eye.
    - Airborne contaminants can cause the system to malfunction and provide inaccurate data.
 
+::::
+
+:::: {.column width=25%}
+
+![Flowchart](resources/CDR_Flowchart.png){ height=200 }
 
 ## Environmental System Description
 
@@ -71,8 +76,6 @@ toc: false
 :::: column
 
 ### Functional Block Diagram
-
-![Functional Block Diagram](resources/CDR_Flowchart.png){ height=200 }
 
 ::::
 
@@ -177,11 +180,11 @@ This page needs some more work.
 
 | Reqt    | Reqt Title                   | Statement Subject                                       | Reqt Value              | Perf.  | Margin | Notes/Basis                  |
 |---------|------------------------------|---------------------------------------------------------|-------------------------|--------|--------|------------------------------|
-| 3.1.1   | Vi Front Panel               |                                                         |                         |        |        |                              |
+| 3.1.1   | VI Front Panel               |                                                         |                         | Comply |        |                              |
 | 3.1.1.1 | Sensor Read and Indications  | Numeric Indicators, "Warning" and "Alarm" LEDs          | Provide for all sensors | Comply | N/A    | Physical Indicators as well. |
 | 3.1.1.2 | Senors Controls              | Provide necessary controls                              | Arduino Power and STOP  | Comply | N/A    |                              |
 | 3.1.1.3 | Operation Indications        | Display current system configuration and operating mode | LEDs for Indication     | Comply | N/A    | Physical Indicators as well. |
-| 3.1.1.4 | Calibration Updates          | Update Calibration Parameters through LabVIEW           |                         |        |        |                              |
+| 3.1.1.4 | Calibration Updates          | Update Calibration Parameters through LabVIEW           |                         | Comply |        |                              |
 | 3.1.2   | Update/Read Rate             |                                                         |                         |        |        |                              |
 | 3.1.3   | Warning and Alarm Indication | Provide warning or alarm indication for each sensor     |                         |        |        |                              |
 
