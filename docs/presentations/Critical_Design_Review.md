@@ -76,7 +76,9 @@ toc: false
 :::: column
 
 ### Functional Block Diagram
+
 ![Functional Block Diagram](resources/Functional Block Diagram.png){ width=50}
+
 ::::
 
 :::: column
