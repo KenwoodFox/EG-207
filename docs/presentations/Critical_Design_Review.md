@@ -331,7 +331,9 @@ Just put the drawing here
 
 ## List and Summary of Analyses
 
-::: notes
+::: The calculations for accuracy and precision were found together as a team 
+using Joe's data from the Arduino Code he provided as it represented the best 
+values to calculate the margin.
 
 This page needs some more work.
 
