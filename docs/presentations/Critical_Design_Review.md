@@ -195,16 +195,16 @@ This page needs some more work.
 
 ## Functional Requirements - Compliance Cont.
 
-| Reqt    | Reqt Title       | Statement Subject                                         | Reqt Value            | Perf.  | Margin | Notes/Basis                                           |
-|---------|------------------|-----------------------------------------------------------|-----------------------|--------|--------|-------------------------------------------------------|
-| 3.1.3.1 | Temperature      | Provide temperature warning or alarm indication           | [spec limits go here] | Comply | ±2^-1^ |                                                       |
-| 3.1.3.2 | Humidity         | Provide humidity warning or alarm indication              |                       | Comply |        |                                                       |
-| 3.1.3.3 | Visible Light    | Provide lux warning or alarm indication                   |                       | Comply |        |                                                       |
-| 3.1.3.4 | UV Light         | Provide UV intensity warning or alarm indication          |                       | Comply |        |                                                       |
-| 3.1.3.5 | Water Level      | Provide rainfall warning or alarm indication              |                       | Comply |        |                                                       |
-| 3.1.4   | Waveform Display | Display waveform for sensors                              |                       | Comply |        |                                                       |
-| 3.1.5   | Data Logging     | Time-stamped data exported to file with specific filename |                       | Comply |        | On-Microcontroller Timestamp (to negate serial delay) |
-| 3.1.6   | Operational Mode | Provide additional mode                                   |                       | Comply |        |                                                       |
+| Reqt    | Reqt Title        | Statement Subject                                         | Reqt Value            | Perf.  | Margin | Notes/Basis                                           |
+|---------|------------------ |-----------------------------------------------------------|-----------------------|--------|--------|-------------------------------------------------------|
+| 3.1.3.1 | Temperature (°F)  | Provide temperature warning or alarm indication           | 85≤T≤100, > 100       | Comply | ±2^-1^ |                                                       |
+| 3.1.3.2 | Humidity          | Provide humidity warning or alarm indication              | 30%≤RH≤40%, < 30%     | Comply |        |                                                       |
+| 3.1.3.3 | Visible Light(lux)| Provide lux warning or alarm indication                   | 700≤lux≤1000, > 1000  | Comply |        |                                                       |
+| 3.1.3.4 | UV Light          | Provide UV intensity warning or alarm indication          | 300≤U≤600, > 600      | Comply |        |                                                       |
+| 3.1.3.5 | Water Level (mm)  | Provide rainfall warning or alarm indication              | W≤0.5 or 6≤W≤10, > 10 | Comply |        |                                                       |
+| 3.1.4   | Waveform Display  | Display waveform for sensors                              |                       | Comply |        |                                                       |
+| 3.1.5   | Data Logging      | Time-stamped data exported to file with specific filename |                       | Comply |        | On-Microcontroller Timestamp (to negate serial delay) |
+| 3.1.6   | Operational Mode  | Provide additional mode                                   |                       | Comply |        |                                                       |
 
 
 ## Performance Requirements - Compliance
@@ -404,8 +404,6 @@ John G. Webster, & Halit Eren. (2014). Measurement, Instrumentation, and Sensors
 Last Minute Engineers. “In-Depth: How Water Level Sensor Works and Interface It with Arduino.” Last Minute Engineers. 
 	Last Minute Engineers, December 18, 2020. 
 	https://lastminuteengineers.com/water-level-sensor-arduino-tutorial/. 
-
-This page needs some more work.
 
 :::
 
