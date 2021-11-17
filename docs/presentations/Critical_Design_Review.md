@@ -254,7 +254,7 @@ This page needs some more work.
 
 ## Sensor Package Assembly Model
 
-![Team Gold Sensor Package Assembly Model](resources/placeholder.png){ width=240 }
+![Team Gold Sensor Package Assembly Model](resources/sensor_package_assy_cdr.png){ width=240 }
 
 ::: notes
 
