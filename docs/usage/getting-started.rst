@@ -10,7 +10,7 @@ a period of time.
     at risk of damaging your CMS.
 
 
-Getting to know your CMS
+Hardware
 ------------------------
 
 The CMS is an enclosed unit designed to provide you the user with the ability to record and catalog several
@@ -54,8 +54,29 @@ it is important that this covering is free of debris and is not at risk of colle
     sensor into service.
 
 
+Software
+--------
+
+To use the full feature set of your CMS, you must configure the CMS companion software that ships with your sensor.
+There are multiple ways to aquire this software, the recomended way is :ref:`With a Release`, but other options exist.
+
+With a Release
+^^^^^^^^^^^^^^
+
+By using a specific release, you can be sure that a specific release behaves as its corrosoponding documentation or for a specific
+hardware version, to begin, navigate to the online Releases_ page on github, and follow the instructions to install attached to the
+latest release.
+
+.. image:: images/ReleaseExample.png
+  :width: 80%
+  :alt: Physical Features
+
+
 Using your sensor
 ---------------
 
 Once you've collected your *Climate Monitoring System* and configured your software, proceed to the :ref:`Usage`
 section to learn how to use your sensor.
+
+
+.. _Releases: https://github.com/KenwoodFox/EG-207-CCEMS/releases/
