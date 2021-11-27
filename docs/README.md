@@ -29,14 +29,14 @@ $ sudo apt install texlive-latex-extra
 
 # Getting started with these docs
 
-To build a presenstation, first you must be in this directory
+To build a presenstation, first you must be in this directory:
 
 ```
 $ cd docs
 ```
 
 all the doc building is automated via Makefile, to build  
-all of the presentations for example, run the following
+all of the presentations for example, run the following:
 
 ```
 $ make pres

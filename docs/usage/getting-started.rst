@@ -1,6 +1,13 @@
 Getting Started
 ===============
 
+Introduction
+------------
+
+.. image:: images/CoverAssy.png
+  :width: 80%
+  :alt: Team Gold Climate Monitoring System
+
 The *Climate Monitoring System* by **Team Gold** is a fully featured scientific climate monitoring instrument,
 designed to provide the user with the ability to catalog and record the changes in an outdoor enviorment over
 a period of time.
@@ -11,7 +18,7 @@ a period of time.
 
 
 Hardware
-------------------------
+--------
 
 The CMS is an enclosed unit designed to provide you the user with the ability to record and catalog several
 scientific metrics at once. By placing the CMS in some enviorment, you can record the changes that enviorment
@@ -40,8 +47,8 @@ as well as *Visible Light*.
     Please be aware, the :ref:`Light Sensor Aperture` may move upon startup, please confirm the following on your sensor
     before turning it on for the first time.
 
-     - Your :ref:`Light Sensor Aperture` is closed and or fully open
-     - The space around your :ref:`Light Sensor Aperture` is free of objects or hazards
+    - Your :ref:`Light Sensor Aperture` is closed and or fully open
+    - The space around your :ref:`Light Sensor Aperture` is free of objects or hazards
 
 Temp/Humidity Opening
 ^^^^^^^^^^^^^^^^^^^^^
@@ -73,7 +80,7 @@ latest release.
 
 
 Using your sensor
----------------
+-----------------
 
 Once you've collected your *Climate Monitoring System* and configured your software, proceed to the :ref:`Usage`
 section to learn how to use your sensor.
