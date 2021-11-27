@@ -39,7 +39,7 @@ jobs:
     - name: Install requirements
       run: pip install -r docs/requirements.txt
 
-    - run: cd docs ** make latexpdf
+    - run: cd docs && make latexpdf
 
     - run: mv docs/_build/latex/climatemonitoringsystem.pdf docs/_build/latex/CMS_Operator_Manual.pdf
 

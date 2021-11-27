@@ -29,7 +29,7 @@ $ sudo apt install texlive-latex-extra
 
 # Getting started with these docs
 
-To build a presenstation, first you must be in this directory
+To build a presenstation, first you must be in this directory:
 
 ```
 $ cd docs
