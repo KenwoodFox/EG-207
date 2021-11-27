@@ -5,6 +5,7 @@ EG-207
 [![Make Arduino](https://github.com/KenwoodFox/EG-207-CCEMS/actions/workflows/make-arduino.yml/badge.svg)](https://github.com/KenwoodFox/EG-207-CCEMS/actions/workflows/make-arduino.yml)
 [![Make Docs](https://github.com/KenwoodFox/EG-207-CCEMS/actions/workflows/make-docs.yml/badge.svg)](https://github.com/KenwoodFox/EG-207-CCEMS/actions/workflows/make-docs.yml)
 [![Submit Release](https://github.com/KenwoodFox/EG-207-CCEMS/actions/workflows/publish-release.yml/badge.svg)](https://github.com/KenwoodFox/EG-207-CCEMS/actions)
+[![Documentation Status](https://readthedocs.org/projects/eg-207-ccems/badge/?version=latest)](https://eg-207-ccems.readthedocs.io/en/latest/?badge=latest)
 [![Discord](https://img.shields.io/discord/886985777085566986.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.gg/vbgyRJBJCs)
 
 
