@@ -1,6 +1,13 @@
 Getting Started
 ===============
 
+Introduction
+------------
+
+.. image:: images/CoverAssy.png
+  :width: 80%
+  :alt: Team Gold Climate Monitoring System
+
 The *Climate Monitoring System* by **Team Gold** is a fully featured scientific climate monitoring instrument,
 designed to provide the user with the ability to catalog and record the changes in an outdoor enviorment over
 a period of time.
