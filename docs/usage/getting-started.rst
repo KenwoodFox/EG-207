@@ -60,6 +60,11 @@ it is important that this covering is free of debris and is not at risk of colle
     Your CMS may have come with masking tape covering the sensor opening, it is important to remove this tape before placing the
     sensor into service.
 
+Rainflow Sensor
+^^^^^^^^^^^^^^^
+
+Your CMS can record rainflow in in :sup:`3`/min OR Inches of Rain/Rainfall. You can set the output mode in the LabView :ref:`Software`.
+
 
 Software
 --------
