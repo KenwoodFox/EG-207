@@ -36,7 +36,7 @@ $ cd docs
 ```
 
 all the doc building is automated via Makefile, to build  
-all of the presentations for example, run the following
+all of the presentations for example, run the following:
 
 ```
 $ make pres
