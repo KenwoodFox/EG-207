@@ -34,6 +34,8 @@ jobs:
         architecture: x64
     
     - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
 
     - name: Install requirements
       run: pip install -r docs/requirements.txt
