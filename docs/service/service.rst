@@ -34,19 +34,19 @@ Follow the next steps to properly clean your Rain Flow Sensor.
 Start by unscrewing the two screws covering the circuitry of the Rain Flow Sensor.
 
 .. image:: ../presentations/resources/logo.png
-  :width: 50%
+  :height: 250
   :alt: Rainflow Service Cover
 
 Next, Unplug and slide the water level sensor out.
 
 .. image:: ../presentations/resources/logo.png
-  :width: 50%
+  :height: 250
   :alt: Rainflow Water Level Sensor
 
 Perform a visual inspection, check for debris, corrosion or other iregularities, if the sensor visually looks good, reinstall the sensor and screw the cover back on.
 
 .. image:: images/PassFailCorrosion.png
-  :width: 50%
+  :height: 250
   :alt: Acceptable Corrosion Level
 
 .. warning::
@@ -54,5 +54,5 @@ Perform a visual inspection, check for debris, corrosion or other iregularities,
     When reinstalling the service cover, make sure to properly re-install the small gasket found between the two parts.
 
     .. image:: ../presentations/resources/logo.png
-        :width: 35%
+        :height: 150
         :alt: Rainflow Service Cover Gasket
