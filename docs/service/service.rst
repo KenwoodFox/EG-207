@@ -16,22 +16,40 @@ Service Schedule
    * - Service
      - Hours
      - Cycles
+   * - Clean Light Aperature
+     - 50hrs
+     - N/A
    * - :ref:`Clean the Rain Flow Sensor`
      - 100hrs
      - N/A
    * - Lubricate Light Sensor
      - 150hrs
      - 600 cycles
+   * - Replace Rain Flow Sensor
+     - 1600hrs (or when failed)
+     - N/A
+
 
 
 Clean the Rain Flow Sensor
 ##########################
-
+  
 Refer to the :ref:`Service Schedule` to determine when the rain flow sensor should be inspected.
 
 Follow the next steps to properly clean your Rain Flow Sensor.
 
-Start by unscrewing the two screws covering the circuitry of the Rain Flow Sensor.
+Remove the rain sensor grate, make sure the grate is free of debris before reinstalling.
+
+.. image:: images/RainSensorDebris.png
+  :height: 250
+  :alt: Rainflow Service Cover
+
+.. note::
+
+  If debris falls into the rain sensor, use a pair of tweezers to remove it. Be sure to confirm
+  there are no debris before reinstalling the grate or other components.
+
+Unscrew the two screws covering the circuitry of the Rain Flow Sensor.
 
 .. image:: ../presentations/resources/logo.png
   :height: 250
@@ -51,8 +69,8 @@ Perform a visual inspection, check for debris, corrosion or other iregularities,
 
 .. warning::
 
-    When reinstalling the service cover, be sure to not loose the small gasket found between the two parts.
-
     .. image:: images/RainSensorGasket.png
         :height: 150
         :alt: Rainflow Service Cover Gasket
+  
+  When reinstalling the service cover, be sure to not loose the small gasket found between the two parts.
