@@ -32,6 +32,8 @@ jobs:
       with:
         python-version: 3.9
         architecture: x64
+    
+    - uses: actions/checkout@v2
 
     - name: Install requirements
       run: pip install -r docs/requirements.txt
