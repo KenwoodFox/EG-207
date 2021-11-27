@@ -51,13 +51,13 @@ Remove the rain sensor grate, make sure the grate is free of debris before reins
 
 Unscrew the two screws covering the circuitry of the Rain Flow Sensor.
 
-.. image:: ../presentations/resources/logo.png
+.. image:: images/UnscrewRainSensorCover.png
   :height: 250
   :alt: Rainflow Service Cover
 
 Next, Unplug and slide the water level sensor out.
 
-.. image:: ../presentations/resources/logo.png
+.. image:: images/SlideWaterLevelSensorOut.png
   :height: 250
   :alt: Rainflow Water Level Sensor
 
