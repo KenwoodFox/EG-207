@@ -2,8 +2,8 @@ Service
 =======
 
 
-Some parts of your CMS are user servicable, and may require service during the normal
-operation of your CMS. The following chart details at what time parts may need to be serciced.
+Some parts of your CMS are user servicable, and may require service during normal
+operation. The following chart details at what time parts may need to be serviced.
 
 
 Service Schedule
@@ -27,9 +27,9 @@ Service Schedule
 Clean the Rain Flow Sensor
 ##########################
 
-Refer to the :ref:`Service Schedule` to determine when the water flow sensor should be inspected.
+Refer to the :ref:`Service Schedule` to determine when the rain flow sensor should be inspected.
 
-Follow the next steps to properly clean your Water Flow Sensor.
+Follow the next steps to properly clean your Rain Flow Sensor.
 
 Start by unscrewing the two screws covering the circuitry of the Rain Flow Sensor.
 
@@ -51,7 +51,7 @@ Perform a visual inspection, check for debris, corrosion or other iregularities,
 
 .. warning::
 
-    Make sure to properly re-install the small gasket between the Rain Flow Sensor and the service cover.
+    When reinstalling the service cover, make sure to properly re-install the small gasket found between the two parts.
 
     .. image:: ../presentations/resources/logo.png
         :width: 35%
