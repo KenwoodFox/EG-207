@@ -51,8 +51,8 @@ Perform a visual inspection, check for debris, corrosion or other iregularities,
 
 .. warning::
 
-    When reinstalling the service cover, make sure to properly re-install the small gasket found between the two parts.
+    When reinstalling the service cover, be sure to not loose the small gasket found between the two parts.
 
-    .. image:: ../presentations/resources/logo.png
+    .. image:: images/RainSensorGasket.png
         :height: 150
         :alt: Rainflow Service Cover Gasket
