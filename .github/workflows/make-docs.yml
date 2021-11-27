@@ -22,3 +22,25 @@ jobs:
       with:
         name: Team_Gold_Docs
         path: docs/_build/pdf/*.pdf
+  
+  make_instructions:
+    runs-on: ubuntu-latest
+    name: Instruction Builder
+    steps:
+    - name: Setup Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+        architecture: x64
+
+    - name: Install requirements
+      run: pip install -r docs/requirements.txt
+
+    - run: cd docs ** make latexpdf
+
+    - run: mv docs/_build/latex/climatemonitoringsystem.pdf docs/_build/latex/CMS_Operator_Manual.pdf
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: CMS_Instruction_Manual
+        path: docs/_build/latex/CMS_Operator_Manual.pdf

@@ -24,6 +24,29 @@ jobs:
         path: docs/_build/pdf/*.pdf
 
 
+  make_instructions:
+    runs-on: ubuntu-latest
+    name: Instruction Builder
+    steps:
+    - name: Setup Python
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+        architecture: x64
+
+    - name: Install requirements
+      run: pip install -r docs/requirements.txt
+
+    - run: cd docs ** make latexpdf
+
+    - run: mv docs/_build/latex/climatemonitoringsystem.pdf docs/_build/latex/CMS_Operator_Manual.pdf
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: CMS_Instruction_Manual
+        path: docs/_build/latex/CMS_Operator_Manual.pdf
+
+
   make_bin:
     runs-on: ubuntu-latest
     name: Binary Builder
@@ -41,7 +64,7 @@ jobs:
   publish_docs:
     runs-on: ubuntu-latest
     name: Create Brightspace Submission
-    needs: [make_docs, make_bin]
+    needs: [make_docs, make_bin, make_instructions]
 
     steps:
     - uses: actions/download-artifact@v2
@@ -52,6 +75,10 @@ jobs:
       with:
         name: Team_Gold_Arduino_Binaries
         path: arduino_bin
+  
+    - uses: actions/download-artifact@v2
+      with:
+        name: CMS_Instruction_Manual
 
     - uses: papeloto/action-zip@v1
       with:
