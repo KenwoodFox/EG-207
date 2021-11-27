@@ -7,3 +7,4 @@ Welcome to Team Gold's Climate Monitoring System documentation!
 
    usage/getting-started
    usage/usage
+   service/service
