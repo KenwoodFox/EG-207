@@ -6,5 +6,5 @@ Welcome to Team Gold's Climate Monitoring System documentation!
    :glob:
 
    usage/getting-started
-   usage/usage
+   usage/normal-use
    service/service
