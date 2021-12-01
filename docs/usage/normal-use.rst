@@ -57,6 +57,6 @@ sensor housing.
 
 When an alarm code is raised, its value is stored in EEPROM, and, if possible, "Evasive Measures" are taken to protect the sensor, such as:
 
- - Shutting down individual sensor power
- - Closing the light sensor door
- - Triggering a USB reset
+- Shutting down individual sensor power
+- Closing the light sensor door
+- Triggering a USB reset
