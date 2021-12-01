@@ -11,8 +11,13 @@ builddate := $(shell date +"%m-%d-%y")
 pwd = $(shell pwd)
 builddir = $(pwd)/_build
 
-# Do everything
-all: generate_pres clean_filenames
+# Sphinx defs
+SPHINXOPTS    ?=
+SPHINXBUILD   ?= sphinx-build
+SOURCEDIR     = .
+
+# Generate pres
+pres: generate_pres clean_filenames
 
 # Generate artifacts and output binaries
 generate_pres:
@@ -35,3 +40,17 @@ generate_pres:
 clean_filenames:
 	# Clean presentaiton names 
 	cd $(builddir)/pdf/ && rename 's/.md.pdf$$/.pdf/' *.md.pdf
+
+# General doc cleanup
+clean:
+	git clean -fdX
+
+# Put it first so that "make" without argument is like "make help".
+help:
+	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(builddir)" $(SPHINXOPTS) $(O)
+
+# Explicit sphinx doctypes.
+latexpdf:
+	@$(SPHINXBUILD) -M latexpdf "$(SOURCEDIR)" "$(builddir)" $(SPHINXOPTS) $(O)
+html:
+	@$(SPHINXBUILD) -M html "$(SOURCEDIR)" "$(builddir)" $(SPHINXOPTS) $(O)

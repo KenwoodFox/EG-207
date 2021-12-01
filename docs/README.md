@@ -10,16 +10,33 @@ to both the documentation for a product and the software
 itself, keeping them in sync.
 
 
+# Requirements
+
+There may be more, if you find we need to add extra reqs to this list, please make a new issue
+
+## Arch
+
+```shell
+$ sudo pacman -S texlive-latexextra
+```
+
+## Ubuntu/Debian
+
+```shell
+$ sudo apt install texlive-latex-extra
+```
+
+
 # Getting started with these docs
 
-To build a presenstation, first you must be in this directory
+To build a presenstation, first you must be in this directory:
 
 ```
 $ cd docs
 ```
 
 all the doc building is automated via Makefile, to build  
-all of the presentations for example, run the following
+all of the presentations for example, run the following:
 
 ```
 $ make pres
