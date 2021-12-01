@@ -2,7 +2,7 @@ Service
 =======
 
 
-Some parts of your CMS are user servicable, and may require service during normal
+Some parts of your CMS are user serviceable, and may require service during normal
 operation. The following chart details at what time parts may need to be serviced.
 
 
@@ -51,17 +51,17 @@ Remove the rain sensor grate, make sure the grate is free of debris before reins
 
 Unscrew the two screws covering the circuitry of the Rain Flow Sensor.
 
-.. image:: ../presentations/resources/logo.png
+.. image:: images/UnscrewRainSensorCover.png
   :height: 250
   :alt: Rainflow Service Cover
 
 Next, Unplug and slide the water level sensor out.
 
-.. image:: ../presentations/resources/logo.png
+.. image:: images/SlideWaterLevelSensorOut.png
   :height: 250
   :alt: Rainflow Water Level Sensor
 
-Perform a visual inspection, check for debris, corrosion or other iregularities, if the sensor visually looks good, reinstall the sensor and screw the cover back on.
+Perform a visual inspection, check for debris, corrosion or other irregularities, if the sensor visually looks good, reinstall the sensor and screw the cover back on.
 
 .. image:: images/PassFailCorrosion.png
   :height: 250

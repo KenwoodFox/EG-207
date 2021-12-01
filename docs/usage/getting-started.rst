@@ -9,7 +9,7 @@ Introduction
   :alt: Team Gold Climate Monitoring System
 
 The *Climate Monitoring System* by **Team Gold** is a fully featured scientific climate monitoring instrument,
-designed to provide the user with the ability to catalog and record the changes in an outdoor enviorment over
+designed to provide the user with the ability to catalog and record the changes in an outdoor environment over
 a period of time.
 
 .. warning::
@@ -21,7 +21,7 @@ Hardware
 --------
 
 The CMS is an enclosed unit designed to provide you the user with the ability to record and catalog several
-scientific metrics at once. By placing the CMS in some enviorment, you can record the changes that enviorment
+scientific metrics at once. By placing the CMS in some environment, you can record the changes that environment
 undergoes over time.
 
 Physical Features
@@ -40,7 +40,7 @@ system.
 Light Sensor Aperture
 ^^^^^^^^^^^^^^^^^^^^^
 
-The light sensor Aperture is a component of your CMS used to catalog and sense the presense and intensity of both *UV Light*
+The light sensor Aperture is a component of your CMS used to catalog and sense the presence and intensity of both *UV Light*
 as well as *Visible Light*.
 
 .. warning::
@@ -60,17 +60,22 @@ it is important that this covering is free of debris and is not at risk of colle
     Your CMS may have come with masking tape covering the sensor opening, it is important to remove this tape before placing the
     sensor into service.
 
+Rainflow Sensor
+^^^^^^^^^^^^^^^
+
+Your CMS can record rainflow in in :sup:`3`/min OR Inches of Rain/Rainfall. You can set the output mode in the LabView :ref:`Software`.
+
 
 Software
 --------
 
 To use the full feature set of your CMS, you must configure the CMS companion software that ships with your sensor.
-There are multiple ways to aquire this software, the recomended way is :ref:`With a Release`, but other options exist.
+There are multiple ways to acquire this software, the recommended way is :ref:`With a Release`, but other options exist.
 
 With a Release
 ^^^^^^^^^^^^^^
 
-By using a specific release, you can be sure that a specific release behaves as its corrosoponding documentation or for a specific
+By using a specific release, you can be sure that a specific release behaves as its corresponding documentation or for a specific
 hardware version, to begin, navigate to the online Releases_ page on github, and follow the instructions to install attached to the
 latest release.
 
