@@ -33,7 +33,6 @@ Limits
      - less than 0.5in
      - (Slightly under 'flow over' max)
 
-doot
 
 Error
 -----
@@ -53,10 +52,10 @@ Alarm
 -----
 
 An alarm code is raised when a sensor exceeds safe ranges for operation, for example, UV radiation that may damage the sensor, extreme
-heat that could overwhelm the DHT11's paper components, or a water leve/submersion that may overcome the foam and rubber gaskets of the
+heat that could overwhelm the DHT11's paper components, or a water level/submersion that may overcome the foam and rubber gaskets of the
 sensor housing.
 
-When an alarm code is rasied, its value is stored in EEPROM, and, if possible, "Evasive Measures" are taken to protect the sensor, such as:
+When an alarm code is raised, its value is stored in EEPROM, and, if possible, "Evasive Measures" are taken to protect the sensor, such as:
 
  - Shutting down individual sensor power
  - Closing the light sensor door
