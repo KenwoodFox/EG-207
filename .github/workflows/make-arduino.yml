@@ -12,12 +12,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: cd arduino/lab2 && make bin
+    - run: cd arduino/lab3 && make bin
 
     - uses: actions/upload-artifact@v2
       with:
         name: Team_Gold_Arduino_Binaries
-        path: arduino/lab2/_build/arduino.avr.mega/*
+        path: arduino/lab3/_build/arduino.avr.mega/*
   
   make_lint:
     runs-on: ubuntu-latest
@@ -25,7 +25,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: touch arduino/lab2/README.md
-    - run: touch arduino/lab2/COPYING
+    - run: touch arduino/lab3/README.md
+    - run: touch arduino/lab3/COPYING
 
-    - run: cd arduino/lab2 && make lint
+    - run: cd arduino/lab3 && make lint

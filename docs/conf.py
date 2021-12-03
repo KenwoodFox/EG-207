@@ -44,4 +44,4 @@ latex_elements = {
   'extraclassoptions': 'openany,oneside'
 }
 
-latex_logo = 'presentations/resources/logo.png'
+latex_logo = 'presentations/resources/banner.png'
