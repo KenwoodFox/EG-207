@@ -1,23 +1,29 @@
-//www.elegoo.com
-//2016.12.9
+// EG-207, SNHU
+// Team Gold
 
-int adc_id = 0;
-int HistoryValue = 0;
-char printBuffer[128];
+
+// Public libraries
+#include "Arduino.h"
+
+// Config/Build
+#include "pindefs.h"
+#include "version.h"
+
+// Sensors
+#include "WaterLevelSensor.cpp"
+
+
+// Construct Sensor Objects
+WaterLevelSensor rainFlow = WaterLevelSensor(ANALOG_WATER, ENABLE_WATER);
 
 void setup()
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
+  pinMode(12, OUTPUT);
 }
 
 void loop()
 {
-    int value = analogRead(adc_id); // get adc value
-
-    if(((HistoryValue>=value) && ((HistoryValue - value) > 10)) || ((HistoryValue<value) && ((value - HistoryValue) > 10)))
-    {
-      sprintf(printBuffer,"ADC%d level is %d\n",adc_id, value);
-      Serial.print(printBuffer);
-      HistoryValue = value;
-    }
+  Serial.println(rainFlow.getRawValue());
+  delay(1000);
 }
