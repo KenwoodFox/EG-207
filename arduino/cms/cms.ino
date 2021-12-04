@@ -8,7 +8,7 @@ Servo myservo;  // create servo object to control a servo
 // twelve servo objects can be created on most boards
 
 int pos = 0;    // variable to store the servo position
-int max = 132;
+int max = 145;
 int min = 20;
 
 void setup() {
@@ -21,10 +21,13 @@ void loop() {
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(10);                       // waits 15ms for the servo to reach the position
   }
+
+  delay(2000);
+
   for (pos = max; pos >= min; pos -= 1) { // goes from 180 degrees to 0 degrees
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
     delay(10);                       // waits 15ms for the servo to reach the position
   }
 
-  delay(1000);
+  delay(2000);
 }
