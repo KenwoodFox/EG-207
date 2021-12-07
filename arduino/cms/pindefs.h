@@ -16,3 +16,7 @@
 // DHT 11
 #define DATA_DHT11 8
 #define DHT_TYPE DHT22
+
+// EEPROM Defs
+#define WARN_ADDR 15
+#define ERROR_ADDR 20

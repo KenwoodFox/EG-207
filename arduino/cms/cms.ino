@@ -6,6 +6,7 @@
 #include <Arduino.h>
 #include <Servo.h>
 #include <DHT.h>
+#include <EEPROM.h>
 
 // Config/Build
 #include "pindefs.h"
@@ -37,8 +38,16 @@ void setup() {
 
 
 void loop() {
-  // Blink Status LED with loop counter
-  if (LC > 127){digitalWrite(STATUS_LED, LOW);}else{digitalWrite(STATUS_LED, HIGH);}
+  // Update RAM values
+  EEPROM.get(WARN_ADDR, warn);
+  EEPROM.get(ERROR_ADDR, error);
+
+  // Move this somewhere else
+  temp = dht.readTemperature();
+
+  // Blink Status LEDs with loop counter
+  if (LC < 20){digitalWrite(STATUS_LED, HIGH);}else{digitalWrite(STATUS_LED, LOW);}
+  if (LC > 84 && LC < 168 && warn != 0){digitalWrite(WARN_LED, HIGH);}else {digitalWrite(WARN_LED, LOW);}
 
   // Cleanup mainloop.
   cleanup();
@@ -76,26 +85,48 @@ void serialEvent() {
         Serial.println(VERSION); // Print Version
         break;
       
-      case 0x65: // Instruction E
-        Serial.println("No Errors in EEPROM.");
+      case 0x65: // Instruction e
+        Serial.println(error); // Print the error
+        break;
+      
+      case 0x77: // Instruction w
+        Serial.println(warn); // Print the warning
+        break;
+      
+      case 0x45: // Instruction E
+        EEPROM.put(ERROR_ADDR, 0); // Clear EEPROM Error
+        Serial.println(error); // Print the error we just cleared.
+        break;
+      
+      case 0x57: // Instruction W
+        EEPROM.put(WARN_ADDR, 0); // Clear EEPROM warning
+        Serial.println(warn); // Print the warning we just cleared.
         break;
       
       case 0x74: // Instruction T
         // Returns the instant temp of the dht 11
-        float temp = dht.readTemperature();
 
         if (!isnan(temp)) {
           Serial.println(temp);
-        }
-        else {
-          Serial.println(0);
-          // Raise a warning here.
+        } else {
+          Serial.println("?");
+          EEPROM.put(WARN_ADDR, 10);
         }
         break;
       
       default:
         // Bad or unknown instruction
-        Serial.print("?");Serial.println(instruct, HEX);
+
+        // Check eeprom
+        if (error != 0) {
+          Serial.print("E");Serial.println(error);
+        }
+        else if (warn != 0) {
+          Serial.print("W");Serial.println(warn);
+        }
+        else {
+          Serial.print("?");Serial.println(instruct, HEX);
+        }
         break;
     }
 
