@@ -15,3 +15,4 @@
 
 // DHT 11
 #define DATA_DHT11 8
+#define DHT_TYPE DHT22

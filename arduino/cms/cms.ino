@@ -5,6 +5,7 @@
 // Public libraries
 #include <Arduino.h>
 #include <Servo.h>
+#include <DHT.h>
 
 // Config/Build
 #include "pindefs.h"
@@ -20,13 +21,15 @@
 WaterLevelSensor rainFlow = WaterLevelSensor(ANALOG_WATER, ENABLE_WATER);
 UVSensor uvSensor = UVSensor(ANALOG_UVSENSOR);
 CDS55 cds55 = CDS55(DATA_DHT11);
-
-//Servo myservo;  // create servo object to control a servo
+DHT dht(DATA_DHT11, DHT_TYPE);
 
 
 void setup() {
   // Init serial
   Serial.begin(115200);
+
+  // Initialize sensors
+  dht.begin();
 
   // Setup Status LEDs
   pinMode(STATUS_LED, OUTPUT);
@@ -75,6 +78,19 @@ void serialEvent() {
       
       case 0x65: // Instruction E
         Serial.println("No Errors in EEPROM.");
+        break;
+      
+      case 0x74: // Instruction T
+        // Returns the instant temp of the dht 11
+        float temp = dht.readTemperature();
+
+        if (!isnan(temp)) {
+          Serial.println(temp);
+        }
+        else {
+          Serial.println(0);
+          // Raise a warning here.
+        }
         break;
       
       default:
