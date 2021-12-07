@@ -2,7 +2,7 @@ Interface Information
 =====================
 
 .. warning::
-    Warning! This section is intended for **developers**, and may be irrelevant unless
+    This section is intended for **developers**, and may be irrelevant unless
     you intend to modify or expand the functionality of :ref:`Normal Use`.
 
 
