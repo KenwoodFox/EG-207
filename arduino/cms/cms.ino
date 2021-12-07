@@ -41,7 +41,7 @@ void loop() {
   cleanup();
 
   // This is one of the few holding commands in our program, it scales excecution speed.
-  delay(50);
+  delay(4);
 }
 
 
@@ -50,7 +50,7 @@ void cleanup() {
 
   // Check for ACK at end of instruction.
   if (ACK) {
-    Serial.print("ok"); // Send ACK.
+    Serial.println("ok"); // Send ACK.
     ACK = false; // Reset ACK flag.
   }
 
@@ -66,14 +66,20 @@ void serialEvent() {
   // As long as serial data is available
   while (Serial.available()) {
     // Switch on serial.read single instruction.
-    switch (Serial.read()) {
-      case 0x56: // Instruction v
+    int instruct = Serial.read();
+
+    switch (instruct) {
+      case 0x76: // Instruction v
         Serial.println(VERSION); // Print Version
+        break;
+      
+      case 0x65: // Instruction E
+        Serial.println("No Errors in EEPROM.");
         break;
       
       default:
         // Bad or unknown instruction
-        Serial.println("?");
+        Serial.print("?");Serial.println(instruct, HEX);
         break;
     }
 

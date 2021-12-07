@@ -3,9 +3,9 @@
 #define ANALOG_WATER 0
 
 // LEDs
-#define STATUS_LED  9
+#define STATUS_LED  11
 #define WARN_LED    10
-#define ERROR_LED   11
+#define ERROR_LED   9
 
 // CDS 55
 #define ANALOG_CDS55 4
