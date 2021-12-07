@@ -1,4 +1,3 @@
 Servo
 TimerOne
 DHT sensor library
-EEPROM
