@@ -9,6 +9,7 @@
 // Config/Build
 #include "pindefs.h"
 #include "version.h"
+#include "flags.h"
 
 // Sensors
 #include "sensors/WaterLevelSensor.cpp"
@@ -32,24 +33,47 @@ void setup() {
   Serial.begin(115200);
 }
 
+
 void loop() {
-  Serial.println(rainFlow.getRawValue());
-  Serial.println(uvSensor.getRawValue());
-  Serial.println(cds55.getRawValue());
+  // Cleanup mainloop.
+  cleanup();
 
-  //for (pos = min; pos <= max; pos += 1) { // goes from 0 degrees to 180 degrees
-  //  // in steps of 1 degree
-  //  myservo.write(pos);              // tell servo to go to position in variable 'pos'
-  //  delay(10);                       // waits 15ms for the servo to reach the position
-  //}
+  // This is one of the few holding commands in our program, it scales excecution speed.
+  delay(50);
+}
 
-  //delay(2000);
 
-  //for (pos = max; pos >= min; pos -= 1) { // goes from 180 degrees to 0 degrees
-  //  myservo.write(pos);              // tell servo to go to position in variable 'pos'
-  //  delay(10);                       // waits 15ms for the servo to reach the position
-  //}
+void cleanup() {
+  // Cleanup tasks to be run at the END of the mainloop
 
-  //delay(2000);
-  delay(1000);
+  // Check for ACK at end of instruction.
+  if (ACK) {
+    Serial.print("ok"); // Send ACK.
+    ACK = false; // Reset ACK flag.
+  }
+}
+
+
+void serialEvent() {
+  // Serial event is called when the serial buffer has an instruction.
+  noInterrupts(); // Do not be interrupted
+
+  // As long as serial data is available
+  while (Serial.available()) {
+    // Switch on serial.read single instruction.
+    switch (Serial.read()) {
+      case 0x56: // Instruction v
+        Serial.println(VERSION); // Print Version
+        break;
+      
+      default:
+        // Bad or unknown instruction
+        Serial.println("?");
+        break;
+    }
+
+    ACK = true; // Raise ACK flag.
+  }
+
+  interrupts(); // Resume being interrupted.
 }
