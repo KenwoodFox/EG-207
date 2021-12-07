@@ -1,6 +1,20 @@
-// Team Gold
 // EG-207, SNHU
-// Lab 2
+// Team Gold
+
+
+// Public libraries
+#include "Arduino.h"
+
+// Config/Build
+#include "pindefs.h"
+#include "version.h"
+
+// Sensors
+#include "WaterLevelSensor.cpp"
+
+
+// Construct Sensor Objects
+WaterLevelSensor rainFlow = WaterLevelSensor(ANALOG_WATER, ENABLE_WATER);
 
 #include <Servo.h>
 
