@@ -9,3 +9,4 @@ Welcome to Team Gold's Climate Monitoring System documentation!
    usage/normal-use
    service/service
    advanced_service/advanced_service
+   advanced_service/interface_information
