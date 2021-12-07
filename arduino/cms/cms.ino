@@ -46,8 +46,9 @@ void loop() {
   temp = dht.readTemperature();
 
   // Blink Status LEDs with loop counter
-  if (LC < 20){digitalWrite(STATUS_LED, HIGH);}else{digitalWrite(STATUS_LED, LOW);}
-  if (LC > 84 && LC < 168 && warn != 0){digitalWrite(WARN_LED, HIGH);}else {digitalWrite(WARN_LED, LOW);}
+  if (LC < 84 && COMMAND){digitalWrite(STATUS_LED, HIGH);}else{digitalWrite(STATUS_LED, LOW);}
+  if (LC == 84){COMMAND = false;} // Clears command at end of STATUS_LED cycle.
+  if (LC >= 84 && LC < 168 && warn != 0){digitalWrite(WARN_LED, HIGH);}else {digitalWrite(WARN_LED, LOW);}
 
   // Cleanup mainloop.
   cleanup();
@@ -77,6 +78,8 @@ void serialEvent() {
 
   // As long as serial data is available
   while (Serial.available()) {
+    COMMAND = true; // Raise the command flag.
+
     // Switch on serial.read single instruction.
     int instruct = Serial.read();
 
@@ -103,7 +106,7 @@ void serialEvent() {
         Serial.println(warn); // Print the warning we just cleared.
         break;
       
-      case 0x74: // Instruction T
+      case 0x74: // Instruction t
         // Returns the instant temp of the dht 11
 
         if (!isnan(temp)) {

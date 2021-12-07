@@ -3,6 +3,9 @@
 // ACK Flag, raised when command read is complete.
 bool ACK = false;
 
+// Command flag, tells us if there was a recent command.
+bool COMMAND;
+
 // Loop counter, keeps track of the number of loops run.
 byte LC = 0;
 
