@@ -22,19 +22,21 @@ UVSensor uvSensor = UVSensor(ANALOG_UVSENSOR);
 CDS55 cds55 = CDS55(DATA_DHT11);
 
 //Servo myservo;  // create servo object to control a servo
-// twelve servo objects can be created on most boards
 
-//int pos = 0;    // variable to store the servo position
-//int max = 145;
-//int min = 20;
 
 void setup() {
-  //myservo.attach(3);  // attaches the servo on pin 9 to the servo object
+  // Init serial
   Serial.begin(115200);
+
+  // Setup Status LEDs
+  pinMode(STATUS_LED, OUTPUT);
 }
 
 
 void loop() {
+  // Blink Status LED with loop counter
+  if (LC > 127){digitalWrite(STATUS_LED, LOW);}else{digitalWrite(STATUS_LED, HIGH);}
+
   // Cleanup mainloop.
   cleanup();
 
@@ -51,6 +53,9 @@ void cleanup() {
     Serial.print("ok"); // Send ACK.
     ACK = false; // Reset ACK flag.
   }
+
+  // Increment LC
+  LC++;
 }
 
 
