@@ -210,9 +210,18 @@ void serialEvent() {
         }
         break;
       
+      case 0x3c:
+        // Trigger a self imposed warning.
+        EEPROM.put(WARN_ADDR, 69);
+        break;
+
+      case 0x3e:
+        // Trigger a self imposed error.
+        EEPROM.put(ERROR_ADDR, 69);
+        break;
+      
       default:
         // Bad or unknown instruction
-        Serial.println("x");
 
         // Check eeprom
         if (error != 0) {
