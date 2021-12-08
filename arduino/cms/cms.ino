@@ -9,9 +9,9 @@
 #include <EEPROM.h>
 
 // Config/Build
-#include "pindefs.h"
+#include "constants.h"
 #include "version.h"
-#include "flags.h"
+#include "memory.h"
 
 // Sensors
 #include "sensors/WaterLevelSensor.cpp"
@@ -42,6 +42,9 @@ void setup() {
   pinMode(STATUS_LED, OUTPUT);
   pinMode(WARN_LED, OUTPUT);
   pinMode(ERROR_LED, OUTPUT);
+
+  // Initalize RAM values
+  pos = MIN_DOOR_ANGLE;
 }
 
 
@@ -76,6 +79,13 @@ void cleanup() {
     Serial.println("ok"); // Send ACK.
     ACK = false; // Reset ACK flag.
   }
+
+  // Handlers
+  // Handler for wet_cond_while_sensor_door open should go here, and it should set pos to MIN
+
+  // Timeout Control
+  if (pos == MAX_DOOR_ANGLE && LC == 254){door_ajar_timeout++;} // Increment once per loop
+  if (door_ajar_timeout == door_ajar_wait && pos != MIN_DOOR_ANGLE){pos = MIN_DOOR_ANGLE; EEPROM.put(WARN_ADDR, 15); door_ajar_timeout = 0;} // Close door on timeout, raise warning, etc
 
   // Increment LC
   LC++;
@@ -157,7 +167,7 @@ void serialEvent() {
         break;
     
       case 0x5f:
-        pos = 14;
+        pos = MIN_DOOR_ANGLE;
         Serial.println(pos);
         break;
       

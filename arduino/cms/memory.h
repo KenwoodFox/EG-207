@@ -1,4 +1,4 @@
-// Flags used throughout the CMS program.
+// Flags and variables used throughout the CMS program.
 
 // ACK Flag, raised when command read is complete.
 bool ACK = false;
@@ -21,3 +21,7 @@ int inst_uv;
 
 // Testing and misc
 int pos = 0;
+
+// Timeout values, values incremented to count timeout.
+int door_ajar_wait = 80; // How many cycles to count to before closing the door.
+byte door_ajar_timeout = 0; // Counts up to 255 for as long as the door is ajar.

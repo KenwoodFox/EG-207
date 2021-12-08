@@ -16,6 +16,7 @@
 // Light Sensor Servo
 #define LIGHT_SENSOR_SERVO 3
 #define MAX_DOOR_ANGLE 147 // Last changed dec 7
+#define MIN_DOOR_ANGLE 14  // Last changed dec 8
 
 // DHT 11
 #define DATA_DHT11 6
