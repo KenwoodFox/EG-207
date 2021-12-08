@@ -87,7 +87,7 @@ latest release.
 Using your sensor
 -----------------
 
-Once you've collected your *Climate Monitoring System* and configured your software, proceed to the :ref:`Usage`
+Once you've collected your *Climate Monitoring System* and configured your software, proceed to the :ref:`Normal Use`
 section to learn how to use your sensor.
 
 
