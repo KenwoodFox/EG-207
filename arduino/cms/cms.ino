@@ -21,7 +21,7 @@
 // Construct Sensor Objects
 WaterLevelSensor rainFlow = WaterLevelSensor(ANALOG_WATER, ENABLE_WATER);
 UVSensor uvSensor = UVSensor(ANALOG_UVSENSOR);
-CDS55 cds55 = CDS55(DATA_DHT11);
+CDS55 cds55 = CDS55(ANALOG_CDS55);
 DHT dht(DATA_DHT11, DHT_TYPE);
 
 // Other objects
@@ -52,6 +52,7 @@ void loop() {
 
   // Move this somewhere else
   temp = dht.readTemperature();
+  lightSensorDoorServo.write(pos);
 
   // Blink Status LEDs with loop counter
   if (LC < 84 && COMMAND){digitalWrite(STATUS_LED, HIGH);}else{digitalWrite(STATUS_LED, LOW);}
@@ -138,7 +139,27 @@ void serialEvent() {
           EEPROM.put(WARN_ADDR, 10);
         }
         break;
-        
+      
+      // All these for light door sensor
+      case 0x2b:
+        pos++;
+        Serial.println(pos);
+        break;
+
+      case 0x2d:
+        pos--;
+        Serial.println(pos);
+        break;
+      
+      case 0x3d:
+        pos = MAX_DOOR_ANGLE;
+        Serial.println(pos);
+        break;
+    
+      case 0x5f:
+        pos = 0;
+        Serial.println(pos);
+        break;
       
       default:
         // Bad or unknown instruction

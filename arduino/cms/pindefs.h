@@ -15,10 +15,11 @@
 
 // Light Sensor Servo
 #define LIGHT_SENSOR_SERVO 3
+#define MAX_DOOR_ANGLE 147 // Last changed dec 7
 
 // DHT 11
-#define DATA_DHT11 8
-#define DHT_TYPE DHT22
+#define DATA_DHT11 6
+#define DHT_TYPE DHT11
 
 // EEPROM Defs
 #define WARN_ADDR 15
