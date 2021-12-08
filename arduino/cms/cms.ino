@@ -157,7 +157,7 @@ void serialEvent() {
         break;
     
       case 0x5f:
-        pos = 0;
+        pos = 14;
         Serial.println(pos);
         break;
       
