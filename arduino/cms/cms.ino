@@ -24,6 +24,9 @@ UVSensor uvSensor = UVSensor(ANALOG_UVSENSOR);
 CDS55 cds55 = CDS55(DATA_DHT11);
 DHT dht(DATA_DHT11, DHT_TYPE);
 
+// Other objects
+Servo lightSensorDoorServo;
+
 
 void setup() {
   // Init serial
@@ -32,8 +35,13 @@ void setup() {
   // Initialize sensors
   dht.begin();
 
+  // Initalize others
+  lightSensorDoorServo.attach(LIGHT_SENSOR_SERVO);
+
   // Setup Status LEDs
   pinMode(STATUS_LED, OUTPUT);
+  pinMode(WARN_LED, OUTPUT);
+  pinMode(ERROR_LED, OUTPUT);
 }
 
 
@@ -49,6 +57,7 @@ void loop() {
   if (LC < 84 && COMMAND){digitalWrite(STATUS_LED, HIGH);}else{digitalWrite(STATUS_LED, LOW);}
   if (LC == 84){COMMAND = false;} // Clears command at end of STATUS_LED cycle.
   if (LC >= 84 && LC < 168 && warn != 0){digitalWrite(WARN_LED, HIGH);}else {digitalWrite(WARN_LED, LOW);}
+  if (LC >= 168 && error != 0){digitalWrite(ERROR_LED, HIGH);}else {digitalWrite(ERROR_LED, LOW);}
 
   // Cleanup mainloop.
   cleanup();
@@ -74,7 +83,7 @@ void cleanup() {
 
 void serialEvent() {
   // Serial event is called when the serial buffer has an instruction.
-  noInterrupts(); // Do not be interrupted
+  //noInterrupts(); // Do not be interrupted
 
   // As long as serial data is available
   while (Serial.available()) {
@@ -110,15 +119,30 @@ void serialEvent() {
         // Returns the instant temp of the dht 11
 
         if (!isnan(temp)) {
-          Serial.println(temp);
+          Serial.print("T");Serial.println(temp);
         } else {
           Serial.println("?");
           EEPROM.put(WARN_ADDR, 10);
         }
         break;
       
+      case 0x72: // Instruction r
+        // Returns the instant water flow rate
+
+        inst_flow = rainFlow.getRawValue();
+
+        if (!isnan(inst_flow)) {
+          Serial.print("R");Serial.println(inst_flow);
+        } else {
+          Serial.println("?");
+          EEPROM.put(WARN_ADDR, 10);
+        }
+        break;
+        
+      
       default:
         // Bad or unknown instruction
+        Serial.println("x");
 
         // Check eeprom
         if (error != 0) {
@@ -136,5 +160,5 @@ void serialEvent() {
     ACK = true; // Raise ACK flag.
   }
 
-  interrupts(); // Resume being interrupted.
+  //interrupts(); // Resume being interrupted.
 }

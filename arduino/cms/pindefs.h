@@ -13,6 +13,9 @@
 // UV Sensor
 #define ANALOG_UVSENSOR 6
 
+// Light Sensor Servo
+#define LIGHT_SENSOR_SERVO 3
+
 // DHT 11
 #define DATA_DHT11 8
 #define DHT_TYPE DHT22

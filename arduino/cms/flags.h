@@ -15,3 +15,4 @@ int error;
 
 // RAM coppies of other values
 float temp;
+int inst_flow;

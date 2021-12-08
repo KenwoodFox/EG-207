@@ -16,14 +16,16 @@ class WaterLevelSensor {
             enable_pin = _enable_pin;
 
             pinMode(enable_pin, OUTPUT);
-            //pinMode(pin, INPUT);
+            pinMode(pin, INPUT);
+
+            digitalWrite(enable_pin, HIGH); // Turn off the sensor.
         };
 
         signed int getRawValue() {
-            digitalWrite(enable_pin, LOW); // Turn on the sensor.
+            digitalWrite(enable_pin, LOW);  // Turn on the sensor.
             delay(100);                      // Wait for ms for value to stab.
             value = analogRead(pin);        // Read the current sensor value.
-            digitalWrite(enable_pin, HIGH);  // Disable the sensor when done.
+            digitalWrite(enable_pin, HIGH); // Disable the sensor when done.
             return value;
         };
 };
