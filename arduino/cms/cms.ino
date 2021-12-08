@@ -54,7 +54,8 @@ void loop() {
   EEPROM.get(ERROR_ADDR, error);
 
   // Move this somewhere else
-  temp = dht.readTemperature();
+  inst_temp = dht.readTemperature();
+  inst_humidity = dht.readHumidity();
   lightSensorDoorServo.write(pos);
 
   // Blink Status LEDs with loop counter
@@ -130,8 +131,19 @@ void serialEvent() {
       case 0x74: // Instruction t
         // Returns the instant temp of the dht 11
 
-        if (!isnan(temp)) {
-          Serial.print("T");Serial.println(temp);
+        if (!isnan(inst_temp)) {
+          Serial.print("T");Serial.println(inst_temp);
+        } else {
+          Serial.println("?");
+          EEPROM.put(WARN_ADDR, 10);
+        }
+        break;
+
+      case 0x68: // Instruction h
+        // Returns the instant humidity of the dht 11
+
+        if (!isnan(inst_humidity)) {
+          Serial.print("H");Serial.println(inst_humidity);
         } else {
           Serial.println("?");
           EEPROM.put(WARN_ADDR, 10);
@@ -175,7 +187,7 @@ void serialEvent() {
       case 0x6c: // Instruction l
         // Returns the instant lux level
 
-        inst_lux = cds55.getRawValue();
+        inst_lux = cds55.getLuxValue();
 
         if (!isnan(inst_lux)) {
           Serial.print("L");Serial.println(inst_lux);

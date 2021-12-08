@@ -14,7 +14,8 @@ int warn;
 int error;
 
 // RAM coppies of other values
-float temp;
+float inst_temp;
+float inst_humidity;
 int inst_flow;
 int inst_lux;
 int inst_uv;
