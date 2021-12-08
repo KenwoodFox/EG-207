@@ -161,6 +161,32 @@ void serialEvent() {
         Serial.println(pos);
         break;
       
+      case 0x6c: // Instruction l
+        // Returns the instant lux level
+
+        inst_lux = cds55.getRawValue();
+
+        if (!isnan(inst_lux)) {
+          Serial.print("L");Serial.println(inst_lux);
+        } else {
+          Serial.println("?");
+          EEPROM.put(WARN_ADDR, 10);
+        }
+        break;
+      
+      case 0x75: // Instruction u
+        // Returns the instant uv index
+
+        inst_uv = uvSensor.getRawValue();
+
+        if (!isnan(inst_uv)) {
+          Serial.print("U");Serial.println(inst_uv);
+        } else {
+          Serial.println("?");
+          EEPROM.put(WARN_ADDR, 10);
+        }
+        break;
+      
       default:
         // Bad or unknown instruction
         Serial.println("x");

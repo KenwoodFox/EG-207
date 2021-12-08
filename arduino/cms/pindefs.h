@@ -8,10 +8,10 @@
 #define ERROR_LED   9
 
 // CDS 55
-#define ANALOG_CDS55 4
+#define ANALOG_CDS55 1
 
 // UV Sensor
-#define ANALOG_UVSENSOR 6
+#define ANALOG_UVSENSOR 2
 
 // Light Sensor Servo
 #define LIGHT_SENSOR_SERVO 3

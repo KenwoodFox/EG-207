@@ -16,6 +16,8 @@ int error;
 // RAM coppies of other values
 float temp;
 int inst_flow;
+int inst_lux;
+int inst_uv;
 
 // Testing and misc
 int pos = 0;
