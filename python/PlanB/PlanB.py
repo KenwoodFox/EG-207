@@ -40,9 +40,9 @@ class PlanBAI(QMainWindow):
         self.exitCleanlyDropdown.triggered.connect(self.exitCleanly)
 
         # Style our graphs
-        hour = [1,2,3,4,5,6,7,8,9,10]
-        temperature_1 = [30,32,34,32,33,31,29,32,35,45]
-        temperature_2 = [5.0,3.5,4.4,2.2,3.8,3.2,2.7,3.8,3.2,4.4]
+        self.time = []
+        self.temperatureReading = []
+        self.humidityReading = []
 
         # Set background color to white.
         self.graphWidget.setBackground('w')
@@ -63,8 +63,8 @@ class PlanBAI(QMainWindow):
         # Add grid
         self.graphWidget.showGrid(x=True, y=True)
 
-        self.plot(hour, temperature_1, "Temp", 'r')
-        self.plot(hour, temperature_2, "Humidity", 'b')
+        self.plot(self.time, self.temperatureReading, "Temp", 'r')
+        self.plot(self.time, self.humidityReading, "Humidity", 'b')
 
 
         # Show the UI
@@ -118,9 +118,9 @@ class PlanBAI(QMainWindow):
         self.serialLog.verticalScrollBar().setValue(self.serialLog.verticalScrollBar().maximum())
 
         return line, ack
-    
+
     def updateGraph(self):
-        self.logRead()
+        new_value, ack = self.logRead()
 
     def exitCleanly(self):
         self.arduino.close()
