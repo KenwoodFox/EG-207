@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PlanB</class>
+ <widget class="QMainWindow" name="PlanB">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>798</width>
+    <height>586</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>PlanB</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>40</y>
+      <width>791</width>
+      <height>471</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>Operation</string>
+     </attribute>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Calibration</string>
+     </attribute>
+    </widget>
+   </widget>
+   <widget class="QLabel" name="writtenByTeamGoldLabel">
+    <property name="geometry">
+     <rect>
+      <x>587</x>
+      <y>510</y>
+      <width>201</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Written by Team Gold for EG-207</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="serialPortComboBox">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>231</width>
+      <height>32</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="serialConnectButton">
+    <property name="geometry">
+     <rect>
+      <x>240</x>
+      <y>0</y>
+      <width>88</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Connect</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="serialConnectionLabel">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>0</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="serialLogWindow">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>0</y>
+      <width>321</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>798</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuExit">
+    <property name="title">
+     <string>Exit</string>
+    </property>
+    <addaction name="actionExit_Cleanly"/>
+    <addaction name="actionExit_Forcefully"/>
+   </widget>
+   <widget class="QMenu" name="menuData">
+    <property name="title">
+     <string>Data</string>
+    </property>
+    <addaction name="actionSave_CSV"/>
+   </widget>
+   <addaction name="menuExit"/>
+   <addaction name="menuData"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSave_csv">
+   <property name="text">
+    <string>Save .csv</string>
+   </property>
+  </action>
+  <action name="actionExit_Cleanly">
+   <property name="text">
+    <string>Exit Cleanly</string>
+   </property>
+  </action>
+  <action name="actionExit_Forcefully">
+   <property name="text">
+    <string>Exit Forcefully</string>
+   </property>
+  </action>
+  <action name="actionSave_CSV">
+   <property name="text">
+    <string>Save CSV</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

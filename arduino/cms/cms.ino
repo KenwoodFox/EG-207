@@ -227,7 +227,7 @@ void serialEvent() {
         EEPROM.put(COEF_PHOTO_B, COEF_PHOTO_B_DEFAULT);
         EEPROM.put(COEF_PHOTO_C, COEF_PHOTO_C_DEFAULT);
 
-        Serial.println("All values factory reset.");
+        Serial.println("0");
         break;
       
       default:
