@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtGui import QTextBlock
 import serial
 import pyqtgraph as pg
@@ -62,10 +63,6 @@ class PlanBAI(QMainWindow):
         # Add grid
         self.graphWidget.showGrid(x=True, y=True)
 
-        # Set Range
-        # self.graphWidget.setXRange(0, 4, padding=0)  # Last four hours
-        #self.graphWidget.setYRange(-10, 70, padding=0)
-
         self.plot(hour, temperature_1, "Temp", 'r')
         self.plot(hour, temperature_2, "Humidity", 'b')
 
@@ -99,8 +96,14 @@ class PlanBAI(QMainWindow):
         # Write v to check for arduino version
         self.arduino.write("v".encode())
 
-        self.arduino_ver = self.logRead()
+        self.arduino_ver, ack = self.logRead()
         self.serialConnectionLabel.setText(f"Connected! Version is {self.arduino_ver}.")
+
+        # Configure polling system
+        self.poller = Poller(self.arduino)
+        self.poller.start()
+
+        self.poller.update_graph.connect(self.updateGraph)
 
     def plot(self, x, y, plotname, color):
         pen = pg.mkPen(color=color)
@@ -109,15 +112,36 @@ class PlanBAI(QMainWindow):
     def logRead(self, initmode=False):
         # Reads a line and decodes it but also prints it out to the 'console' window.
         line = str(self.arduino.readline().decode().strip('\n\r'))
+        ack = str(self.arduino.readline().decode().strip('\n\r'))
 
         self.serialLog.append(line)
         self.serialLog.verticalScrollBar().setValue(self.serialLog.verticalScrollBar().maximum())
 
-        return line
+        return line, ack
+    
+    def updateGraph(self):
+        self.logRead()
 
     def exitCleanly(self):
         self.arduino.close()
         quit()
+
+
+class Poller(QThread):
+    update_graph = pyqtSignal()
+    def __init__(self, _arduino):
+        self.arduino = _arduino
+
+        # Override
+        super(Poller, self).__init__()
+
+
+    def run(self):
+        while True:
+            time.sleep(2)
+            print("Polling...")
+            self.arduino.write("t".encode())
+            self.update_graph.emit()
 
 
 if __name__ == "__main__":
