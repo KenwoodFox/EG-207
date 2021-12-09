@@ -220,6 +220,16 @@ void serialEvent() {
         EEPROM.put(ERROR_ADDR, 69);
         break;
       
+      case 0x44: // Instruction D
+        // "Default" Instruction, not to be confused with the case default, it just defaults all the values
+
+        EEPROM.put(COEF_PHOTO_A, COEF_PHOTO_A_DEFAULT);
+        EEPROM.put(COEF_PHOTO_B, COEF_PHOTO_B_DEFAULT);
+        EEPROM.put(COEF_PHOTO_C, COEF_PHOTO_C_DEFAULT);
+
+        Serial.println("All values factory reset.");
+        break;
+      
       default:
         // Bad or unknown instruction
 

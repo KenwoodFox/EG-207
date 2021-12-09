@@ -25,3 +25,11 @@
 // EEPROM Defs
 #define WARN_ADDR 15
 #define ERROR_ADDR 20
+
+// EEPROM coeficent values
+#define COEF_PHOTO_A 25
+float COEF_PHOTO_A_DEFAULT = 0.0073;
+#define COEF_PHOTO_B 26
+float COEF_PHOTO_B_DEFAULT = 2.0616;
+#define COEF_PHOTO_C 27
+float COEF_PHOTO_C_DEFAULT = 308.12;
