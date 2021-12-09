@@ -1,0 +1,21 @@
+CREATE Sensor Objects
+
+OUTPUT Serial
+
+OUTPUT Aperture door
+OUTPUT Status LED
+OUTPUT Warning LED
+OUTPUT Error LED
+
+WARN = EEPROM Warning Value
+ERROR = EEPROM Error Value
+
+INPUT DHT Temp
+INPUT DHT Humidity
+OUTPUT Servo Pos
+
+IF Program Counter < 84 && Command in Buffer THEN
+	OUTPUT Status Flash
+ELSE
+	OUTPUT Status Off
+ENDIF
