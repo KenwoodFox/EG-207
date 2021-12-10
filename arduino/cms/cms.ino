@@ -94,11 +94,10 @@ void cleanup() {
   if (door_ajar_timeout == door_ajar_wait && pos != MIN_DOOR_ANGLE){pos = MIN_DOOR_ANGLE; EEPROM.put(WARN_ADDR, 15); door_ajar_timeout = 0;} // Close door on timeout, raise warning, etc
 
   // This is where limit checks come in.
-  if (inst_lux > 5500){EEPROM.put(WARN_ADDR, 10);}
-  if (inst_lux > 7000){EEPROM.put(ERROR_ADDR, 10);}
-  if (inst_temp > 70){EEPROM.put(WARN_ADDR, 10);}
+  if (inst_lux > 7000){EEPROM.put(WARN_ADDR, 10);} // TODO: This is broken
+  if (inst_lux > 9000){EEPROM.put(ERROR_ADDR, 10);}// TODO: This is broken
+  if (inst_temp > 85){EEPROM.put(WARN_ADDR, 10);}
   if (inst_temp > 100){EEPROM.put(ERROR_ADDR, 10);}
-  if (inst_temp > 70){EEPROM.put(WARN_ADDR, 10);}
   if (inst_flow > 180){EEPROM.put(WARN_ADDR, 10);}
   if (inst_flow > 210){EEPROM.put(ERROR_ADDR, 10);}
 

@@ -286,7 +286,10 @@ class PlanBAI(QMainWindow):
 
     def exitCleanly(self):
         self.arduino.write("_".encode())
-        self.datafile.close()
+        try:
+            self.datafile.close()
+        except AttributeError:
+            pass
         self.arduino.close()
         quit()
 
