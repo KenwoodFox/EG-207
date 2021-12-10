@@ -40,7 +40,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QCheckBox" name="checkBox">
+     <widget class="QCheckBox" name="enablePollingCheckbox">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -54,6 +54,19 @@
       </property>
       <property name="checked">
        <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="checkBox">
+      <property name="geometry">
+       <rect>
+        <x>787</x>
+        <y>10</y>
+        <width>161</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Enable Photosensors</string>
       </property>
      </widget>
     </widget>

@@ -8,7 +8,7 @@ import pyqtgraph as pg
 
 from pathlib import Path
 
-from PyQt5.QtWidgets import QAction, QApplication, QComboBox, QLabel, QMainWindow, QPushButton, QTextEdit
+from PyQt5.QtWidgets import QAction, QApplication, QCheckBox, QComboBox, QLabel, QMainWindow, QPushButton, QTextEdit
 from PyQt5 import uic
 from pyqtgraph import PlotWidget, plot
 from serial.serialutil import SerialException
@@ -28,16 +28,19 @@ class PlanBAI(QMainWindow):
         self.serialConnectButton = self.findChild(QPushButton, "serialConnectButton")
 
         self.serialLog = self.findChild(QTextEdit, "serialLogWindow")
-        
+
         self.exitCleanlyDropdown = self.findChild(QAction, "actionExit_Cleanly")
 
         self.graphWidget = self.findChild(PlotWidget, "mainGraph")
 
-        self.serialPortCombo.addItem("/dev/ttyACM0") # Move me somehwere else
+        self.enablePollingCheckbox = self.findChild(QCheckBox, "enablePollingCheckbox")
+
+        self.serialPortCombo.addItems(["/dev/ttyACM0", "/dev/ttyACM1", "COM1", "COM5"]) # Move me somehwere else
 
         # Attach buttons/functions
         self.serialConnectButton.clicked.connect(self.connectArduino)
         self.exitCleanlyDropdown.triggered.connect(self.exitCleanly)
+
 
         # Style our graphs
         self.time = []
@@ -88,25 +91,26 @@ class PlanBAI(QMainWindow):
             self.arduino = serial.Serial(self.serialPortCombo.currentText(),
                                          115200,
                                          timeout=1)
+
+            self.serialConnectionLabel.setText("Please wait...")
+            self.serialConnectionLabel.repaint()
+            self.show()
+            time.sleep(5)
+
+            # Write v to check for arduino version
+            self.arduino.write("v".encode())
+
+            self.arduino_ver, ack = self.logRead()
+            self.serialConnectionLabel.setText(f"Connected! Version is {self.arduino_ver}.")
+
+            # Configure polling system
+            self.poller = Poller()
+            self.poller.start()
+
+            self.poller.update_graph.connect(self.updateLive)
+
         except SerialException:
             self.serialConnectionLabel.setText("Connection Error.")
-
-        self.serialConnectionLabel.setText("Please wait...")
-        self.serialConnectionLabel.repaint()
-        self.show()
-        time.sleep(5)
-
-        # Write v to check for arduino version
-        self.arduino.write("v".encode())
-
-        self.arduino_ver, ack = self.logRead()
-        self.serialConnectionLabel.setText(f"Connected! Version is {self.arduino_ver}.")
-
-        # Configure polling system
-        self.poller = Poller()
-        self.poller.start()
-
-        self.poller.update_graph.connect(self.updateGraph)
 
     def logRead(self, initmode=False):
         # Reads a line and decodes it but also prints it out to the 'console' window.
@@ -118,27 +122,31 @@ class PlanBAI(QMainWindow):
 
         return line, ack
 
-    def updateGraph(self):
+    def updateLive(self):
+        # Updates anything "live onscreen"
         print("Updating graph")
 
-        now = float(time.time())
-        self.time.append(now)
+        try:
+            now = float(time.time())
+            self.time.append(now)
 
-        self.arduino.write("t".encode())
-        new_value, ack = self.logRead()
-        new_value = float(new_value.strip('T'))
-        print(new_value)
-        self.temperatureReading.append(new_value)
+            self.arduino.write("t".encode())
+            new_value, ack = self.logRead()
+            new_value = float(new_value.strip('T'))
+            print(new_value)
+            self.temperatureReading.append(new_value)
 
-        self.arduino.write("h".encode())
-        new_value, ack = self.logRead()
-        new_value = float(new_value.strip('H'))
-        print(new_value)
-        self.humidityReading.append(new_value)
+            self.arduino.write("h".encode())
+            new_value, ack = self.logRead()
+            new_value = float(new_value.strip('H'))
+            print(new_value)
+            self.humidityReading.append(new_value)
 
-        self.tempPlot.setData(self.time, self.temperatureReading)
+            self.tempPlot.setData(self.time, self.temperatureReading)
+            self.humidityPlot.setData(self.time, self.humidityReading)
+        except:
+            print("Pharsing error?")
 
-        
 
     def exitCleanly(self):
         self.arduino.close()

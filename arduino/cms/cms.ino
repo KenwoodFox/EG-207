@@ -203,6 +203,8 @@ void serialEvent() {
         EEPROM.put(COEF_PHOTO_B, Serial.read());
         EEPROM.put(COEF_PHOTO_C, Serial.read());
 
+        Serial.println("0");
+
         break;
       
       case 0x75: // Instruction u
