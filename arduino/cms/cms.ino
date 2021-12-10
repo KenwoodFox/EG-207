@@ -102,7 +102,7 @@ void cleanup() {
   if (inst_flow > 180){EEPROM.put(WARN_ADDR, 10);}
   if (inst_flow > 210){EEPROM.put(ERROR_ADDR, 10);}
 
-  if (streamerMode && LC % 4 == 0) {
+  if (streamerMode && LC % 100 == 0) {
     csvStreamer();
   }
 

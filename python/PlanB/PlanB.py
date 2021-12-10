@@ -264,23 +264,42 @@ class PlanBAI(QMainWindow):
 
     def streamDataToFile(self):
         # This is messy but, its the last thing on the list.
+        self.longpoller.quit()
         self.arduino.write("s".encode())  # Unit has to be reset to leave streaming mode...
-        with open("data.csv", "w") as datafile:
-            datafile.write("Epoch Time,Temperature (C), Humidity (Rh), Lux (AVG), UV Index (AVG), Rainflow (Cubic inches per minute)")  # Write header
-            while not KeyboardInterrupt:
-                line = self.logRead(False)
+        self.arduino.write("=".encode())
+        self.datafile = open("data.csv", "w") 
+        self.datafile.write("Epoch Time,Temperature (C), Humidity (Rh), Lux (AVG), UV Index (AVG), Rainflow (Cubic inches per minute)")  # Write header
 
-                line = line.replace("%time", str(time.time())) + "\n"
+        self.fastPoller = FastPoller()
+        self.fastPoller.start()
+        self.fastPoller.poll.connect(self.superstreamer)
 
-                datafile.writelines(line)
+    def superstreamer(self):
+        # Idk anymore
+        line, ack = self.logRead(False)
 
-                    # Writing data to a file
-    file1.write("Hello \n")
-    file1.writelines(L)
+        line = line.replace("%time", str(time.time())) + "\n"
+
+        print(line)
+
+        self.datafile.write(line)
 
     def exitCleanly(self):
+        self.arduino.write("_".encode())
+        self.datafile.close()
         self.arduino.close()
         quit()
+
+
+class FastPoller(QThread):
+    # Triggers stuff tied to it, has no logic
+    poll = pyqtSignal()
+
+    def run(self):
+        while True:
+            time.sleep(0.2)
+            print("aaaaaa")
+            self.poll.emit()
 
 
 class Poller(QThread):
