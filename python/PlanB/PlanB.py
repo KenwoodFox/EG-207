@@ -22,6 +22,7 @@ class PlanBAI(QMainWindow):
         # Stuff
         self.last_error = 0
         self.last_warning = 0
+        self.check_long_sensors = False
 
         # Load UI
         self.load_ui()
@@ -44,6 +45,8 @@ class PlanBAI(QMainWindow):
 
         self.factoryDefaultsButton = self.findChild(QPushButton, "factoryDefaultsButton")
         self.factoryDefaultsStatus = self.findChild(QLabel, "factoryDefaultsLabel")
+
+        self.enableLightSensorCheckbox = self.findChild(QCheckBox, "enablePhotoCheckbox")
 
         self.serialPortCombo.addItems(["/dev/ttyACM0", "/dev/ttyACM1", "COM1", "COM5"]) # Move me somehwere else
 
@@ -145,11 +148,14 @@ class PlanBAI(QMainWindow):
             self.arduino_ver, ack = self.logRead()
             self.serialConnectionLabel.setText(f"Connected! Version is {self.arduino_ver}.")
 
-            # Configure polling system
+            # Configure polling systems
             self.poller = Poller()
             self.poller.start()
-
             self.poller.update_graph.connect(self.updateLive)
+
+            self.longpoller = LongPoller()
+            self.longpoller.start()
+            self.longpoller.poll.connect(self.longPoll)
 
         except SerialException:
             self.serialConnectionLabel.setText("Connection Error.")
@@ -163,6 +169,9 @@ class PlanBAI(QMainWindow):
         self.serialLog.verticalScrollBar().setValue(self.serialLog.verticalScrollBar().maximum())
 
         return line, ack
+
+    def longPoll(self):
+        self.check_long_sensors = True
 
     def updateLive(self):
         # Updates anything "live onscreen"
@@ -188,6 +197,13 @@ class PlanBAI(QMainWindow):
             self.humidityPlot.setData(self.time, self.humidityReading)
         except ValueError:
             print("Pharsing error?")
+
+        # Update long sensors here
+        if (self.check_long_sensors):
+            if (self.enableLightSensorCheckbox.isChecked() == True):
+                self.arduino.write("=".encode())
+                time.sleep(4)
+                self.arduino.write("_".encode())
 
         # Update warnings in the background
         self.arduino.write("w".encode())
@@ -226,7 +242,6 @@ class PlanBAI(QMainWindow):
         if (ack == "ok"):
             self.factoryDefaultsStatus.setText("Flashed!")
 
-
     def exitCleanly(self):
         self.arduino.close()
         quit()
@@ -240,6 +255,16 @@ class Poller(QThread):
         while True:
             time.sleep(0.8)
             self.update_graph.emit()
+
+
+class LongPoller(QThread):
+    # Like poller but WAY longer (for rainflow avg and light sensor)
+    poll = pyqtSignal()
+
+    def run(self):
+        while True:
+            time.sleep(10)  # Add as tuning value?...
+            self.poll.emit()
 
 
 if __name__ == "__main__":

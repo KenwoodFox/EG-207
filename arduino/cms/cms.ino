@@ -57,6 +57,10 @@ void loop() {
   inst_temp = dht.readTemperature();
   inst_humidity = dht.readHumidity();
   lightSensorDoorServo.write(pos);
+  inst_flow = rainFlow.getRawValue();
+  inst_lux = cds55.getLuxValue();
+  inst_uv = uvSensor.getRawValue();
+  
 
   // Blink Status LEDs with loop counter
   if (LC < 84 && COMMAND){digitalWrite(STATUS_LED, HIGH);}else{digitalWrite(STATUS_LED, LOW);}
@@ -88,6 +92,15 @@ void cleanup() {
   if (pos == MAX_DOOR_ANGLE && LC == 254){door_ajar_timeout++;} // Increment once per loop.
   if (pos == MIN_DOOR_ANGLE){door_ajar_timeout = 0;} // Reset when done.
   if (door_ajar_timeout == door_ajar_wait && pos != MIN_DOOR_ANGLE){pos = MIN_DOOR_ANGLE; EEPROM.put(WARN_ADDR, 15); door_ajar_timeout = 0;} // Close door on timeout, raise warning, etc
+
+  // This is where limit checks come in.
+  if (inst_lux > 5500){EEPROM.put(WARN_ADDR, 10);}
+  if (inst_lux > 7000){EEPROM.put(ERROR_ADDR, 10);}
+  if (inst_temp > 70){EEPROM.put(WARN_ADDR, 10);}
+  if (inst_temp > 100){EEPROM.put(ERROR_ADDR, 10);}
+  if (inst_temp > 70){EEPROM.put(WARN_ADDR, 10);}
+  if (inst_flow > 180){EEPROM.put(WARN_ADDR, 10);}
+  if (inst_flow > 210){EEPROM.put(ERROR_ADDR, 10);}
 
   // Increment LC
   LC++;

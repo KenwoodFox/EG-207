@@ -23,7 +23,6 @@ class WaterLevelSensor {
 
         signed int getRawValue() {
             digitalWrite(enable_pin, LOW);  // Turn on the sensor.
-            delay(100);                      // Wait for ms for value to stab.
             value = analogRead(pin);        // Read the current sensor value.
             digitalWrite(enable_pin, HIGH); // Disable the sensor when done.
             return value;
