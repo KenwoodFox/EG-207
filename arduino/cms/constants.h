@@ -29,7 +29,7 @@
 // EEPROM coeficent values
 #define COEF_PHOTO_A 25
 float COEF_PHOTO_A_DEFAULT = 0.0073;
-#define COEF_PHOTO_B 26
+#define COEF_PHOTO_B 30
 float COEF_PHOTO_B_DEFAULT = 2.0616;
-#define COEF_PHOTO_C 27
+#define COEF_PHOTO_C 35
 float COEF_PHOTO_C_DEFAULT = 308.12;

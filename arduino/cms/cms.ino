@@ -197,6 +197,14 @@ void serialEvent() {
         }
         break;
       
+      case 0x4c: // Instruction L
+        // Sets the lux sensor coefs
+        EEPROM.put(COEF_PHOTO_A, Serial.read());
+        EEPROM.put(COEF_PHOTO_B, Serial.read());
+        EEPROM.put(COEF_PHOTO_C, Serial.read());
+
+        break;
+      
       case 0x75: // Instruction u
         // Returns the instant uv index
 
@@ -222,7 +230,6 @@ void serialEvent() {
       
       case 0x44: // Instruction D
         // "Default" Instruction, not to be confused with the case default, it just defaults all the values
-
         EEPROM.put(COEF_PHOTO_A, COEF_PHOTO_A_DEFAULT);
         EEPROM.put(COEF_PHOTO_B, COEF_PHOTO_B_DEFAULT);
         EEPROM.put(COEF_PHOTO_C, COEF_PHOTO_C_DEFAULT);
