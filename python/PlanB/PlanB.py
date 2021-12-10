@@ -63,8 +63,11 @@ class PlanBAI(QMainWindow):
         # Add grid
         self.graphWidget.showGrid(x=True, y=True)
 
-        self.plot(self.time, self.temperatureReading, "Temp", 'r')
-        self.plot(self.time, self.humidityReading, "Humidity", 'b')
+        # Setup lots
+        pen = pg.mkPen(color='r')
+        self.tempPlot = self.graphWidget.plot(self.time, self.temperatureReading, name="Temp", pen=pen, symbolSize=3, symbolBrush=('r'))
+        pen = pg.mkPen(color='b')
+        self.humidityPlot = self.graphWidget.plot(self.time, self.temperatureReading, name="Humidity", pen=pen, symbolSize=3, symbolBrush=('b'))
 
 
         # Show the UI
@@ -100,14 +103,10 @@ class PlanBAI(QMainWindow):
         self.serialConnectionLabel.setText(f"Connected! Version is {self.arduino_ver}.")
 
         # Configure polling system
-        self.poller = Poller(self.arduino)
+        self.poller = Poller()
         self.poller.start()
 
         self.poller.update_graph.connect(self.updateGraph)
-
-    def plot(self, x, y, plotname, color):
-        pen = pg.mkPen(color=color)
-        self.graphWidget.plot(x, y, name=plotname, pen=pen, symbolSize=3, symbolBrush=(color))
 
     def logRead(self, initmode=False):
         # Reads a line and decodes it but also prints it out to the 'console' window.
@@ -120,7 +119,26 @@ class PlanBAI(QMainWindow):
         return line, ack
 
     def updateGraph(self):
+        print("Updating graph")
+
+        now = float(time.time())
+        self.time.append(now)
+
+        self.arduino.write("t".encode())
         new_value, ack = self.logRead()
+        new_value = float(new_value.strip('T'))
+        print(new_value)
+        self.temperatureReading.append(new_value)
+
+        self.arduino.write("h".encode())
+        new_value, ack = self.logRead()
+        new_value = float(new_value.strip('H'))
+        print(new_value)
+        self.humidityReading.append(new_value)
+
+        self.tempPlot.setData(self.time, self.temperatureReading)
+
+        
 
     def exitCleanly(self):
         self.arduino.close()
@@ -128,19 +146,12 @@ class PlanBAI(QMainWindow):
 
 
 class Poller(QThread):
+    # Triggers stuff tied to it, has no logic
     update_graph = pyqtSignal()
-    def __init__(self, _arduino):
-        self.arduino = _arduino
-
-        # Override
-        super(Poller, self).__init__()
-
 
     def run(self):
         while True:
-            time.sleep(2)
-            print("Polling...")
-            self.arduino.write("t".encode())
+            time.sleep(0.8)
             self.update_graph.emit()
 
 
