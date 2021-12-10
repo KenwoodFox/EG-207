@@ -48,6 +48,9 @@ class PlanBAI(QMainWindow):
 
         self.enableLightSensorCheckbox = self.findChild(QCheckBox, "enablePhotoCheckbox")
 
+        self.openLightSensorDoorButton = self.findChild(QPushButton, "openLightSensorDoorButton")
+        self.closeLightSensorDoorButton = self.findChild(QPushButton, "closeLightSensorDoorButton")
+
         self.serialPortCombo.addItems(["/dev/ttyACM0", "/dev/ttyACM1", "COM1", "COM5"]) # Move me somehwere else
 
         # Attach buttons/functions
@@ -55,6 +58,9 @@ class PlanBAI(QMainWindow):
         self.exitCleanlyDropdown.triggered.connect(self.exitCleanly)
         self.flashPhotoCoefsButton.clicked.connect(self.flashPhotoCoefs)
         self.factoryDefaultsButton.clicked.connect(self.flashDefaults)
+
+        self.openLightSensorDoorButton.clicked.connect(self.openLightSensorDoor)
+        self.closeLightSensorDoorButton.clicked.connect(self.closeLightSensorDoor)
 
         # Style our graphs
         self.time = []
@@ -94,6 +100,14 @@ class PlanBAI(QMainWindow):
 
         # Load UI frompath
         uic.loadUi(path, self)
+
+    def openLightSensorDoor(self):
+        self.arduino.write("=".encode())
+        self.arduino.read_all()
+
+    def closeLightSensorDoor(self):
+        self.arduino.write("_".encode())
+        self.arduino.read_all()
 
     def warningMessage(self, error_code):
         # Setup popup message box (for errors)

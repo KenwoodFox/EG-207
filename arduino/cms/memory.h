@@ -31,3 +31,5 @@ byte door_ajar_timeout = 0; // Counts up to 255 for as long as the door is ajar.
 byte test1;
 byte test2;
 byte test3;
+
+bool streamerMode;

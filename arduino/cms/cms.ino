@@ -102,10 +102,35 @@ void cleanup() {
   if (inst_flow > 180){EEPROM.put(WARN_ADDR, 10);}
   if (inst_flow > 210){EEPROM.put(ERROR_ADDR, 10);}
 
+  if (streamerMode && LC % 4 == 0) {
+    csvStreamer();
+  }
+
   // Increment LC
   LC++;
 }
 
+void csvStreamer() {
+  // Final function of the CMS, all this needs to do is stream a csv out to the python home application.
+  Serial.print("%time"); // python will tag this for us.
+  Serial.print(",");
+  Serial.print(inst_temp);
+  Serial.print(",");
+  Serial.print(inst_humidity);
+  Serial.print(",");
+  if (pos == MAX_DOOR_ANGLE) {
+    Serial.print(inst_lux);
+    Serial.print(",");
+    Serial.print(inst_uv);
+  }
+  else {
+    Serial.print(-1);
+    Serial.print(",");
+    Serial.print(-1);
+  }
+  Serial.print(",");
+  Serial.println(inst_flow);
+}
 
 void serialEvent() {
   // Serial event is called when the serial buffer has an instruction.
@@ -252,6 +277,15 @@ void serialEvent() {
         Serial.println("0");
         break;
       
+      case 0x73:
+        // Toggles streamer mode
+        if (streamerMode) {
+          streamerMode = false;
+        }
+        else {
+          streamerMode = true;
+        }
+
       default:
         // Bad or unknown instruction
 

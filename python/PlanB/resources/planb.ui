@@ -69,63 +69,6 @@
        <string>Enable Photosensor Polling (EXPERIMENTAL)</string>
       </property>
      </widget>
-     <widget class="KLed" name="warningLED">
-      <property name="geometry">
-       <rect>
-        <x>520</x>
-        <y>10</y>
-        <width>16</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="state">
-       <enum>KLed::Off</enum>
-      </property>
-      <property name="color">
-       <color>
-        <red>255</red>
-        <green>255</green>
-        <blue>0</blue>
-       </color>
-      </property>
-     </widget>
-     <widget class="KLed" name="errorLED">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>10</y>
-        <width>16</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="state">
-       <enum>KLed::Off</enum>
-      </property>
-      <property name="color">
-       <color>
-        <red>170</red>
-        <green>0</green>
-        <blue>0</blue>
-       </color>
-      </property>
-     </widget>
-     <widget class="KLed" name="statusLED">
-      <property name="geometry">
-       <rect>
-        <x>490</x>
-        <y>10</y>
-        <width>16</width>
-        <height>16</height>
-       </rect>
-      </property>
-      <property name="color">
-       <color>
-        <red>0</red>
-        <green>0</green>
-        <blue>255</blue>
-       </color>
-      </property>
-     </widget>
     </widget>
     <widget class="QWidget" name="calibrationTab">
      <attribute name="title">
@@ -272,6 +215,32 @@
        <string/>
       </property>
      </widget>
+     <widget class="QPushButton" name="openLightSensorDoorButton">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>170</y>
+        <width>171</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Open Light Sensor Door</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="closeLightSensorDoorButton">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>210</y>
+        <width>171</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Close Light Sensor Door</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QLabel" name="writtenByTeamGoldLabel">
@@ -408,11 +377,6 @@ p, li { white-space: pre-wrap; }
   </action>
  </widget>
  <customwidgets>
-  <customwidget>
-   <class>KLed</class>
-   <extends>QWidget</extends>
-   <header>kled.h</header>
-  </customwidget>
   <customwidget>
    <class>PlotWidget</class>
    <extends>QWidget</extends>
