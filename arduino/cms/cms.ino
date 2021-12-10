@@ -89,9 +89,11 @@ void cleanup() {
   // Handler for wet_cond_while_sensor_door open should go here, and it should set pos to MIN
 
   // Timeout Control
-  if (pos == MAX_DOOR_ANGLE && LC == 254){door_ajar_timeout++;} // Increment once per loop.
-  if (pos == MIN_DOOR_ANGLE){door_ajar_timeout = 0;} // Reset when done.
-  if (door_ajar_timeout == door_ajar_wait && pos != MIN_DOOR_ANGLE){pos = MIN_DOOR_ANGLE; EEPROM.put(WARN_ADDR, 15); door_ajar_timeout = 0;} // Close door on timeout, raise warning, etc
+  if (!streamerMode) { // If not streamer mode
+    if (pos == MAX_DOOR_ANGLE && LC == 254){door_ajar_timeout++;} // Increment once per loop.
+    if (pos == MIN_DOOR_ANGLE){door_ajar_timeout = 0;} // Reset when done.
+    if (door_ajar_timeout == door_ajar_wait && pos != MIN_DOOR_ANGLE){pos = MIN_DOOR_ANGLE; EEPROM.put(WARN_ADDR, 15); door_ajar_timeout = 0;} // Close door on timeout, raise warning, etc
+  }
 
   // This is where limit checks come in.
   if (inst_lux > 7000){EEPROM.put(WARN_ADDR, 10);} // TODO: This is broken
