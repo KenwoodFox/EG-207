@@ -8,7 +8,7 @@ import pyqtgraph as pg
 
 from pathlib import Path
 
-from PyQt5.QtWidgets import QAction, QApplication, QCheckBox, QComboBox, QLabel, QMainWindow, QPushButton, QTextEdit
+from PyQt5.QtWidgets import QAction, QApplication, QCheckBox, QComboBox, QLabel, QMainWindow, QMessageBox, QPushButton, QTextEdit
 from PyQt5 import uic
 from pyqtgraph import PlotWidget, plot
 from serial.serialutil import SerialException
@@ -18,6 +18,10 @@ class PlanBAI(QMainWindow):
     def __init__(self):
         # Override
         super(PlanBAI, self).__init__()
+
+        # Stuff
+        self.last_error = 0
+        self.last_warning = 0
 
         # Load UI
         self.load_ui()
@@ -35,12 +39,19 @@ class PlanBAI(QMainWindow):
 
         self.enablePollingCheckbox = self.findChild(QCheckBox, "enablePollingCheckbox")
 
+        self.flashPhotoCoefsButton = self.findChild(QPushButton, "lightSensorCoefFlashButton")
+        self.flashPhotoCoefsStatus = self.findChild(QLabel, "lightSensorFlashStatus")
+
+        self.factoryDefaultsButton = self.findChild(QPushButton, "factoryDefaultsButton")
+        self.factoryDefaultsStatus = self.findChild(QLabel, "factoryDefaultsLabel")
+
         self.serialPortCombo.addItems(["/dev/ttyACM0", "/dev/ttyACM1", "COM1", "COM5"]) # Move me somehwere else
 
         # Attach buttons/functions
         self.serialConnectButton.clicked.connect(self.connectArduino)
         self.exitCleanlyDropdown.triggered.connect(self.exitCleanly)
-
+        self.flashPhotoCoefsButton.clicked.connect(self.flashPhotoCoefs)
+        self.factoryDefaultsButton.clicked.connect(self.flashDefaults)
 
         # Style our graphs
         self.time = []
@@ -66,12 +77,11 @@ class PlanBAI(QMainWindow):
         # Add grid
         self.graphWidget.showGrid(x=True, y=True)
 
-        # Setup lots
+        # Setup plots
         pen = pg.mkPen(color='r')
         self.tempPlot = self.graphWidget.plot(self.time, self.temperatureReading, name="Temp", pen=pen, symbolSize=3, symbolBrush=('r'))
         pen = pg.mkPen(color='b')
         self.humidityPlot = self.graphWidget.plot(self.time, self.temperatureReading, name="Humidity", pen=pen, symbolSize=3, symbolBrush=('b'))
-
 
         # Show the UI
         self.show()
@@ -81,6 +91,38 @@ class PlanBAI(QMainWindow):
 
         # Load UI frompath
         uic.loadUi(path, self)
+
+    def warningMessage(self, error_code):
+        # Setup popup message box (for errors)
+        self.warning_msg_box = QMessageBox()
+        self.warning_msg_box.setIcon(QMessageBox.Warning)
+        self.warning_msg_box.setText("Sensor reported an warning!")
+        self.warning_msg_box.setInformativeText(f"Sensor reported an warning code {error_code}")
+        self.warning_msg_box.setWindowTitle("CMS Warning")
+        self.warning_msg_box.setDetailedText("Details here..")
+        self.warning_msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        self.warning_msg_box.buttonClicked.connect(self.clear_warnings)
+
+        self.warning_msg_box.exec_()
+
+    def clear_warnings(self):
+        self.arduino.write("W".encode())
+
+    def errorMessage(self, error_code):
+        # Setup popup message box (for errors)
+        self.warning_msg_box = QMessageBox()
+        self.warning_msg_box.setIcon(QMessageBox.Critical)
+        self.warning_msg_box.setText("Sensor reported an error!")
+        self.warning_msg_box.setInformativeText(f"Sensor reported an error code {error_code}")
+        self.warning_msg_box.setWindowTitle("CMS Error")
+        self.warning_msg_box.setDetailedText("Details here..")
+        self.warning_msg_box.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        self.warning_msg_box.buttonClicked.connect(self.clear_errors)
+
+        self.warning_msg_box.exec_()
+
+    def clear_errors(self):
+        self.arduino.write("E".encode())
 
     def connectArduino(self):
         self.serialConnectionLabel.setText("Starting Connection attempt...")
@@ -133,19 +175,56 @@ class PlanBAI(QMainWindow):
             self.arduino.write("t".encode())
             new_value, ack = self.logRead()
             new_value = float(new_value.strip('T'))
-            print(new_value)
+            #print(new_value)
             self.temperatureReading.append(new_value)
 
             self.arduino.write("h".encode())
             new_value, ack = self.logRead()
             new_value = float(new_value.strip('H'))
-            print(new_value)
+            #print(new_value)
             self.humidityReading.append(new_value)
 
             self.tempPlot.setData(self.time, self.temperatureReading)
             self.humidityPlot.setData(self.time, self.humidityReading)
-        except:
+        except ValueError:
             print("Pharsing error?")
+
+        # Update warnings in the background
+        self.arduino.write("w".encode())
+        try:
+            new_value, ack = self.logRead()
+            new_value = int(new_value)
+            if (new_value != 0 and new_value != self.last_warning):  # If there is an error
+                print(f"new value is {new_value} and its different than the old value {self.last_warning}, updating diag box")
+                self.last_warning = new_value
+                self.warningMessage(new_value)
+        except ValueError:
+            print("Could not read error code, idk")
+        
+        # Update errors in the background
+        self.arduino.write("e".encode())
+        try:
+            new_value, ack = self.logRead()
+            new_value = int(new_value)
+            if (new_value != 0 and new_value != self.last_error):  # If there is an error
+                print(f"new value is {new_value} and its different than the old value {self.last_error}, updating diag box")
+                self.last_error = new_value
+                self.errorMessage(new_value)
+        except ValueError:
+            print("Could not read error code, idk")
+
+        self.arduino.read_all()  # Flush all
+
+    def flashPhotoCoefs(self):
+        self.flashPhotoCoefsStatus.setText("No implementation.")
+
+    def flashDefaults(self):
+        self.arduino.write("D".encode())
+
+        junk, ack = self.logRead()
+
+        if (ack == "ok"):
+            self.factoryDefaultsStatus.setText("Flashed!")
 
 
     def exitCleanly(self):

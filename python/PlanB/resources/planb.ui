@@ -74,6 +74,147 @@
      <attribute name="title">
       <string>Calibration</string>
      </attribute>
+     <widget class="QDoubleSpinBox" name="lightSensorCoefA">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>30</y>
+        <width>91</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="decimals">
+       <number>4</number>
+      </property>
+      <property name="minimum">
+       <double>-9999.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>9999.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>0.007300000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="lightSensorCoefB">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>70</y>
+        <width>91</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="decimals">
+       <number>4</number>
+      </property>
+      <property name="minimum">
+       <double>-9999.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>9999.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>2.061600000000000</double>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="lightSensorCoefC">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>110</y>
+        <width>91</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="decimals">
+       <number>4</number>
+      </property>
+      <property name="minimum">
+       <double>-9999.000000000000000</double>
+      </property>
+      <property name="maximum">
+       <double>9999.000000000000000</double>
+      </property>
+      <property name="value">
+       <double>308.120000000000005</double>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="lightSensorCoefFlashButton">
+      <property name="geometry">
+       <rect>
+        <x>130</x>
+        <y>30</y>
+        <width>88</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Flash!</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="photoResistorCoefLabel">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>131</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Photoresistor Coefs</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lightSensorFlashStatus">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>40</y>
+        <width>58</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QColumnView" name="errorsColumnView">
+      <property name="geometry">
+       <rect>
+        <x>710</x>
+        <y>20</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="factoryDefaultsButton">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>10</y>
+        <width>171</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>FLASH FACTORY DEFAULTS</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="factoryDefaultsLabel">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>40</y>
+        <width>58</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QLabel" name="writtenByTeamGoldLabel">
