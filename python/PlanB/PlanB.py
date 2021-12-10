@@ -51,11 +51,14 @@ class PlanBAI(QMainWindow):
         self.openLightSensorDoorButton = self.findChild(QPushButton, "openLightSensorDoorButton")
         self.closeLightSensorDoorButton = self.findChild(QPushButton, "closeLightSensorDoorButton")
 
+        self.streamToFileDropdown = self.findChild(QAction, "actionSave_CSV")
+
         self.serialPortCombo.addItems(["/dev/ttyACM0", "/dev/ttyACM1", "COM1", "COM5"]) # Move me somehwere else
 
         # Attach buttons/functions
         self.serialConnectButton.clicked.connect(self.connectArduino)
         self.exitCleanlyDropdown.triggered.connect(self.exitCleanly)
+        self.streamToFileDropdown.triggered.connect(self.streamDataToFile)
         self.flashPhotoCoefsButton.clicked.connect(self.flashPhotoCoefs)
         self.factoryDefaultsButton.clicked.connect(self.flashDefaults)
 
@@ -174,10 +177,13 @@ class PlanBAI(QMainWindow):
         except SerialException:
             self.serialConnectionLabel.setText("Connection Error.")
 
-    def logRead(self, initmode=False):
+    def logRead(self, check_ack=True):
         # Reads a line and decodes it but also prints it out to the 'console' window.
         line = str(self.arduino.readline().decode().strip('\n\r'))
-        ack = str(self.arduino.readline().decode().strip('\n\r'))
+        if check_ack:
+            ack = str(self.arduino.readline().decode().strip('\n\r'))
+        else:
+            ack = True
 
         self.serialLog.append(line)
         self.serialLog.verticalScrollBar().setValue(self.serialLog.verticalScrollBar().maximum())
@@ -255,6 +261,22 @@ class PlanBAI(QMainWindow):
 
         if (ack == "ok"):
             self.factoryDefaultsStatus.setText("Flashed!")
+
+    def streamDataToFile(self):
+        # This is messy but, its the last thing on the list.
+        self.arduino.write("s".encode())  # Unit has to be reset to leave streaming mode...
+        with open("data.csv", "w") as datafile:
+            datafile.write("Epoch Time,Temperature (C), Humidity (Rh), Lux (AVG), UV Index (AVG), Rainflow (Cubic inches per minute)")  # Write header
+            while not KeyboardInterrupt:
+                line = self.logRead(False)
+
+                line = line.replace("%time", str(time.time())) + "\n"
+
+                datafile.writelines(line)
+
+                    # Writing data to a file
+    file1.write("Hello \n")
+    file1.writelines(L)
 
     def exitCleanly(self):
         self.arduino.close()
