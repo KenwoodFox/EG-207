@@ -1,6 +1,8 @@
 import os
 import sys
 import time
+import tempfile
+
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtGui import QTextBlock
 import serial
@@ -170,10 +172,6 @@ class PlanBAI(QMainWindow):
             self.poller.start()
             self.poller.update_graph.connect(self.updateLive)
 
-            self.longpoller = LongPoller()
-            self.longpoller.start()
-            self.longpoller.poll.connect(self.longPoll)
-
         except SerialException:
             self.serialConnectionLabel.setText("Connection Error.")
 
@@ -189,9 +187,6 @@ class PlanBAI(QMainWindow):
         self.serialLog.verticalScrollBar().setValue(self.serialLog.verticalScrollBar().maximum())
 
         return line, ack
-
-    def longPoll(self):
-        self.check_long_sensors = True
 
     def updateLive(self):
         # Updates anything "live onscreen"
@@ -270,10 +265,6 @@ class PlanBAI(QMainWindow):
         self.datafile = open("data.csv", "w") 
         self.datafile.write("Epoch Time,Temperature (C), Humidity (Rh), Lux (AVG), UV Index (AVG), Rainflow (Cubic inches per minute)")  # Write header
 
-        self.fastPoller = FastPoller()
-        self.fastPoller.start()
-        self.fastPoller.poll.connect(self.superstreamer)
-
     def superstreamer(self):
         # Idk anymore
         line, ack = self.logRead(False)
@@ -288,21 +279,10 @@ class PlanBAI(QMainWindow):
         self.arduino.write("_".encode())
         try:
             self.datafile.close()
+            self.arduino.close()
         except AttributeError:
             pass
-        self.arduino.close()
         quit()
-
-
-class FastPoller(QThread):
-    # Triggers stuff tied to it, has no logic
-    poll = pyqtSignal()
-
-    def run(self):
-        while True:
-            time.sleep(0.2)
-            print("aaaaaa")
-            self.poll.emit()
 
 
 class Poller(QThread):
@@ -313,16 +293,6 @@ class Poller(QThread):
         while True:
             time.sleep(0.8)
             self.update_graph.emit()
-
-
-class LongPoller(QThread):
-    # Like poller but WAY longer (for rainflow avg and light sensor)
-    poll = pyqtSignal()
-
-    def run(self):
-        while True:
-            time.sleep(10)  # Add as tuning value?...
-            self.poll.emit()
 
 
 if __name__ == "__main__":
