@@ -95,6 +95,38 @@
        <string>Pause Data Capture</string>
       </property>
      </widget>
+     <widget class="QProgressBar" name="waterFlowRateBar">
+      <property name="geometry">
+       <rect>
+        <x>767</x>
+        <y>20</y>
+        <width>201</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>25</number>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+      <property name="format">
+       <string notr="true">%vin³/m</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>770</x>
+        <y>40</y>
+        <width>141</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Flow Sensor Utilization</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="calibrationTab">
      <attribute name="title">

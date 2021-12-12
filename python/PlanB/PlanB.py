@@ -20,6 +20,7 @@ from PyQt5.QtWidgets import (
     QLabel,
     QMainWindow,
     QMessageBox,
+    QProgressBar,
     QPushButton,
     QTextEdit,
 )
@@ -68,6 +69,10 @@ class PlanBAI(QMainWindow):
             QCheckBox, "enablePollingCheckbox"
         )
 
+        self.enableLightSensorCheckbox = self.findChild(
+            QCheckBox, "enablePhotoCheckbox"
+        )
+
         self.flashPhotoCoefsButton = self.findChild(
             QPushButton, "lightSensorCoefFlashButton"
         )
@@ -82,15 +87,15 @@ class PlanBAI(QMainWindow):
             QLabel, "factoryDefaultsLabel"
         )
 
-        self.enableLightSensorCheckbox = self.findChild(
-            QCheckBox, "enablePhotoCheckbox"
-        )
-
         self.openLightSensorDoorButton = self.findChild(
             QPushButton, "openLightSensorDoorButton"
         )
         self.closeLightSensorDoorButton = self.findChild(
             QPushButton, "closeLightSensorDoorButton"
+        )
+
+        self.flowSensorUtilBar = self.findChild(
+            QProgressBar, "waterFlowRateBar"
         )
 
         self.streamToFileDropdown = self.findChild(QAction, "actionSave_CSV")
@@ -264,31 +269,38 @@ class PlanBAI(QMainWindow):
 
         self.log.debug("Checking for arduino stuff...")
 
-        self.arduino.write("S".encode())
+        # Check if polling is even enabled.
+        if self.enablePollingCheckbox.isChecked():
+            self.arduino.write("S".encode())
+            line, ack = self.logRead()
 
-        line, ack = self.logRead()
+            self.log.debug(f"Got a new packet! {line}, ack was {ack}.")
 
-        self.log.debug(f"Got a new packet! {line}, ack was {ack}.")
+            # Schedule checking for warnings
+            if self.last_warnings_check < now - 10:
+                self.log.debug("Checking for warnings/errors...")
+                self.checkWarnings()
+                self.last_warnings_check = now
 
-        # Schedule checking for warnings
-        if self.last_warnings_check < now - 10:
-            self.log.debug("Checking for warnings/errors...")
-            self.checkWarnings()
-            self.last_warnings_check = now
+            # Schedule checking for photosensors
+            if self.enableLightSensorCheckbox.isChecked():
+                if self.photosensor_last < now - 80:
+                    self.log.debug("Enabling the photosensors.")
+                    self.arduino.write("=".encode())
+                    self.logRead()
+                    self.photosensor_last = now
+                    self.photosensor_enable_time = now
 
-        # Schedule checking for photosensors
-        if self.photosensor_last < now - 80:
-            self.log.debug("Enabling the photosensors.")
-            self.arduino.write("=".encode())
-            self.logRead()
-            self.photosensor_last = now
-            self.photosensor_enable_time = now
+                if self.photosensor_enable_time < now - 5:
+                    self.log.debug("Disabling the photosensors.")
+                    self.arduino.write("_".encode())
+                    self.logRead()
+                    self.photosensor_enable_time = now
 
-        if self.photosensor_enable_time < now - 5:
-            self.log.debug("Disabling the photosensors.")
-            self.arduino.write("_".encode())
-            self.logRead()
-            self.photosensor_enable_time = now
+            # Update 'live' sensors
+            _value = float(line.split(",")[5])
+            self.log.debug(_value)
+            self.flowSensorUtilBar.setValue(_value)
 
     def checkWarnings(self):
         # Update warnings in the background

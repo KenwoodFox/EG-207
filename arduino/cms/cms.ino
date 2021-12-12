@@ -56,7 +56,7 @@ void loop()
   inst_temp = dht.readTemperature();
   inst_humidity = dht.readHumidity();
   lightSensorDoorServo.write(pos);
-  inst_flow = rainFlow.getRawValue();
+  inst_flow = rainFlow.getCubicInches();
   inst_lux = cds55.getLuxValue();
   inst_uv = uvSensor.getRawValue();
 
@@ -260,7 +260,7 @@ void serialEvent()
     case 0x72: // Instruction r
       // Returns the instant water flow rate
 
-      inst_flow = rainFlow.getRawValue();
+      inst_flow = rainFlow.getCubicInches();
 
       if (!isnan(inst_flow))
       {

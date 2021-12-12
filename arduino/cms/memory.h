@@ -16,7 +16,7 @@ int error;
 // RAM coppies of other values
 float inst_temp;
 float inst_humidity;
-int inst_flow;
+float inst_flow;
 float inst_lux;
 int inst_uv;
 
@@ -24,7 +24,7 @@ int inst_uv;
 byte pos = 0;
 
 // Timeout values, values incremented to count timeout.
-byte door_ajar_wait = 80; // How many cycles to count to before closing the door.
+byte door_ajar_wait = 80;   // How many cycles to count to before closing the door.
 byte door_ajar_timeout = 0; // Counts up to 255 for as long as the door is ajar.
 
 // Deleteme
