@@ -1,21 +1,96 @@
-CREATE Sensor Objects
+CREATE objects
 
-OUTPUT Serial
+WHILE No Critical Errors DO
+	IF bytes in read buffer THEN
+		INPUT instruction byte
+	ENDIF
 
-OUTPUT Aperture door
-OUTPUT Status LED
-OUTPUT Warning LED
-OUTPUT Error LED
+	IF STREAMER_MODE = true THEN
+		IF No Critical Errors THEN
+			IF No Warnings THEN
+				OUTPUT formatted streamer packet.
+			ENDIF
+		ENDIF
+	ENDIF
 
-WARN = EEPROM Warning Value
-ERROR = EEPROM Error Value
+	FOR i <- 1 TO 5
+		IF Sensor is out of spec THEN
+			Raise Warning/Error
+		ENDIF
+	NEXT i
 
-INPUT DHT Temp
-INPUT DHT Humidity
-OUTPUT Servo Pos
+	IF instruction byte == 't' THEN
+		OUTPUT Formatted temp
+		IF temp invalid THEN
+			Raise Warning
+		ENDIF
+		IF temp out of range THEN
+			Raise Warning/Error
+		ENDIF
+		OUTPUT "ok\n"
+	ENDIF
 
-IF Program Counter < 84 && Command in Buffer THEN
-	OUTPUT Status Flash
-ELSE
-	OUTPUT Status Off
-ENDIF
+	IF instruction byte == 'h' THEN
+		OUTPUT Formatted humidity
+		IF humidity invalid THEN
+			Raise Warning
+		ENDIF
+		IF humidity out of range THEN
+			Raise Warning/Error
+		ENDIF
+		OUTPUT "ok\n"
+	ENDIF
+
+	IF instruction byte == 'r' THEN
+		OUTPUT Formatted rainflow (avg)
+		IF rainflow out of range THEN
+			Raise Warning/Error
+		ENDIF
+		OUTPUT "ok\n"
+	ENDIF
+
+	IF instruction byte == 'l' THEN
+		IF aperture door OPEN THEN
+			OUTPUT Formatted lux
+			IF lux invalid THEN
+				Raise Warning
+			ENDIF
+			IF lux out of range THEN
+				Raise Warning/Error
+			ENDIF
+		ELSE
+			Raise Error
+		ENDIF
+		OUTPUT "ok\n"
+	ENDIF
+
+	IF instruction byte == 'u' THEN
+		IF aperture door OPEN THEN
+			OUTPUT Formatted uv index
+			IF uv invalid THEN
+				Raise Warning
+			ENDIF
+			IF uv out of range THEN
+				Raise Warning/Error
+			ENDIF
+		ELSE
+			Raise Error
+		ENDIF
+		OUTPUT "ok\n"
+	ENDIF
+
+	IF instruction byte == '=' THEN
+		Set aperture pos to MAX_POS
+		OUTPUT "ok\n"
+	ENDIF
+
+	IF instruction byte == '_' THEN
+		Set aperture pos to MIN_POS
+		OUTPUT "ok\n"
+	ENDIF
+
+	IF instruction byte == 'S' THEN
+		STREAMER_MODE = true
+		OUTPUT "ok\n"
+	ENDIF
+ENDWHILE
