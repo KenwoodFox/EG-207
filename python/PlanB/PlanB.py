@@ -1,5 +1,6 @@
 import os
 import sys
+import csv
 import time
 import tempfile
 import logging
@@ -22,6 +23,7 @@ from PyQt5.QtWidgets import (
     QMessageBox,
     QProgressBar,
     QPushButton,
+    QSpinBox,
     QTextEdit,
 )
 from PyQt5 import uic
@@ -71,6 +73,10 @@ class PlanBAI(QMainWindow):
 
         self.enableLightSensorCheckbox = self.findChild(
             QCheckBox, "enablePhotoCheckbox"
+        )
+
+        self.photosensorCheckDuration = self.findChild(
+            QSpinBox, "timeBetweenPollsSpinbox"
         )
 
         self.flashPhotoCoefsButton = self.findChild(
@@ -165,7 +171,7 @@ class PlanBAI(QMainWindow):
         )
 
         # Create tempfiles
-        self.temp_data = tempfile.TemporaryFile()
+        self.temp_data = tempfile.TemporaryFile(mode="w")
 
         self.log.info("Program started!")
 
@@ -271,10 +277,28 @@ class PlanBAI(QMainWindow):
 
         # Check if polling is even enabled.
         if self.enablePollingCheckbox.isChecked():
+            # Query for a streamer string
             self.arduino.write("S".encode())
-            line, ack = self.logRead()
+            try:
+                line, ack = self.logRead()
+                self.log.debug(f"Got a new packet! {line}, ack was {ack}.")
+            except IndexError:
+                self.log.warn(f"Skipping a packet, could not split {line}")
 
-            self.log.debug(f"Got a new packet! {line}, ack was {ack}.")
+            # If line valid, send to csv
+            if type(float(line.split(",")[1])) is float:
+                self.temp_data.write(line)
+
+            spamreader = csv.reader(self.temp_data, delimiter=",")
+            for row in spamreader:
+                print(", ".join(row))
+
+            # Update 'live' sensors
+            try:
+                _value = int(line.split(",")[5])
+                self.flowSensorUtilBar.setValue(_value)
+            except IndexError:
+                self.log.warn("Could not update live sensors with this frame.")
 
             # Schedule checking for warnings
             if self.last_warnings_check < now - 10:
@@ -284,7 +308,10 @@ class PlanBAI(QMainWindow):
 
             # Schedule checking for photosensors
             if self.enableLightSensorCheckbox.isChecked():
-                if self.photosensor_last < now - 80:
+                if (
+                    self.photosensor_last
+                    < now - self.photosensorCheckDuration.Value()
+                ):
                     self.log.debug("Enabling the photosensors.")
                     self.arduino.write("=".encode())
                     self.logRead()
@@ -296,11 +323,6 @@ class PlanBAI(QMainWindow):
                     self.arduino.write("_".encode())
                     self.logRead()
                     self.photosensor_enable_time = now
-
-            # Update 'live' sensors
-            _value = float(line.split(",")[5])
-            self.log.debug(_value)
-            self.flowSensorUtilBar.setValue(_value)
 
     def checkWarnings(self):
         # Update warnings in the background
