@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="operationTab">
      <attribute name="title">
@@ -165,7 +165,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>30</y>
+        <y>90</y>
         <width>91</width>
         <height>32</height>
        </rect>
@@ -187,7 +187,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>70</y>
+        <y>130</y>
         <width>91</width>
         <height>32</height>
        </rect>
@@ -209,7 +209,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>110</y>
+        <y>170</y>
         <width>91</width>
         <height>32</height>
        </rect>
@@ -231,7 +231,7 @@
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>30</y>
+        <y>90</y>
         <width>88</width>
         <height>34</height>
        </rect>
@@ -244,7 +244,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>10</y>
+        <y>70</y>
         <width>131</width>
         <height>18</height>
        </rect>
@@ -306,7 +306,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>170</y>
+        <y>300</y>
         <width>171</width>
         <height>34</height>
        </rect>
@@ -319,13 +319,85 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>210</y>
+        <y>340</y>
         <width>171</width>
         <height>34</height>
        </rect>
       </property>
       <property name="text">
        <string>Close Light Sensor Door</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>70</y>
+        <width>131</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Temp/Humidity Bias</string>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="tempBiasSpinBox">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>90</y>
+        <width>131</width>
+        <height>32</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="humidityBiasSpinbox">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>130</y>
+        <width>131</width>
+        <height>32</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>100</y>
+        <width>16</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>T</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>140</y>
+        <width>16</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>H</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="dht11BiasFlashButton">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>90</y>
+        <width>88</width>
+        <height>34</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Flash!</string>
       </property>
      </widget>
     </widget>

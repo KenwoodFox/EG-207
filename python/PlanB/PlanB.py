@@ -2,14 +2,16 @@ import os
 import sys
 import csv
 import time
-import tempfile
+import serial
 import logging
 import coloredlogs
+import pyqtgraph as pg
+
+from io import StringIO
 
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtGui import QTextBlock
-import serial
-import pyqtgraph as pg
+
 
 from pathlib import Path
 
@@ -171,7 +173,7 @@ class PlanBAI(QMainWindow):
         )
 
         # Create tempfiles
-        self.temp_data = tempfile.TemporaryFile(mode="w")
+        self.temp_data = StringIO()
 
         self.log.info("Program started!")
 
