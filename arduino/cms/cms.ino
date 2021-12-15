@@ -53,8 +53,8 @@ void loop()
   EEPROM.get(ERROR_ADDR, error);
 
   // Move this somewhere else
-  inst_temp = dht.readTemperature();
-  inst_humidity = dht.readHumidity();
+  inst_temp = dht.readTemperature() + EEPROM.read(BIAS_TEMP);
+  inst_humidity = dht.readHumidity() + EEPROM.read(BIAS_HUMIDITY);
   lightSensorDoorServo.write(pos);
   inst_flow = rainFlow.getCubicInches();
   inst_lux = cds55.getLuxValue();
@@ -242,6 +242,14 @@ void serialEvent()
       }
       break;
 
+    case 0x54: // Instruction T
+      // Sets the bias for the temp sensor
+      EEPROM.put(BIAS_TEMP, Serial.read());
+
+      Serial.println("0");
+
+      break;
+
     case 0x68: // Instruction h
       // Returns the instant humidity of the dht 11
 
@@ -255,6 +263,14 @@ void serialEvent()
         Serial.println("?");
         EEPROM.put(WARN_ADDR, 10);
       }
+      break;
+
+    case 0x48: // Instruction H
+      // Sets the bias for the humidity sensor
+      EEPROM.put(BIAS_HUMIDITY, Serial.read());
+
+      Serial.println("0");
+
       break;
 
     case 0x72: // Instruction r
@@ -354,6 +370,8 @@ void serialEvent()
       EEPROM.put(COEF_PHOTO_A, COEF_PHOTO_A_DEFAULT);
       EEPROM.put(COEF_PHOTO_B, COEF_PHOTO_B_DEFAULT);
       EEPROM.put(COEF_PHOTO_C, COEF_PHOTO_C_DEFAULT);
+      EEPROM.put(BIAS_TEMP, BIAS_HUMIDITY_DEFAULT);
+      EEPROM.put(BIAS_HUMIDITY, BIAS_HUMIDITY_DEFAULT);
 
       Serial.println("0");
       break;

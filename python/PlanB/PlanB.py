@@ -1,4 +1,5 @@
 import os
+import struct
 import sys
 import csv
 import time
@@ -20,6 +21,7 @@ from PyQt5.QtWidgets import (
     QApplication,
     QCheckBox,
     QComboBox,
+    QDoubleSpinBox,
     QLabel,
     QMainWindow,
     QMessageBox,
@@ -95,6 +97,16 @@ class PlanBAI(QMainWindow):
             QLabel, "factoryDefaultsLabel"
         )
 
+        self.flashDHTBiasButton = self.findChild(
+            QPushButton, "dht11BiasFlashButton"
+        )
+
+        self.tempBiasSpin = self.findChild(QDoubleSpinBox, "tempBiasSpinBox")
+
+        self.humidityBiasSpin = self.findChild(
+            QDoubleSpinBox, "humidityBiasSpinbox"
+        )
+
         self.openLightSensorDoorButton = self.findChild(
             QPushButton, "openLightSensorDoorButton"
         )
@@ -117,6 +129,7 @@ class PlanBAI(QMainWindow):
         self.exitCleanlyDropdown.triggered.connect(self.exitCleanly)
         self.streamToFileDropdown.triggered.connect(self.streamDataToFile)
         self.flashPhotoCoefsButton.clicked.connect(self.flashPhotoCoefs)
+        self.flashDHTBiasButton.clicked.connect(self.flashDHTBias)
         self.factoryDefaultsButton.clicked.connect(self.flashDefaults)
 
         self.openLightSensorDoorButton.clicked.connect(
@@ -317,7 +330,7 @@ class PlanBAI(QMainWindow):
                     self.humidityPlot.setData(self.time, self.humidityReading)
 
                     # Truncate list (this is tunable)
-                    if len(self.time) > 50:
+                    if len(self.time) > 100:
                         self.temperatureReading.pop(0)
                         self.humidityReading.pop(0)
                         self.time.pop(0)
@@ -356,6 +369,7 @@ class PlanBAI(QMainWindow):
         try:
             new_value, ack = self.logRead()
             new_value = int(new_value)
+            self.log.info(f"Checking for warning, got {new_value}")
 
             if new_value != 0 and new_value != self.last_warning:
                 # If there is an error
@@ -405,77 +419,15 @@ class PlanBAI(QMainWindow):
 
         return line, ack
 
-    def updateLive(self):
-        # Updates anything "live onscreen"
-        print("Updating graph")
-
-        try:
-            now = float(time.time())
-            self.time.append(now)
-
-            self.arduino.write("t".encode())
-            new_value, ack = self.logRead()
-            new_value = float(new_value.strip("T"))
-            # print(new_value)
-            self.temperatureReading.append(new_value)
-
-            self.arduino.write("h".encode())
-            new_value, ack = self.logRead()
-            new_value = float(new_value.strip("H"))
-            # print(new_value)
-            self.humidityReading.append(new_value)
-
-            self.tempPlot.setData(self.time, self.temperatureReading)
-            self.humidityPlot.setData(self.time, self.humidityReading)
-        except ValueError:
-            print("Phrasing error?")
-
-        # Update long sensors here
-        if self.check_long_sensors:
-            if self.enableLightSensorCheckbox.isChecked() is True:
-                self.arduino.write("=".encode())
-                time.sleep(4)
-                self.arduino.write("_".encode())
-
-        # Update warnings in the background
-        self.arduino.write("w".encode())
-        try:
-            new_value, ack = self.logRead()
-            new_value = int(new_value)
-
-            if new_value != 0 and new_value != self.last_warning:
-                # If there is an error
-                print(
-                    f"new value is {new_value} and its different "
-                    + "than the old value {self.last_warning}, "
-                    + "updating diag box"
-                )
-                self.last_warning = new_value
-                self.warningMessage(new_value)
-        except ValueError:
-            print("Could not read error code, idk")
-
-        # Update errors in the background
-        self.arduino.write("e".encode())
-        try:
-            new_value, ack = self.logRead()
-            new_value = int(new_value)
-            if (
-                new_value != 0 and new_value != self.last_error
-            ):  # If there is an error
-                print(
-                    f"new value is {new_value} and its different "
-                    + "than the old value {self.last_error}, updating diag box"
-                )
-                self.last_error = new_value
-                self.errorMessage(new_value)
-        except ValueError:
-            print("Could not read error code, idk")
-
-        self.arduino.read_all()  # Flush all
-
     def flashPhotoCoefs(self):
         self.flashPhotoCoefsStatus.setText("No implementation.")
+
+    def flashDHTBias(self):
+        self.arduino.write("T".encode())
+
+        self.arduino.write(struct.pack("!B", int(self.tempBiasSpin.value())))
+
+        self.logRead()
 
     def flashDefaults(self):
         self.arduino.write("D".encode())
