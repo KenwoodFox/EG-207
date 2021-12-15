@@ -135,7 +135,7 @@ void cleanup()
   {
     EEPROM.put(WARN_ADDR, 10);
   } // TODO: This is broken
-  if (inst_lux > 9000)
+  if (inst_lux > 5800)
   {
     EEPROM.put(ERROR_ADDR, 10);
   } // TODO: This is broken
