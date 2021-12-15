@@ -144,7 +144,7 @@ class PlanBAI(QMainWindow):
         humidityStyle = {"color": "#00f", "font-size": "20px"}
         self.graphWidget.setLabel("left", "Temperature (°C)", **tempStyle)
         self.graphWidget.setLabel("right", "Humidity (Rh%)", **humidityStyle)
-        self.graphWidget.setLabel("bottom", "Hour (H)", **tempStyle)
+        self.graphWidget.setLabel("bottom", "Epoch (s)", **tempStyle)
 
         # Add legend
         self.graphWidget.addLegend()
@@ -264,6 +264,9 @@ class PlanBAI(QMainWindow):
             self.poller.start()
             self.poller.update_graph.connect(self.dataStreamer)
 
+            # This is to offset plots and time graphs, starts when the arduino connects
+            self.inital_epoch = float(time.time())
+
         except SerialException:
             self.serialConnectionLabel.setText("Connection Error.")
 
@@ -296,11 +299,32 @@ class PlanBAI(QMainWindow):
                 print(", ".join(row))
 
             # Update 'live' sensors
-            try:
-                _value = int(line.split(",")[5])
-                self.flowSensorUtilBar.setValue(_value)
-            except IndexError:
-                self.log.warn("Could not update live sensors with this frame.")
+            if ack:
+                try:
+                    _value = int(float(line.split(",")[5]))
+                    self.flowSensorUtilBar.setValue(_value)
+
+                    _value = float(line.split(",")[1])
+                    self.temperatureReading.append(_value)
+
+                    _value = float(line.split(",")[2])
+                    self.humidityReading.append(_value)
+
+                    now = float(time.time())
+                    self.time.append(now - self.inital_epoch)
+
+                    self.tempPlot.setData(self.time, self.temperatureReading)
+                    self.humidityPlot.setData(self.time, self.humidityReading)
+
+                    # Truncate list (this is tunable)
+                    if len(self.time) > 50:
+                        self.temperatureReading.pop(0)
+                        self.humidityReading.pop(0)
+                        self.time.pop(0)
+                except IndexError:
+                    self.log.warn(
+                        "Could not update live sensors with this frame."
+                    )
 
             # Schedule checking for warnings
             if self.last_warnings_check < now - 10:
@@ -312,7 +336,7 @@ class PlanBAI(QMainWindow):
             if self.enableLightSensorCheckbox.isChecked():
                 if (
                     self.photosensor_last
-                    < now - self.photosensorCheckDuration.Value()
+                    < now - self.photosensorCheckDuration.value()
                 ):
                     self.log.debug("Enabling the photosensors.")
                     self.arduino.write("=".encode())
