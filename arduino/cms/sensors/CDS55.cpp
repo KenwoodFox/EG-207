@@ -1,6 +1,9 @@
 // Team Gold
 // EG-207, SNHU
 
+// Public Libs
+#include <EEPROM.h>
+
 
 class CDS55 {
     private:
@@ -11,17 +14,24 @@ class CDS55 {
             pin = _pin; // Update pin
         };
 
-        signed int getRawValue() {
+        int getRawValue() {
             value = analogRead(pin);
             return value;
         };
 
-        int getLuxValue() {
-            getRawValue(); // Populate value
+        float getLuxValue() {
+            float f_value = getRawValue(); // Populate value
 
-            // Magic 4th order polynomial (Sucks a lot)
-            // Based purely on provided lab data.
-            int luxvalue = 1020.881 - (19.60206 * value) + (0.1080073 * pow(value, 2)) - (0.0001971755 * pow(value, 3)) + (1.218544e-7* pow(value, 4));
+            // Polynomial conversion
+            float coefA;
+            float coefB;
+            float coefC;
+
+            EEPROM.get(COEF_PHOTO_A, coefA);
+            EEPROM.get(COEF_PHOTO_B, coefB);
+            EEPROM.get(COEF_PHOTO_C, coefC);
+
+            float luxvalue = (coefA * pow(f_value, 2)) - (coefB * f_value) + coefC;
 
             if (luxvalue > 0) {
                 return luxvalue; // Only return valid outputs 
